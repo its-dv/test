@@ -23,15 +23,19 @@
     <img class="fixedIcons" id="themeIcon" src="images/moon.svg" alt="Switch Theme">
   </button>
 
-  <button id="translateButton" onclick="translate()">
-    <img class="fixedIcons" src="images/translate.svg" alt="Translate">
-  </button>
+  <div class="language">
+    <button id="translateButton" onclick="translate()">
+      <img class="fixedIcons" src="images/translate.svg" alt="Translate">
+    </button>
 
-  <ul id="dropdownLanguages" class="hidden">
-    <li onclick="translateTo('en')">English</li>
-    <li onclick="translateTo('es')">Deutsch</li>
-    <li onclick="translateTo('fr')">Français</li>
-  </ul>
+    <ul id="dropdownLanguages" class="dropdownLanguages hidden">
+      <li onclick="translateTo('en')">English</li>
+      <li onclick="translateTo('es')">Deutsch</li>
+      <li onclick="translateTo('fr')">Français</li>
+    </ul>
+  </div>
+
+  <!-- Character Counter In Next Commits -->
 
   <div id="toast" class="toast">Message</div>
 
@@ -40,6 +44,6 @@
 </body>
 <footer>
   <p>&copy; 2026 Simple Notepad. All rights aren't reserved.</p>
-  <p class="updated">Last updated: 12.04.2026</p>
+  <p class="updated">Last updated: 21.04.2026</p>
 </footer>
 </html>

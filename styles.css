@@ -116,10 +116,39 @@ button {
   display: none;
 }
 
+.language {
+  position: relative;
+  display: inline-block;
+}
+
 #dropdownLanguages {
   list-style: none;
   padding: 10px;
   margin: 0;
-  background: #000000;
+  background: #ebebeb;
   width: 150px;
+  border: 1px solid #bdbdbd;
+}
+
+.dark #dropdownLanguages {
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  background: #191919;
+  width: 150px;
+  border: 1px solid #ffffff;
+}
+
+.dropdownLanguages {
+  position: absolute;
+  top: 65px;
+  left: 100%;
+  border-radius: 3px;
+
+  background: #eee;
+  padding: 10px;
+  margin: 0;
+  list-style: none;
+  width: 150px;
+  border: 1px solid #ccc;
 }
