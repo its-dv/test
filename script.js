@@ -88,3 +88,27 @@ const menu = document.getElementById("dropdownTranslate");
 btn.addEventListener("click", () => {
   menu.classList.toggle("hidden");
 });
+
+// Translations for buttons
+const translations = {
+  en: {
+    save: "Save",
+    load: "Load",
+    clear: "Clear"
+  },
+  de: {
+    save: "Speichern",
+    load: "Laden",
+    clear: "Löschen"
+  },
+  fr: {
+    save: "Enregistrer",
+    load: "Charger",
+    clear: "Effacer"
+  },
+  ru: {
+    save: "Сохранить",
+    load: "Загрузить",
+    clear: "Очистить"
+  }
+};

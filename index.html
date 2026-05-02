@@ -1,48 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
 
   <title>Simple Notepad</title>
-</head>
+  </head>
 
-<body>
-  <h1>Simple Notepad</h1>
-  <textarea id="notepad" placeholder="Write your notes here..."></textarea>
-  <br>
+  <body>
+    <header>
+      <h1>Simple Notepad</h1>
+    </header>
+    <main>
+      <textarea id="notepad" placeholder="Write your notes here..."></textarea>
+      <br>
 
-  <button onclick="saveText()">Save</button>
+      <button data-i18n="save" onclick="saveText()">Save</button>
+      <button data-i18n="load" onclick="loadText()">Load</button>
+      <button data-i18n="clear" onclick="clearNotepad()">Clear</button>
 
-  <button onclick="loadText()">Load</button>
+      <button class="preferenceButton" id="themeButton" onclick="switchTheme()">
+        <img class="fixedIcons" id="themeIcon" src="images/moon.svg" alt="Switch Theme">
+      </button>
 
-  <button onclick="clearNotepad()">Clear</button>
+      <div class="language">
+        <button class="preferenceButton" id="translateButton" onclick="translate()">
+          <img class="fixedIcons" src="images/translate.svg" alt="Translate">
+        </button>
 
-  <button class="preferenceButton" id="themeButton" onclick="switchTheme()">
-    <img class="fixedIcons" id="themeIcon" src="images/moon.svg" alt="Switch Theme">
-  </button>
+        <fieldset id="dropdownTranslate" class="dropdownTranslate hidden">
+          <legend>Languages</legend>
+          <div>
+            <input id="english" type="radio" name="language" value="en" onclick="changeLanguage('en')" checked>
+            <label for="english">English</label>
+          </div>
+          <div>
+            <input id="german" type="radio" name="language" value="de" onclick="changeLanguage('de')">
+            <label for="german">Deutsch</label>
+          </div>
+          <div>
+            <input id="french" type="radio" name="language" value="fr" onclick="changeLanguage('fr')">
+            <label for="french">Français</label>
+          </div>
+          <div>
+            <input id="russian" type="radio" name="language" value="ru" onclick="changeLanguage('ru')">
+            <label for="russian">Русский</label>
+          </div>
+        </fieldset>
+      </div>
 
-  <div class="language">
-    <button class="preferenceButton" id="translateButton" onclick="translate()">
-      <img class="fixedIcons" src="images/translate.svg" alt="Translate">
-    </button>
+      <!-- Character Counter In Next Commits -->
 
-    <ul id="dropdownTranslate" class="dropdownTranslate hidden">
-      <li onclick="translateTo('en')">English</li>
-      <li onclick="translateTo('es')">Deutsch</li>
-      <li onclick="translateTo('fr')">Français</li>
-    </ul>
-  </div>
+      <div id="toast" class="toast">Message</div>
 
-  <!-- Character Counter In Next Commits -->
+    </main>
 
-  <div id="toast" class="toast">Message</div>
+    <footer>
+      <p>&copy; 2026 Simple Notepad. All rights aren't reserved.</p>
+    </footer>
 
-  <script src="script.js"></script>
-
-</body>
-<footer>
-  <p>&copy; 2026 Simple Notepad. All rights aren't reserved.</p>
-</footer>
+    <script src="script.js"></script>
+  </body>
 </html>

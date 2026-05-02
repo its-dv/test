@@ -91,15 +91,19 @@ button {
   right: 10px;
 }
 
+#dropdownTranslate legend {
+  margin-left: 25%;
+}
+
 .language {
   position: relative;
   display: inline-block;
 }
 
 .dropdownTranslate {
-  position: absolute;
-  top: 65px;
-  left: 100%;
+  position: fixed;
+  top: 50px;
+  right: 10px;
   border-radius: 3px;
 
   background: #eee;
