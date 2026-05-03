@@ -13,7 +13,7 @@
       <h1>Simple Notepad</h1>
     </header>
     <main>
-      <textarea id="notepad" placeholder="Write your notes here..."></textarea>
+      <textarea id="notepad" data-i18n-placeholder="textarea"></textarea>
       <br>
 
       <button data-i18n="save" onclick="saveText()">Save</button>
@@ -30,21 +30,21 @@
         </button>
 
         <fieldset id="dropdownTranslate" class="dropdownTranslate hidden">
-          <legend>Languages</legend>
+          <legend data-i18n="languages">Languages</legend>
           <div>
-            <input id="english" type="radio" name="language" value="en" onclick="changeLanguage('en')" checked>
+            <input id="english" type="radio" name="language" value="en" checked>
             <label for="english">English</label>
           </div>
           <div>
-            <input id="german" type="radio" name="language" value="de" onclick="changeLanguage('de')">
+            <input id="german" type="radio" name="language" value="de">
             <label for="german">Deutsch</label>
           </div>
           <div>
-            <input id="french" type="radio" name="language" value="fr" onclick="changeLanguage('fr')">
+            <input id="french" type="radio" name="language" value="fr">
             <label for="french">Français</label>
           </div>
           <div>
-            <input id="russian" type="radio" name="language" value="ru" onclick="changeLanguage('ru')">
+            <input id="russian" type="radio" name="language" value="ru">
             <label for="russian">Русский</label>
           </div>
         </fieldset>
@@ -57,7 +57,7 @@
     </main>
 
     <footer>
-      <p>&copy; 2026 Simple Notepad. All rights aren't reserved.</p>
+      <p data-i18n="rights">&copy; 2026 Simple Notepad. All rights not reserved.</p>
     </footer>
 
     <script src="script.js"></script>

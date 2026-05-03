@@ -89,26 +89,73 @@ btn.addEventListener("click", () => {
   menu.classList.toggle("hidden");
 });
 
-// Translations for buttons
+// Translations
 const translations = {
   en: {
     save: "Save",
     load: "Load",
-    clear: "Clear"
+    clear: "Clear",
+    languages: "Languages",
+    rights: "© 2026 Simple Notepad. All rights not reserved.",
+    textarea: "Write your notes here..."
   },
   de: {
     save: "Speichern",
     load: "Laden",
-    clear: "Löschen"
+    clear: "Löschen",
+    languages: "Sprachen",
+    rights: "© 2026 Simple Notepad. Alle Rechte nicht reserviert.",
+    textarea: "Schreiben Sie Ihre Notizen hier..."
   },
   fr: {
     save: "Enregistrer",
     load: "Charger",
-    clear: "Effacer"
+    clear: "Effacer",
+    languages: "Langues",
+    rights: "© 2026 Simple Notepad. Tous droits non réservés.",
+    textarea: "Écrivez vos notes ici..."
   },
   ru: {
     save: "Сохранить",
     load: "Загрузить",
-    clear: "Очистить"
+    clear: "Очистить",
+    languages: "Языки",
+    rights: "© 2026 Simple Notepad. Все права не защищены.",
+    textarea: "Напишите свои заметки здесь..."
   }
 };
+
+document.querySelectorAll('input[name="language"]').forEach(input => {
+  input.addEventListener("change", (e) => {
+    const lang = e.target.value;
+    changeLanguage(lang);
+  });
+});
+
+let currentLang = localStorage.getItem("lang") || "en";
+
+function t(key) {
+  return translations[currentLang][key] || key;
+}
+
+function updateTexts() {
+  // Simple text content
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    el.textContent = t(el.dataset.i18n);
+  });
+
+  // Placeholder text content
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+    el.placeholder = t(el.dataset.i18nPlaceholder);
+  });
+}
+
+function changeLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem("lang", lang);
+  updateTexts();
+}
+
+updateTexts();
+
+document.querySelector(`input[value="${currentLang}"]`).checked = true;
