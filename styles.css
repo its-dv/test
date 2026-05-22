@@ -19,16 +19,23 @@ textarea {
   height: 100%;
   font-size: 18px;
   resize: none;
-  box-sizing: border-box;
 
   border: #bdbdbd 1px solid;
   border-radius: 2px;
+}
+
+textarea:focus {
+  outline: 1px solid #bdbdbd;
 }
 
 .dark textarea {
   background-color: #191919;
   border: #444 1px solid;
   color: white;
+}
+
+.dark textarea:focus {
+  outline: 1px solid #444;
 }
 
 button {
@@ -43,7 +50,7 @@ button {
 
 .dark button {
   background-color: #333;
-  border: #555 1px solid;
+  border-color: #555;
   color: white;
 }
 
@@ -85,7 +92,7 @@ button {
 
 .dark .sidebar {
   background: #333;
-  border: #444 1px solid;
+  border-color: #444;
 }
 
 .main-container {
@@ -106,8 +113,8 @@ button {
 /* 2. Preferences */
 .preferenceButton {
   background: none;
-  padding: 0;
   border: none;
+  padding: 0;
   cursor: pointer;
   position: fixed;
   top: 7px;
@@ -130,11 +137,11 @@ button {
 }
 
 #themeButton {
-  right: 50px;
+  right: 55px;
 }
 
 #translateButton {
-  right: 10px;
+  right: 15px;
 }
 
 #languages {
@@ -148,19 +155,15 @@ button {
   top: 45px;
   right: 10px;
   border-radius: 5px;
-  width: 150px;
-
   padding: 10px;
-  background: #ebebeb;
   width: 100px;
+  background: #ebebeb;
   border: 1px solid #bdbdbd;
 }
 
 .dark #dropdownTranslate {
-  padding: 10px;
   background: #191919;
-  width: 100px;
-  border: 1px solid #444;
+  border-color: #444;
 }
 
 .row {
