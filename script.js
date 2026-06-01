@@ -11,9 +11,19 @@ function renderNotes() {
 
   notes.forEach(note => {
     const li = document.createElement("li");
-    li.textContent = note.title;
+    const titleSpan = document.createElement("span");
+    titleSpan.textContent = note.title;
+    titleSpan.onclick = () => openNote(note.id);
 
-    li.onclick = () => openNote(note.id);
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "✕";
+    deleteBtn.onclick = (e) => {
+      e.stopPropagation();
+      deleteNote(note.id);
+    };
+
+    li.appendChild(titleSpan);
+    li.appendChild(deleteBtn);
     list.appendChild(li);
   });
 }
@@ -22,9 +32,11 @@ function renderNotes() {
 function openNote(id) {
   const note = notes.find(n => n.id === id);
   if (note) {
-    document.getElementById("titleInput").value = note.noteTitle;
-    document.getElementById("notepad").value = note.textContent;
     currentNoteId = id;
+    document.getElementById("titleInput").value = note.title;
+    document.getElementById("noteTitle").textContent = note.title;
+    document.getElementById("notepad").value = note.content;
+    updateUI();
   }
 }
 
@@ -58,6 +70,28 @@ function saveNote() {
   document.getElementById('titleInput').value='';
   document.getElementById('notepad').value='';
   renderNotes();
+  showToast(translate("noteCreated"));
+}
+
+function editNote(id){
+    const note = notes.find(n => n.id === id);
+
+    document.getElementById('titleInput').value = note.title;
+    document.getElementById('notepad').value = note.content;
+
+    editId = id;
+}
+
+// Delete a note
+function deleteNote(id){
+    notes = notes.filter(n => n.id !== id);
+
+    localStorage.setItem(
+        'notes',
+        JSON.stringify(notes)
+    );
+
+    renderNotes();
 }
 
 // Rename the note title
@@ -93,61 +127,6 @@ function saveToStorage() {
 
 // script.js - index.html
 const textarea = document.getElementById("notepad");
-
-// Save text in localStorage
-function saveText() {
-  if (textarea.value !== "") {
-    localStorage.setItem("notepadContent", textarea.value);
-    showToast(translate("textSaved"));
-  } else {
-    showToast(translate("nothingToSave"));
-  }
-
-  updateUI();
-}
-
-// Ctrl + S to save
-window.addEventListener("keydown", (event) => {
-  if ((event.ctrlKey || event.metaKey) && (event.key.toLowerCase() === "s" || event.key.toLowerCase() === "ы")) {
-    event.preventDefault();
-    saveText();
-  }
-});
-
-// Load text from localStorage
-function loadText() {
-  const saved = localStorage.getItem("notepadContent");
-  if (saved !== null) {
-    textarea.value = saved;
-    showToast(translate("textLoaded"));
-  } else {
-    showToast(translate("nothingToLoad"));
-  }
-
-  updateUI();
-}
-
-// Ctrl + L to load
-window.addEventListener("keydown", (event) => {
-  if ((event.ctrlKey || event.metaKey) && (event.key.toLowerCase() === "l" || event.key.toLowerCase() === "д")) {
-    event.preventDefault();
-    loadText();
-  }
-});
-
-// Clear the notepad
-function clearText() {
-  const saved = localStorage.getItem("notepadContent");
-  if (saved !== null || textarea.value !== "") {
-    showToast(translate("noteCleared"));
-    textarea.value = "";
-    localStorage.removeItem("notepadContent");
-  } else {
-    showToast(translate("noteAlreadyCleared"));
-  }
-
-  updateUI();
-}
 
 // Switch between light and dark themes
 function switchTheme() {
@@ -214,6 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("themeIcon").src = "images/moon.svg";
   }
 
+  renderNotes();
   updateUI();
 });
 
@@ -233,10 +213,6 @@ function countCharacters() {
   }
   document.getElementById("characterCounter").textContent = translate("characterCounter") + count;
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  updateUI();
-});
 
 textarea.addEventListener("input", () => {
   countCharacters();

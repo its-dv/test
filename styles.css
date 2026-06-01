@@ -58,11 +58,6 @@ button {
   color: white;
 }
 
-.buttonRow {
-  display: flex;
-  gap: 10px;
-}
-
 #titleRename {
   display: flex;
   margin-top: 0px;
@@ -196,6 +191,16 @@ button {
   display: flex;
   align-items: center;
   gap: 25px;
+}
+
+#rights {
+  margin-top: 25px;
+  text-align: center;
+  color:#b8b8b8;
+}
+
+.dark #rights {
+  color: #5f5f5f;
 }
 
 /* 3. Notifications */
