@@ -1,23 +1,51 @@
 "use strict";
 
 // Notes structure
-let notes = [];
+let notes = JSON.parse(localStorage.getItem("notes")) || [];
 let currentNoteId = null;
 
-// Create a new note
-function createNote() {
-  const note = {
-    id: Date.now(),
-    title: "Untitled",
-    content: "",
-    updatedAt: Date.now()
-  };
+// Render all the notes
+function renderNotes() {
+  const list = document.getElementById("notesList");
+  list.innerHTML = "";
 
-  notes.push(note);
-  currentNoteId = note.id;
+  notes.forEach(note => {
+    const li = document.createElement("li");
+    li.textContent = note.title;
 
-  saveToStorage();
-  showToast(translate("noteCreated"));
+    li.onclick = () => openNote(note.id);
+    list.appendChild(li);
+  });
+}
+
+// Save a note
+function saveNote() {
+  const title = document.getElementById("titleInput").value;
+  const content = document.getElementById("notepad").value;
+
+  if (!title || !content) {
+    showToast(translate("nothingToSave"));
+    return;
+  }
+  
+  if (currentNoteId) {
+    for (let i = 0; i < notes.length; i++) {
+      if (notes[i].id === currentNoteId) {
+        notes[i].title = title;
+        notes[i].content = content;
+      }
+    }
+  } else {
+    notes.push({
+      id:Date.now(),
+      title,
+      content
+    });
+  }
+
+  localStorage.setItem("notes", JSON.stringify(notes));
+  document.getElementById('title').value='';
+  document.getElementById('content').value='';
 }
 
 // Rename the note title
@@ -96,7 +124,7 @@ window.addEventListener("keydown", (event) => {
 });
 
 // Clear the notepad
-function clearNotepad() {
+function clearText() {
   const saved = localStorage.getItem("notepadContent");
   if (saved !== null || textarea.value !== "") {
     showToast(translate("noteCleared"));
@@ -226,7 +254,8 @@ const translations = {
     noteCreated: "Note created",
     textCopy: "Text copied",
     textPaste: "Text pasted",
-    textCut: "Text cut"
+    textCut: "Text cut",
+    noteTitle: "Enter note title..."
   },
   de: {
     save: "Speichern",
@@ -246,7 +275,8 @@ const translations = {
     noteCreated: "Notiz erstellt",
     textCopy: "Text kopiert",
     textPaste: "Text eingefügt",
-    textCut: "Text ausgeschnitten"
+    textCut: "Text ausgeschnitten",
+    noteTitle: "Notiztitel eingeben..."
   },
   fr: {
     save: "Enregistrer",
@@ -266,7 +296,8 @@ const translations = {
     noteCreated: "Note créée",
     textCopy: "Texte copié",
     textPaste: "Texte collé",
-    textCut: "Texte coupé"
+    textCut: "Texte coupé",
+    noteTitle: "Entrez le titre de la note..."
   },
   ru: {
     save: "Сохранить",
@@ -286,7 +317,8 @@ const translations = {
     noteCreated: "Заметка создана",
     textCopy: "Текст скопирован",
     textPaste: "Текст вставлен",
-    textCut: "Текст вырезан"
+    textCut: "Текст вырезан",
+    noteTitle: "Введите название заметки..."
   }
 };
 

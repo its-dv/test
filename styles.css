@@ -1,4 +1,8 @@
 /* 1. Base */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
   padding: 20px;
@@ -24,14 +28,15 @@ textarea {
   border-radius: 2px;
 }
 
-textarea:focus {
-  outline: 1px solid #bdbdbd;
-}
-
 .dark textarea {
   background-color: #191919;
   border: #444 1px solid;
   color: white;
+}
+
+
+textarea:focus {
+  outline: 1px solid #bdbdbd;
 }
 
 .dark textarea:focus {
@@ -83,6 +88,13 @@ button {
   color: white;
 }
 
+.mainContainer {
+  display: flex;
+
+  gap: 10px;
+  height: 75vh;
+}
+
 .sidebar {
   background: #ddd;
   border: #bdbdbd 1px solid;
@@ -95,12 +107,6 @@ button {
   border-color: #444;
 }
 
-.main-container {
-  display: flex;
-  gap: 10px;
-  height: 75vh;
-}
-
 #notepad {
   padding: 5px;
 }
@@ -108,6 +114,25 @@ button {
 #characterCounter {
   margin-top: 10px;
   margin-bottom: 0px;
+}
+
+#titleInput {
+  width: 185px;
+  letter-spacing: -0.25px;
+}
+
+#titleInput:focus {
+  outline: 1px solid #bdbdbd;
+}
+
+.dark #titleInput {
+  color: white;
+  background: #333;
+  border: #444 1px solid;
+}
+
+.dark #titleInput:focus {
+  outline: 1px solid #444;
 }
 
 /* 2. Preferences */
@@ -156,7 +181,7 @@ button {
   right: 10px;
   border-radius: 5px;
   padding: 10px;
-  width: 100px;
+  width: 125px;
   background: #ebebeb;
   border: 1px solid #bdbdbd;
 }
