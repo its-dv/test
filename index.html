@@ -1,85 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
-
+  <script src="script.js" defer></script>
   <title>Simple Notepad</title>
-  </head>
+</head>
 
-  <body>
-    <header>
-      <h1>Simple Notepad</h1>
-    </header>
+<body>
+  <header>
+    <h1>Simple Notepad</h1>
+  </header>
 
-    <main>
-      <div class="row">
-        <h2 id="noteTitle">Untitled</h2>
-        <input type="text" id="titleInput" placeholder="Enter note title..." maxLength="20" style="display:none;">
-        <button id="titleRename" onclick="popup()">
-          <img class="fixedIcons" src="images/pencil.svg" alt="Translate">
-        </button>
-        <button id="createNote" onclick="createNote()">+</button>
-      </div>
+  <main>
+    <div class="row">
+      <h2 id="noteTitle">Untitled</h2>
+      <input type="text" id="titleInput" placeholder="Enter note title..." maxLength="20" style="display:none;">
+      <button id="titleRename" onclick="popup()">
+        <img class="fixedIcons" src="images/pencil.svg" alt="Translate">
+      </button>
+      <button id="createNote" onclick="createNote()">+</button>
+    </div>
 
-      <div class="main-container">
-        <aside class="sidebar">
-          <ul>
-            <li>Note 1</li>
-            <li>Note 2</li>
-            <li>Note 3</li>
-          </ul>
-        </aside>
+    <div class="main-container">
+      <aside class="sidebar">
+        <ul id="notesList"></ul>
+      </aside>
+      <textarea id="notepad" data-i18n-placeholder="textarea"></textarea>
+    </div>
 
-          <textarea id="notepad" data-i18n-placeholder="textarea"></textarea>
-      </div>
+    <p id="characterCounter" data-i18n="characterCounterError">Character count: Something went wrong...</p>
+    <div class="buttonRow">
+      <button title="( Ctrl + S )" data-i18n="save" onclick="saveText()">Save</button>
+      <button title="( Ctrl + L )" data-i18n="load" onclick="loadText()">Load</button>
+      <button data-i18n="clear" onclick="clearNotepad()">Clear</button>
+    </div>
 
-      <p id="characterCounter" data-i18n="characterCounterError">Character count: Something went wrong...</p>
-      <div class="buttonRow">
-        <button title="( Ctrl + S )" data-i18n="save" onclick="saveText()">Save</button>
-        <button title="( Ctrl + L )" data-i18n="load" onclick="loadText()">Load</button>
-        <button data-i18n="clear" onclick="clearNotepad()">Clear</button>
-      </div>
+    <button class="preferenceButton" id="themeButton" onclick="switchTheme()">
+      <img class="fixedIcons" id="themeIcon" src="images/moon.svg" alt="Switch Theme">
+    </button>
 
-      <button class="preferenceButton" id="themeButton" onclick="switchTheme()">
-        <img class="fixedIcons" id="themeIcon" src="images/moon.svg" alt="Switch Theme">
+    <div>
+      <button class="preferenceButton" id="translateButton" onclick="translate()">
+        <img class="fixedIcons" src="images/translate.svg" alt="Translate">
       </button>
 
-      <div>
-        <button class="preferenceButton" id="translateButton" onclick="translate()">
-          <img class="fixedIcons" src="images/translate.svg" alt="Translate">
-        </button>
+      <fieldset id="dropdownTranslate" class="hidden">
+        <legend id="languages" data-i18n="languages">Languages</legend>
+        <div>
+          <input id="english" type="radio" name="language" value="en" checked>
+          <label for="english">English</label>
+        </div>
+        <div>
+          <input id="german" type="radio" name="language" value="de">
+          <label for="german">Deutsch</label>
+        </div>
+        <div>
+          <input id="french" type="radio" name="language" value="fr">
+          <label for="french">Français</label>
+        </div>
+        <div>
+          <input id="russian" type="radio" name="language" value="ru">
+          <label for="russian">Русский</label>
+        </div>
+      </fieldset>
+    </div>
 
-        <fieldset id="dropdownTranslate" class="hidden">
-          <legend id="languages" data-i18n="languages">Languages</legend>
-          <div>
-            <input id="english" type="radio" name="language" value="en" checked>
-            <label for="english">English</label>
-          </div>
-          <div>
-            <input id="german" type="radio" name="language" value="de">
-            <label for="german">Deutsch</label>
-          </div>
-          <div>
-            <input id="french" type="radio" name="language" value="fr">
-            <label for="french">Français</label>
-          </div>
-          <div>
-            <input id="russian" type="radio" name="language" value="ru">
-            <label for="russian">Русский</label>
-          </div>
-        </fieldset>
-      </div>
+    <div id="toast" class="toast">Message</div>
 
-      <div id="toast" class="toast">Message</div>
+  </main>
 
-    </main>
+  <footer>
+    <p data-i18n="rights">&copy; 2026 Simple Notepad. All rights not reserved.</p>
+  </footer>
+</body>
 
-    <footer>
-      <p data-i18n="rights">&copy; 2026 Simple Notepad. All rights not reserved.</p>
-    </footer>
-
-    <script src="script.js"></script>
-  </body>
 </html>

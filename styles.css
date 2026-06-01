@@ -1,4 +1,8 @@
 /* 1. Base */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
   padding: 20px;
@@ -24,14 +28,15 @@ textarea {
   border-radius: 2px;
 }
 
-textarea:focus {
-  outline: 1px solid #bdbdbd;
-}
-
 .dark textarea {
   background-color: #191919;
   border: #444 1px solid;
   color: white;
+}
+
+
+textarea:focus {
+  outline: 1px solid #bdbdbd;
 }
 
 .dark textarea:focus {
@@ -83,6 +88,13 @@ button {
   color: white;
 }
 
+.main-container {
+  display: flex;
+
+  gap: 10px;
+  height: 75vh;
+}
+
 .sidebar {
   background: #ddd;
   border: #bdbdbd 1px solid;
@@ -93,12 +105,6 @@ button {
 .dark .sidebar {
   background: #333;
   border-color: #444;
-}
-
-.main-container {
-  display: flex;
-  gap: 10px;
-  height: 75vh;
 }
 
 #notepad {
@@ -156,7 +162,7 @@ button {
   right: 10px;
   border-radius: 5px;
   padding: 10px;
-  width: 100px;
+  width: 125px;
   background: #ebebeb;
   border: 1px solid #bdbdbd;
 }

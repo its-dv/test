@@ -1,7 +1,7 @@
 "use strict";
 
 // Notes structure
-let notes = [];
+let notes = JSON.parse(localStorage.getItem("notes")) || [];
 let currentNoteId = null;
 
 // Create a new note
@@ -18,6 +18,50 @@ function createNote() {
 
   saveToStorage();
   showToast(translate("noteCreated"));
+}
+
+// Render all the notes
+function renderNotes() {
+  const list = document.getElementById("notesList");
+  list.innerHTML = "";
+
+  notes.forEach(note => {
+    const li = document.createElement("li");
+    li.textContent = note.title;
+
+    li.onclick = () => openNote(note.id);
+    list.appendChild(li);
+  });
+}
+
+// Save a note
+function saveNote() {
+  const title = document.getElementById("titleInput").value;
+  const content = document.getElementById("notepad").value;
+
+  if (!title || !content) {
+    showToast(translate("nothingToSave"));
+    return;
+  }
+  
+  if (currentNoteId) {
+    for (let i = 0; i < notes.length; i++) {
+      if (notes[i].id === currentNoteId) {
+        notes[i].title = title;
+        notes[i].content = content;
+      }
+    }
+  } else {
+    notes.push({
+      id:Date.now(),
+      title,
+      content
+    });
+  }
+
+  localStorage.setItem("notes", JSON.stringify(notes));
+  document.getElementById('title').value='';
+  document.getElementById('content').value='';
 }
 
 // Rename the note title

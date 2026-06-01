@@ -3,10 +3,10 @@ xmlns="http://www.w3.org/2000/svg">
   <path 
     d="M8.4 11.3C10.3 12.6 12.0207 14.939 12.0207 14.939H12.052C12.052 14.939 15 9 21.5 5"
     stroke="black"
-    stroke-width="2"
+    stroke-width="1.9"
     stroke-linecap="square"/>
   <path 
     d="M12 21.25C16.83 21.25 20.97 17 20.97 12C20.97 6.89 16.83 2.75 12 2.75C6.6 2.75 2.47 6.89 2.47 12C2.47 17 6.6 21.25 12 21.25Z"
     stroke="black"
-    stroke-width="2"/>
+    stroke-width="1.9"/>
 </svg>
