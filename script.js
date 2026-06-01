@@ -18,6 +18,16 @@ function renderNotes() {
   });
 }
 
+// Open a note
+function openNote(id) {
+  const note = notes.find(n => n.id === id);
+  if (note) {
+    document.getElementById("titleInput").value = note.noteTitle;
+    document.getElementById("notepad").value = note.textContent;
+    currentNoteId = id;
+  }
+}
+
 // Save a note
 function saveNote() {
   const title = document.getElementById("titleInput").value;
@@ -33,7 +43,8 @@ function saveNote() {
       if (notes[i].id === currentNoteId) {
         notes[i].title = title;
         notes[i].content = content;
-      }
+      };
+      currentNoteId = null;
     }
   } else {
     notes.push({
@@ -44,8 +55,9 @@ function saveNote() {
   }
 
   localStorage.setItem("notes", JSON.stringify(notes));
-  document.getElementById('title').value='';
-  document.getElementById('content').value='';
+  document.getElementById('titleInput').value='';
+  document.getElementById('notepad').value='';
+  renderNotes();
 }
 
 // Rename the note title

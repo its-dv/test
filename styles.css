@@ -34,7 +34,6 @@ textarea {
   color: white;
 }
 
-
 textarea:focus {
   outline: 1px solid #bdbdbd;
 }
@@ -119,6 +118,8 @@ button {
 #titleInput {
   width: 185px;
   letter-spacing: -0.25px;
+  border-radius: 2px;
+  border: #bdbdbd 1px solid;
 }
 
 #titleInput:focus {
