@@ -17,14 +17,14 @@
   <main>
     <div class="row">
       <h2 id="noteTitle">Untitled</h2>
-      <input type="text" id="titleInput" placeholder="Enter note title..." maxLength="20" style="display:none;">
+      <input id="titleInput" type="text" data-i18n-placeholder="noteTitle" maxLength="20" style="display:none;">
       <button id="titleRename" onclick="popup()">
         <img class="fixedIcons" src="images/pencil.svg" alt="Translate">
       </button>
       <button id="createNote" onclick="createNote()">+</button>
     </div>
 
-    <div class="main-container">
+    <div class="mainContainer">
       <aside class="sidebar">
         <ul id="notesList"></ul>
       </aside>
@@ -35,7 +35,7 @@
     <div class="buttonRow">
       <button title="( Ctrl + S )" data-i18n="save" onclick="saveText()">Save</button>
       <button title="( Ctrl + L )" data-i18n="load" onclick="loadText()">Load</button>
-      <button data-i18n="clear" onclick="clearNotepad()">Clear</button>
+      <button data-i18n="clear" onclick="clearText()">Clear</button>
     </div>
 
     <button class="preferenceButton" id="themeButton" onclick="switchTheme()">
