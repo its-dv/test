@@ -11,6 +11,10 @@ function renderNotes() {
 
   notes.forEach(note => {
     const li = document.createElement("li");
+    if (note.id === currentNoteId) {
+      li.classList.add("active");
+    }
+
     const titleSpan = document.createElement("span");
     titleSpan.textContent = note.title;
     titleSpan.onclick = () => openNote(note.id);
@@ -56,8 +60,8 @@ function saveNote() {
         notes[i].title = title;
         notes[i].content = content;
       };
-      currentNoteId = null;
     }
+    currentNoteId = null;
   } else {
     notes.push({
       id:Date.now(),
@@ -73,24 +77,22 @@ function saveNote() {
   showToast(translate("noteCreated"));
 }
 
-function editNote(id){
-    const note = notes.find(n => n.id === id);
-
-    document.getElementById('titleInput').value = note.title;
-    document.getElementById('notepad').value = note.content;
-
-    editId = id;
-}
-
 // Delete a note
 function deleteNote(id){
-    notes = notes.filter(n => n.id !== id);
+  notes = notes.filter(n => n.id !== id);
 
-    localStorage.setItem(
-        'notes',
-        JSON.stringify(notes)
-    );
-    renderNotes();
+  if (currentNoteId === id) {
+    currentNoteId = null;
+    document.getElementById('titleInput').value='';
+    document.getElementById('notepad').value='';
+    document.getElementById("noteTitle").textContent = "Untitled";
+  }
+
+  localStorage.setItem(
+    'notes',
+    JSON.stringify(notes)
+  );
+  renderNotes();
 }
 
 // Rename the note title
