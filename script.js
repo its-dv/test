@@ -1,6 +1,6 @@
 "use strict";
 
-// Notes structure
+// Notes data structure
 let notes = JSON.parse(localStorage.getItem("notes")) || [];
 let currentNoteId = null;
 
@@ -90,7 +90,6 @@ function deleteNote(id){
         'notes',
         JSON.stringify(notes)
     );
-
     renderNotes();
 }
 
@@ -131,7 +130,6 @@ const textarea = document.getElementById("notepad");
 // Switch between light and dark themes
 function switchTheme() {
   document.body.classList.toggle("dark");
-
   const icon = document.getElementById("themeIcon");
 
   if (document.body.classList.contains("dark")) {
@@ -222,94 +220,7 @@ function updateUI() {
   countCharacters();
 }
 
-// Translations
-const translations = {
-  en: {
-    save: "Save",
-    load: "Load",
-    clear: "Clear",
-    languages: "Languages",
-    rights: "© 2026 Simple Notepad. All rights not reserved.",
-    textarea: "Write your notes here...",
-    characterCounter: "Character count: ",
-    characterCounterError: "Character count: something went wrong...",
-    textSaved: "Text saved",
-    nothingToSave: "Nothing to save",
-    textLoaded: "Text loaded",
-    nothingToLoad: "Nothing saved yet",
-    noteAlreadyCleared: "Note already cleared",
-    noteCleared: "Note cleared",
-    noteCreated: "Note created",
-    textCopy: "Text copied",
-    textPaste: "Text pasted",
-    textCut: "Text cut",
-    noteTitle: "Enter note title..."
-  },
-  de: {
-    save: "Speichern",
-    load: "Laden",
-    clear: "Löschen",
-    languages: "Sprachen",
-    rights: "© 2026 Simple Notepad. Alle Rechte nicht reserviert.",
-    textarea: "Schreiben Sie Ihre Notizen hier...",
-    characterCounter: "Zeichenanzahl: ",
-    characterCounterError: "Zeichenanzahl: etwas ist schief gelaufen...",
-    textSaved: "Text gespeichert",
-    nothingToSave: "Nichts zum Speichern",
-    textLoaded: "Text geladen",
-    nothingToLoad: "Nichts gespeichert yet",
-    noteAlreadyCleared: "Notiz bereits gelöscht",
-    noteCleared: "Notiz gelöscht",
-    noteCreated: "Notiz erstellt",
-    textCopy: "Text kopiert",
-    textPaste: "Text eingefügt",
-    textCut: "Text ausgeschnitten",
-    noteTitle: "Notiztitel eingeben..."
-  },
-  fr: {
-    save: "Enregistrer",
-    load: "Charger",
-    clear: "Effacer",
-    languages: "Langues",
-    rights: "© 2026 Simple Notepad. Tous droits non réservés.",
-    textarea: "Écrivez vos notes ici...",
-    characterCounter: "Nombre de caractères : ",
-    characterCounterError: "Nombre de caractères : quelque chose s'est mal passé...",
-    textSaved: "Texte enregistré",
-    nothingToSave: "Rien à enregistrer",
-    textLoaded: "Texte chargé",
-    nothingToLoad: "Rien enregistré pour le moment",
-    noteAlreadyCleared: "Note déjà effacée",
-    noteCleared: "Note effacée",
-    noteCreated: "Note créée",
-    textCopy: "Texte copié",
-    textPaste: "Texte collé",
-    textCut: "Texte coupé",
-    noteTitle: "Entrez le titre de la note..."
-  },
-  ru: {
-    save: "Сохранить",
-    load: "Загрузить",
-    clear: "Очистить",
-    languages: "Языки",
-    rights: "© 2026 Simple Notepad. Все права не защищены.",
-    textarea: "Напишите свои заметки здесь...",
-    characterCounter: "Количество символов: ",
-    characterCounterError: "Количество символов: что-то пошло не так...",
-    textSaved: "Текст сохранён",
-    nothingToSave: "Нечего сохранять",
-    textLoaded: "Текст загружен",
-    nothingToLoad: "Пока ничего не сохранено",
-    noteAlreadyCleared: "Заметка уже очищена",
-    noteCleared: "Заметка очищена",
-    noteCreated: "Заметка создана",
-    textCopy: "Текст скопирован",
-    textPaste: "Текст вставлен",
-    textCut: "Текст вырезан",
-    noteTitle: "Введите название заметки..."
-  }
-};
-
+// Language selection
 document.querySelectorAll('input[name="language"]').forEach(input => {
   input.addEventListener("change", (e) => {
     const lang = e.target.value;
@@ -317,12 +228,13 @@ document.querySelectorAll('input[name="language"]').forEach(input => {
   });
 });
 
+// Default language
 let currentLang = localStorage.getItem("lang") || "en";
-
 function translate(key) {
   return translations[currentLang][key] || key;
 }
 
+// Update all text content based on the selected language
 function updateTexts() {
   // Simple text content
   document.querySelectorAll("[data-i18n]").forEach(el => {
@@ -335,14 +247,70 @@ function updateTexts() {
   });
 }
 
+// Change language and save the preference
 function changeLanguage(lang) {
   currentLang = lang;
   localStorage.setItem("lang", lang);
 
   updateTexts();
-  updateUI()
+  updateUI();
 }
 
-updateTexts();
-
+// Set current language radio button as checked
 document.querySelector(`input[value="${currentLang}"]`).checked = true;
+
+// Translations
+const translations = {
+  en: {
+    languages: "Languages",
+    noteTitle: "Enter note title...",
+    textarea: "Write your notes here...",
+    noteCreated: "Note created",
+    nothingToSave: "Nothing to save",
+    characterCounter: "Character count: ",
+    characterCounterError: "Character count: something went wrong...",
+    textCopy: "Text copied",
+    textPaste: "Text pasted",
+    textCut: "Text cut",
+    rights: "© 2026 Simple Notepad. All rights not reserved."
+  },
+  de: {
+    languages: "Sprachen",
+    noteTitle: "Notiztitel eingeben...",
+    textarea: "Schreiben Sie Ihre Notizen hier...",
+    noteCreated: "Notiz erstellt",
+    nothingToSave: "Nichts zum Speichern",
+    characterCounter: "Zeichenanzahl: ",
+    characterCounterError: "Zeichenanzahl: etwas ist schief gelaufen...",
+    textCopy: "Text kopiert",
+    textPaste: "Text eingefügt",
+    textCut: "Text ausgeschnitten",
+    rights: "© 2026 Simple Notepad. Alle Rechte nicht reserviert."
+  },
+  fr: {
+    languages: "Langues",
+    noteTitle: "Entrez le titre de la note...",
+    textarea: "Écrivez vos notes ici...",
+    noteCreated: "Note créée",
+    nothingToSave: "Rien à enregistrer",
+    characterCounter: "Nombre de caractères : ",
+    characterCounterError: "Nombre de caractères : quelque chose s'est mal passé...",
+    textCopy: "Texte copié",
+    textPaste: "Texte collé",
+    textCut: "Texte coupé",
+    rights: "© 2026 Simple Notepad. Tous droits non réservés.",
+  },
+  ru: {
+    languages: "Языки",
+    noteTitle: "Введите название заметки...",
+    textarea: "Напишите свои заметки здесь...",
+    noteCreated: "Заметка создана",
+    nothingToSave: "Нечего сохранять",
+    characterCounter: "Количество символов: ",
+    characterCounterError: "Количество символов: что-то пошло не так...",
+    textCopy: "Текст скопирован",
+    textPaste: "Текст вставлен",
+    textCut: "Текст вырезан",
+    rights: "© 2026 Simple Notepad. Все права не защищены."
+  }
+};

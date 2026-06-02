@@ -43,13 +43,16 @@ textarea:focus {
 }
 
 button {
-  margin-top: 10px;
-  padding: 10px 10px;
-  font-size: 16px;
+  margin-top: 0px;
+  margin-left: 5px;
+  padding: 0px 4px;
+  font-size: 14px;
 
   background-color: #ebebeb;
   border: #bdbdbd 1px solid;
   border-radius: 3px;
+
+  cursor: pointer;
 }
 
 .dark button {
@@ -131,6 +134,38 @@ button {
   outline: 1px solid #444;
 }
 
+ul {
+  margin-top: 10px;
+  padding-left: 15px;
+}
+
+li {
+  margin: 0px 0px;
+  line-height: 1.5em;
+  list-style-type: none;
+}
+
+li span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+#rights {
+  margin-top: 25px;
+  text-align: center;
+  color:#b8b8b8;
+}
+
+.dark #rights {
+  color: #5f5f5f;
+}
+
 /* 2. Preferences */
 .preferenceButton {
   background: none;
@@ -138,7 +173,7 @@ button {
   padding: 0;
   cursor: pointer;
   position: fixed;
-  top: 7px;
+  top: 10px;
 }
 
 .dark .preferenceButton {
@@ -185,22 +220,6 @@ button {
 .dark #dropdownTranslate {
   background: #191919;
   border-color: #444;
-}
-
-.row {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-#rights {
-  margin-top: 25px;
-  text-align: center;
-  color:#b8b8b8;
-}
-
-.dark #rights {
-  color: #5f5f5f;
 }
 
 /* 3. Notifications */
