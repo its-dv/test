@@ -10,7 +10,14 @@ A simple note-taking web application built with HTML, CSS and JavaScript.
 - Create, edit and delete notes
 - Local storage support
 - Responsive interface
+- Multi-language support
 - Simple and clean design
+
+## Supported languages
+- English (EN)
+- German (DE)
+- French (FR)
+- Russian (RU)
 
 ## Live Demo
 GitHub Pages: https://its-undefined.github.io/Simple-Notepad/

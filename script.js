@@ -7,6 +7,11 @@ import { translations } from "./translations.js";
 let notes = JSON.parse(localStorage.getItem("notes")) || [];
 let currentNoteId = null;
 
+// DOM elements
+const titleInput = document.getElementById('titleInput');
+const noteTitle = document.getElementById('noteTitle');
+const notepad = document.getElementById('notepad');
+
 // Render all the notes
 function renderNotes() {
   const list = document.getElementById("notesList");
@@ -40,10 +45,10 @@ function openNote(id) {
   const note = notes.find(n => n.id === id);
   if (note) {
     currentNoteId = id;
-    document.getElementById("titleInput").value = note.title;
-    document.getElementById("noteTitle").textContent = note.title;
-    document.getElementById("notepad").value = note.content;
-    updateUI();
+    titleInput.value = note.title;
+    noteTitle.textContent = note.title;
+    notepad.value = note.content;
+    countCharacters();
   }
 }
 
@@ -51,8 +56,8 @@ function openNote(id) {
 const saveNoteButton = document.getElementById('saveNoteButton');
 saveNoteButton.addEventListener("click", saveNote);
 function saveNote() {
-  const title = document.getElementById("titleInput").value;
-  const content = document.getElementById("notepad").value;
+  const title = titleInput.value;
+  const content = notepad.value;
 
   if (!title || !content) {
     showToast(translate("nothingToSave"));
@@ -76,21 +81,21 @@ function saveNote() {
   }
 
   localStorage.setItem("notes", JSON.stringify(notes));
-  document.getElementById('titleInput').value='';
-  document.getElementById('notepad').value='';
+  titleInput.value = '';
+  notepad.value = '';
+  showToast(translate("noteSaved"));
   renderNotes();
-  showToast(translate("noteCreated"));
 }
 
 // Delete a note
-function deleteNote(id){
+function deleteNote(id) {
   notes = notes.filter(n => n.id !== id);
 
   if (currentNoteId === id) {
     currentNoteId = null;
-    document.getElementById('titleInput').value='';
-    document.getElementById('notepad').value='';
-    document.getElementById("noteTitle").textContent = "Untitled";
+    titleInput.value = "";
+    notepad.value = "";
+    noteTitle.textContent = "Untitled";
   }
 
   localStorage.setItem(
@@ -101,22 +106,16 @@ function deleteNote(id){
 }
 
 // Rename the note title
-const titleInput = document.getElementById('titleInput');
-const noteTitle = document.getElementById('noteTitle');
-
 titleInput.addEventListener('input', () => {
   noteTitle.textContent = titleInput.value;
 });
 
 // Show and hide the title input field
-const input = document.getElementById('titleInput');
-input.value = localStorage.getItem('noteTitle') || '';
-
 const titleRenameButton = document.getElementById('titleRenameButton');
 titleRenameButton.addEventListener("click", popup);
 function popup() {
-  const titleInput = document.getElementById('titleInput');
-  const icon = document.querySelector('#titleRename img');
+  const icon = document.querySelector('#titleRenameButton img');
+  titleInput.value = localStorage.getItem('noteTitle') || '';
 
   if (titleInput.style.display === "none") {
     titleInput.style.display = 'block';
@@ -143,18 +142,13 @@ function switchTheme() {
   document.body.classList.toggle("dark");
   const icon = document.getElementById("themeIcon");
 
-  if (document.body.classList.contains("dark")) {
-    icon.src = "images/sun.svg";
-  } else {
-    icon.src = "images/moon.svg";
-  }
+  icon.src = document.body.classList.contains("dark")
+    ? "images/sun.svg"
+    : "images/moon.svg";
 
-  if (document.body.classList.contains("dark")) {
-    localStorage.setItem("theme", "dark");
-  }
-  else {
-    localStorage.setItem("theme", "light");
-  }
+  document.body.classList.contains("dark")
+    ? localStorage.setItem("theme", "dark")
+    : localStorage.setItem("theme", "light");
 }
 
 // Show a message about saving/loading/clearing
@@ -195,15 +189,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const theme = localStorage.getItem("theme");
+  const icon = document.getElementById("themeIcon");
   if (theme === "dark") {
     document.body.classList.add("dark");
-    document.getElementById("themeIcon").src = "images/sun.svg";
+    icon.src = "images/sun.svg";
   } else {
-    document.getElementById("themeIcon").src = "images/moon.svg";
+    icon.src = "images/moon.svg";
   }
 
   renderNotes();
-  updateUI();
+  countCharacters();
 });
 
 const translateButton = document.getElementById("translateButton");
@@ -226,10 +221,6 @@ function countCharacters() {
 textarea.addEventListener("input", () => {
   countCharacters();
 });
-
-function updateUI() {
-  countCharacters();
-}
 
 // Language selection
 document.querySelectorAll('input[name="language"]').forEach(input => {
@@ -264,8 +255,11 @@ function changeLanguage(lang) {
   localStorage.setItem("lang", lang);
 
   updateTexts();
-  updateUI();
+  countCharacters();
 }
 
 // Set current language radio button as checked
 document.querySelector(`input[value="${currentLang}"]`).checked = true;
+
+// Initialize placeholder text on page load
+updateTexts();
