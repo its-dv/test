@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="script.js"></script>
   <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
   <title>Simple Notepad</title>
 </head>
 
@@ -18,10 +18,10 @@
     <div class="row">
       <h2 id="noteTitle">Untitled</h2>
       <input id="titleInput" type="text" data-i18n-placeholder="noteTitle" maxLength="20" style="display:none;">
-      <button id="titleRename" onclick="popup()">
+      <button id="titleRenameButton">
         <img class="fixedIcons" src="images/pencil.svg" alt="Translate">
       </button>
-      <button id="createNote" onclick="saveNote()">+</button>
+      <button id="saveNoteButton">+</button>
     </div>
 
     <div class="mainContainer">
@@ -33,12 +33,12 @@
 
     <p id="characterCounter" data-i18n="characterCounterError">Character count: Something went wrong...</p>
 
-    <button class="preferenceButton" id="themeButton" onclick="switchTheme()">
+    <button class="preferenceButton" id="themeButton">
       <img class="fixedIcons" id="themeIcon" src="images/moon.svg" alt="Switch Theme">
     </button>
 
     <div>
-      <button class="preferenceButton" id="translateButton" onclick="translate()">
+      <button class="preferenceButton" id="translateButton">
         <img class="fixedIcons" src="images/translate.svg" alt="Translate">
       </button>
 

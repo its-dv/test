@@ -1,5 +1,8 @@
 "use strict";
 
+// Import translations
+import { translations } from "./translations.js";
+
 // Notes data structure
 let notes = JSON.parse(localStorage.getItem("notes")) || [];
 let currentNoteId = null;
@@ -45,6 +48,8 @@ function openNote(id) {
 }
 
 // Save a note
+const saveNoteButton = document.getElementById('saveNoteButton');
+saveNoteButton.addEventListener("click", saveNote);
 function saveNote() {
   const title = document.getElementById("titleInput").value;
   const content = document.getElementById("notepad").value;
@@ -107,6 +112,8 @@ titleInput.addEventListener('input', () => {
 const input = document.getElementById('titleInput');
 input.value = localStorage.getItem('noteTitle') || '';
 
+const titleRenameButton = document.getElementById('titleRenameButton');
+titleRenameButton.addEventListener("click", popup);
 function popup() {
   const titleInput = document.getElementById('titleInput');
   const icon = document.querySelector('#titleRename img');
@@ -130,6 +137,8 @@ function saveToStorage() {
 const textarea = document.getElementById("notepad");
 
 // Switch between light and dark themes
+const themeButton = document.getElementById("themeButton");
+themeButton.addEventListener("click", switchTheme);
 function switchTheme() {
   document.body.classList.toggle("dark");
   const icon = document.getElementById("themeIcon");
@@ -260,59 +269,3 @@ function changeLanguage(lang) {
 
 // Set current language radio button as checked
 document.querySelector(`input[value="${currentLang}"]`).checked = true;
-
-// Translations
-const translations = {
-  en: {
-    languages: "Languages",
-    noteTitle: "Enter note title...",
-    textarea: "Write your notes here...",
-    noteCreated: "Note created",
-    nothingToSave: "Nothing to save",
-    characterCounter: "Character count: ",
-    characterCounterError: "Character count: something went wrong...",
-    textCopy: "Text copied",
-    textPaste: "Text pasted",
-    textCut: "Text cut",
-    rights: "© 2026 Simple Notepad. All rights not reserved."
-  },
-  de: {
-    languages: "Sprachen",
-    noteTitle: "Notiztitel eingeben...",
-    textarea: "Schreiben Sie Ihre Notizen hier...",
-    noteCreated: "Notiz erstellt",
-    nothingToSave: "Nichts zum Speichern",
-    characterCounter: "Zeichenanzahl: ",
-    characterCounterError: "Zeichenanzahl: etwas ist schief gelaufen...",
-    textCopy: "Text kopiert",
-    textPaste: "Text eingefügt",
-    textCut: "Text ausgeschnitten",
-    rights: "© 2026 Simple Notepad. Alle Rechte nicht reserviert."
-  },
-  fr: {
-    languages: "Langues",
-    noteTitle: "Entrez le titre de la note...",
-    textarea: "Écrivez vos notes ici...",
-    noteCreated: "Note créée",
-    nothingToSave: "Rien à enregistrer",
-    characterCounter: "Nombre de caractères : ",
-    characterCounterError: "Nombre de caractères : quelque chose s'est mal passé...",
-    textCopy: "Texte copié",
-    textPaste: "Texte collé",
-    textCut: "Texte coupé",
-    rights: "© 2026 Simple Notepad. Tous droits non réservés.",
-  },
-  ru: {
-    languages: "Языки",
-    noteTitle: "Введите название заметки...",
-    textarea: "Напишите свои заметки здесь...",
-    noteCreated: "Заметка создана",
-    nothingToSave: "Нечего сохранять",
-    characterCounter: "Количество символов: ",
-    characterCounterError: "Количество символов: что-то пошло не так...",
-    textCopy: "Текст скопирован",
-    textPaste: "Текст вставлен",
-    textCut: "Текст вырезан",
-    rights: "© 2026 Simple Notepad. Все права не защищены."
-  }
-};
