@@ -65,7 +65,7 @@ button {
   color: white;
 }
 
-#titleRename {
+#titleRenameButton {
   display: flex;
   margin-top: 0px;
   margin-left: 0px;
@@ -77,7 +77,11 @@ button {
   color: white;
 }
 
-#createNote {
+.dark #titleRenameButton {
+  filter: invert(1);
+}
+
+#saveNoteButton {
   display: flex;
   margin-top: 0px;
   padding: 10px 15px;
@@ -184,10 +188,6 @@ li span:hover {
   background: none;
   border: none;
 
-  filter: invert(1);
-}
-
-.dark #titleRename {
   filter: invert(1);
 }
 

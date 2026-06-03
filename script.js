@@ -48,6 +48,8 @@ function openNote(id) {
 }
 
 // Save a note
+const saveNoteButton = document.getElementById('saveNoteButton');
+saveNoteButton.addEventListener("click", saveNote);
 function saveNote() {
   const title = document.getElementById("titleInput").value;
   const content = document.getElementById("notepad").value;
@@ -110,6 +112,8 @@ titleInput.addEventListener('input', () => {
 const input = document.getElementById('titleInput');
 input.value = localStorage.getItem('noteTitle') || '';
 
+const titleRenameButton = document.getElementById('titleRenameButton');
+titleRenameButton.addEventListener("click", popup);
 function popup() {
   const titleInput = document.getElementById('titleInput');
   const icon = document.querySelector('#titleRename img');
@@ -133,6 +137,8 @@ function saveToStorage() {
 const textarea = document.getElementById("notepad");
 
 // Switch between light and dark themes
+const themeButton = document.getElementById("themeButton");
+themeButton.addEventListener("click", switchTheme);
 function switchTheme() {
   document.body.classList.toggle("dark");
   const icon = document.getElementById("themeIcon");
