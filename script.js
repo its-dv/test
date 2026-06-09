@@ -56,7 +56,7 @@ function openNote(id) {
 const saveNoteButton = document.getElementById('saveNoteButton');
 saveNoteButton.addEventListener("click", saveNote);
 function saveNote() {
-  const title = titleInput.value;
+  const title = noteTitle.textContent;
   const content = notepad.value;
 
   if (!title || !content) {
@@ -81,10 +81,13 @@ function saveNote() {
   }
 
   localStorage.setItem("notes", JSON.stringify(notes));
-  titleInput.value = '';
+  noteTitle.textContent = 'Untitled';
+  titleInput.value = 'Untitled';
   notepad.value = '';
+
   showToast(translate("noteSaved"));
   renderNotes();
+  countCharacters();
 }
 
 // Delete a note
@@ -123,7 +126,7 @@ function popup() {
   } else {
     titleInput.style.display = 'none';
     icon.src = "images/pencil.svg";
-    localStorage.setItem('noteTitle', input.value);
+    localStorage.setItem('noteTitle', titleInput.value);
   }
 }
 

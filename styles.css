@@ -193,7 +193,7 @@ li span:hover {
   padding: 0;
   cursor: pointer;
   position: fixed;
-  top: 10px;
+  top: 15px;
 }
 
 .dark .preferenceButton {
