@@ -80,7 +80,7 @@ function saveNote() {
     });
   }
 
-  localStorage.setItem("notes", JSON.stringify(notes));
+  localStorage.setItem('notes', JSON.stringify(notes));
   noteTitle.textContent = "Untitled";
   titleInput.value = "Untitled";
   notepad.value = "";
@@ -115,12 +115,12 @@ titleInput.addEventListener('input', () => {
 
 // Show and hide the title input field
 const titleRenameButton = document.getElementById('titleRenameButton');
-titleRenameButton.addEventListener("click", popup);
+titleRenameButton.addEventListener('click', popup);
 function popup() {
   const icon = document.querySelector('#titleRenameButton img');
-  titleInput.value = localStorage.getItem('noteTitle') || '';
+  titleInput.value = localStorage.getItem('noteTitle') || "Untitled";
 
-  if (titleInput.style.display === "none") {
+  if (titleInput.style.display === 'none') {
     titleInput.style.display = 'block';
     icon.src = "images/tick.svg";
   } else {
@@ -177,13 +177,13 @@ document.addEventListener('cut', () => {
 });
 
 // Load saved text, title, and theme on page load
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   const savedTitle = localStorage.getItem('noteTitle') || '';
   if (savedTitle == null || savedTitle == '') {
     noteTitle.textContent = "Untitled";
   } else {
-    titleInput.value = savedTitle;
     noteTitle.textContent = savedTitle;
+    titleInput.value = savedTitle;
   }
 
   const savedText = localStorage.getItem('notepadContent');

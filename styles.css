@@ -186,6 +186,49 @@ li span:hover {
   color: #5f5f5f;
 }
 
+.overlay {
+  position: relative;
+}
+
+.panel {
+  position: absolute;
+  top: 50px;
+  right: 15px;
+  padding: 20px;
+
+  width: 70px;
+  height: 100px;
+
+  background-color: #f2f2f2;
+  border: #bdbdbd 1px solid;
+  border-radius: 5px;
+}
+
+.dark .panel {
+  background-color: #333;
+  border-color: #444;
+}
+
+.trashPanel {
+  position: fixed;
+  top: 1105px;
+  left: 26px;
+
+  width: 185px;
+  height: 35px;
+
+  background-color: white;
+  border-radius: 5px;
+
+  color: black;
+  text-align: center;
+}
+
+.dark .trashPanel {
+  background-color: #191919;
+  color: white;
+}
+
 /* 2. Preferences */
 .preferenceButton {
   background: none;
@@ -271,43 +314,4 @@ li span:hover {
 /* 4. Utilities */
 .hidden {
   display: none;
-}
-
-/* 5. Under Development */
-.overlay {
-  position: relative;
-}
-
-.panel {
-  position: absolute;
-  width: 70px;
-  height: 100px;
-  top: 50px;
-  right: 15px;
-  background: #f2f2f2;
-  padding: 20px;
-  border-radius: 5px;
-  border: #bdbdbd 1px solid;
-}
-
-.dark .panel {
-  background-color: #333;
-  border-color: #444;
-}
-
-.trashPanel {
-  position: fixed;
-  background-color: white;
-  border-radius: 5px;
-  top: 1105px;
-  left: 26px;
-  width: 185px;
-  height: 35px;
-  color: black;
-  text-align: center;
-}
-
-.dark .trashPanel {
-  background-color: #191919;
-  color: white;
 }

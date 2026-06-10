@@ -7,11 +7,12 @@ export const translations = {
     noteSaved: "Note saved",
     nothingToSave: "Nothing to save",
     characterCounter: "Character count: ",
-    characterCounterError: "Character count: something went wrong...",
+    characterCounterError: "Character count error...",
     textCopy: "Text copied",
     textPaste: "Text pasted",
     textCut: "Text cut",
-    rights: "© 2026 Simple Notepad. All rights not reserved."
+    rights: "© 2026 Simple Notepad. All rights not reserved.",
+    underDevelopment: "Under development"
   },
   de: {
     languages: "Sprachen",
@@ -20,11 +21,12 @@ export const translations = {
     noteSaved: "Notiz gespeichert",
     nothingToSave: "Nichts zum Speichern",
     characterCounter: "Zeichenanzahl: ",
-    characterCounterError: "Zeichenanzahl: etwas ist schief gelaufen...",
+    characterCounterError: "Fehler bei der Zeichenanzahl...",
     textCopy: "Text kopiert",
     textPaste: "Text eingefügt",
     textCut: "Text ausgeschnitten",
-    rights: "© 2026 Simple Notepad. Alle Rechte nicht reserviert."
+    rights: "© 2026 Simple Notepad. Alle Rechte nicht reserviert.",
+    underDevelopment: "In Entwicklung"
   },
   fr: {
     languages: "Langues",
@@ -33,23 +35,25 @@ export const translations = {
     noteSaved: "Note sauvegardée",
     nothingToSave: "Rien à enregistrer",
     characterCounter: "Nombre de caractères : ",
-    characterCounterError: "Nombre de caractères : quelque chose s'est mal passé...",
+    characterCounterError: "Erreur du compteur de caractères...",
     textCopy: "Texte copié",
     textPaste: "Texte collé",
     textCut: "Texte coupé",
     rights: "© 2026 Simple Notepad. Tous droits non réservés.",
+    underDevelopment: "En développement"
   },
   ru: {
     languages: "Языки",
     noteTitle: "Введите название заметки...",
-    textarea: "Напишите свои заметки здесь...",
+    textarea: "Введите текст заметки...",
     noteSaved: "Заметка сохранена",
     nothingToSave: "Нечего сохранять",
     characterCounter: "Количество символов: ",
-    characterCounterError: "Количество символов: что-то пошло не так...",
+    characterCounterError: "Ошибка подсчёта символов...",
     textCopy: "Текст скопирован",
     textPaste: "Текст вставлен",
     textCut: "Текст вырезан",
-    rights: "© 2026 Simple Notepad. Все права не защищены."
+    rights: "© 2026 Simple Notepad. Все права не защищены.",
+    underDevelopment: "В разработке"
   }
 };
