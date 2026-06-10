@@ -4,7 +4,7 @@
 import { translations } from "./translations.js";
 
 // Notes data structure
-let notes = JSON.parse(localStorage.getItem("notes")) || [];
+let notes = JSON.parse(localStorage.getItem('notes')) || [];
 let currentNoteId = null;
 
 // DOM elements
@@ -14,20 +14,20 @@ const notepad = document.getElementById('notepad');
 
 // Render all the notes
 function renderNotes() {
-  const list = document.getElementById("notesList");
+  const list = document.getElementById('notesList');
   list.innerHTML = "";
 
   notes.forEach(note => {
-    const li = document.createElement("li");
+    const li = document.createElement('li');
     if (note.id === currentNoteId) {
-      li.classList.add("active");
+      li.classList.add('active');
     }
 
-    const titleSpan = document.createElement("span");
+    const titleSpan = document.createElement('span');
     titleSpan.textContent = note.title;
     titleSpan.onclick = () => openNote(note.id);
 
-    const deleteBtn = document.createElement("button");
+    const deleteBtn = document.createElement('button');
     deleteBtn.textContent = "✕";
     deleteBtn.onclick = (e) => {
       e.stopPropagation();
@@ -45,8 +45,8 @@ function openNote(id) {
   const note = notes.find(n => n.id === id);
   if (note) {
     currentNoteId = id;
-    titleInput.value = note.title;
     noteTitle.textContent = note.title;
+    titleInput.value = note.title;
     notepad.value = note.content;
     countCharacters();
   }
@@ -54,13 +54,13 @@ function openNote(id) {
 
 // Save a note
 const saveNoteButton = document.getElementById('saveNoteButton');
-saveNoteButton.addEventListener("click", saveNote);
+saveNoteButton.addEventListener('click', saveNote);
 function saveNote() {
   const title = noteTitle.textContent;
   const content = notepad.value;
 
   if (!title || !content) {
-    showToast(translate("nothingToSave"));
+    showToast(translate('nothingToSave'));
     return;
   }
   
@@ -81,9 +81,9 @@ function saveNote() {
   }
 
   localStorage.setItem("notes", JSON.stringify(notes));
-  noteTitle.textContent = 'Untitled';
-  titleInput.value = 'Untitled';
-  notepad.value = '';
+  noteTitle.textContent = "Untitled";
+  titleInput.value = "Untitled";
+  notepad.value = "";
 
   showToast(translate("noteSaved"));
   renderNotes();
@@ -96,9 +96,9 @@ function deleteNote(id) {
 
   if (currentNoteId === id) {
     currentNoteId = null;
-    titleInput.value = "";
-    notepad.value = "";
     noteTitle.textContent = "Untitled";
+    titleInput.value = "Untitled";
+    notepad.value = "";
   }
 
   localStorage.setItem(
@@ -132,69 +132,69 @@ function popup() {
 
 // Save notes to localStorage
 function saveToStorage() {
-  localStorage.setItem("notes", JSON.stringify(notes));
+  localStorage.setItem('notes', JSON.stringify(notes));
 }
 
 // script.js - index.html
-const textarea = document.getElementById("notepad");
+const textarea = document.getElementById('notepad');
 
 // Switch between light and dark themes
-const themeButton = document.getElementById("themeButton");
-themeButton.addEventListener("click", switchTheme);
+const themeButton = document.getElementById('themeButton');
+themeButton.addEventListener('click', switchTheme);
 function switchTheme() {
-  document.body.classList.toggle("dark");
-  const icon = document.getElementById("themeIcon");
+  document.body.classList.toggle('dark');
+  const icon = document.getElementById('themeIcon');
 
-  icon.src = document.body.classList.contains("dark")
+  icon.src = document.body.classList.contains('dark')
     ? "images/sun.svg"
     : "images/moon.svg";
 
-  document.body.classList.contains("dark")
-    ? localStorage.setItem("theme", "dark")
-    : localStorage.setItem("theme", "light");
+  document.body.classList.contains('dark')
+    ? localStorage.setItem('theme', 'dark')
+    : localStorage.setItem('theme', 'light');
 }
 
 // Show a message about saving/loading/clearing
 function showToast(text) {
-  const el = document.getElementById("toast");
+  const el = document.getElementById('toast');
   el.textContent = text;
-  el.classList.add("show");
+  el.classList.add('show');
 
   setTimeout(() => {
-    el.classList.remove("show");
+    el.classList.remove('show');
   }, 2000);
 }
 
 // Show a message about copying/cutting/pasting
 document.addEventListener('copy', () => {
-  showToast(translate("textCopy"));
+  showToast(translate('textCopy'));
 });
 document.addEventListener('paste', () => {
-  showToast(translate("textPaste"));
+  showToast(translate('textPaste'));
 });
 document.addEventListener('cut', () => {
-  showToast(translate("textCut"));
+  showToast(translate('textCut'));
 });
 
 // Load saved text, title, and theme on page load
 document.addEventListener("DOMContentLoaded", () => {
-  const savedTitle = localStorage.getItem("noteTitle") || "";
-  if (savedTitle == null || savedTitle == "") {
+  const savedTitle = localStorage.getItem('noteTitle') || '';
+  if (savedTitle == null || savedTitle == '') {
     noteTitle.textContent = "Untitled";
   } else {
     titleInput.value = savedTitle;
     noteTitle.textContent = savedTitle;
   }
 
-  const savedText = localStorage.getItem("notepadContent");
+  const savedText = localStorage.getItem('notepadContent');
   if (savedText !== null) {
     textarea.value = savedText;
   }
 
-  const theme = localStorage.getItem("theme");
-  const icon = document.getElementById("themeIcon");
-  if (theme === "dark") {
-    document.body.classList.add("dark");
+  const theme = localStorage.getItem('theme');
+  const icon = document.getElementById('themeIcon');
+  if (theme === 'dark') {
+    document.body.classList.add('dark');
     icon.src = "images/sun.svg";
   } else {
     icon.src = "images/moon.svg";
@@ -204,11 +204,32 @@ document.addEventListener("DOMContentLoaded", () => {
   countCharacters();
 });
 
-const translateButton = document.getElementById("translateButton");
-const menu = document.getElementById("dropdownTranslate");
+const translateButton = document.getElementById('translateButton');
+const menu = document.getElementById('dropdownTranslate');
 
-translateButton.addEventListener("click", () => {
-  menu.classList.toggle("hidden");
+translateButton.addEventListener('click', () => {
+  menu.classList.toggle('hidden');
+});
+
+// Trash panel
+const trashButton = document.getElementById('trashButton');
+const trashPanel = document.getElementById('trashPanel');
+
+trashButton.addEventListener('click', () => {
+  trashPanel.classList.toggle('hidden');
+});
+
+// Settings panel
+const panel = document.getElementById('panel');
+const openSettingsButton = document.getElementById('openSettingsButton');
+const closeSettingsButton = document.getElementById('closeSettingsButton');
+
+openSettingsButton.addEventListener('click', () => {
+  overlay.classList.toggle('hidden');
+});
+
+panel.addEventListener('click', (e) => {
+  e.stopPropagation();
 });
 
 // Character counter
@@ -218,23 +239,23 @@ function countCharacters() {
   for (let i = 0; i < characters.length; i++) {
     count++;
   }
-  document.getElementById("characterCounter").textContent = translate("characterCounter") + count;
+  document.getElementById('characterCounter').textContent = translate('characterCounter') + count;
 }
 
-textarea.addEventListener("input", () => {
+textarea.addEventListener('input', () => {
   countCharacters();
 });
 
 // Language selection
 document.querySelectorAll('input[name="language"]').forEach(input => {
-  input.addEventListener("change", (e) => {
+  input.addEventListener('change', (e) => {
     const lang = e.target.value;
     changeLanguage(lang);
   });
 });
 
 // Default language
-let currentLang = localStorage.getItem("lang") || "en";
+let currentLang = localStorage.getItem('lang') || 'en';
 function translate(key) {
   return translations[currentLang][key] || key;
 }
@@ -242,12 +263,12 @@ function translate(key) {
 // Update all text content based on the selected language
 function updateTexts() {
   // Simple text content
-  document.querySelectorAll("[data-i18n]").forEach(el => {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
     el.textContent = translate(el.dataset.i18n);
   });
 
   // Placeholder text content
-  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
     el.placeholder = translate(el.dataset.i18nPlaceholder);
   });
 }
@@ -255,7 +276,7 @@ function updateTexts() {
 // Change language and save the preference
 function changeLanguage(lang) {
   currentLang = lang;
-  localStorage.setItem("lang", lang);
+  localStorage.setItem('lang', lang);
 
   updateTexts();
   countCharacters();

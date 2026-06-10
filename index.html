@@ -33,34 +33,47 @@
 
     <p id="characterCounter" data-i18n="characterCounterError">Character count: Something went wrong...</p>
 
-    <button class="preferenceButton" id="themeButton">
-      <img class="fixedIcons" id="themeIcon" src="images/moon.svg" alt="Switch Theme">
+    <div id="trashPanel" class="trashPanel">
+      <p>Under Development</p>
+      <button id="trashButton" class="trashButton"></button>
+    </div>
+
+    <button class="preferenceButton" id="openSettingsButton">
+      <img class="fixedIcons" src="images/settings.svg" alt="Settings">
     </button>
 
-    <div>
-      <button class="preferenceButton" id="translateButton">
-        <img class="fixedIcons" src="images/translate.svg" alt="Translate">
-      </button>
+    <div id="overlay" class="hidden">
+      <div id="panel" class="panel">
+        <button class="preferenceButton" id="themeButton">
+          <img class="fixedIcons" id="themeIcon" src="images/moon.svg" alt="Switch Theme">
+        </button>
+      </div>
 
-      <fieldset id="dropdownTranslate" class="hidden">
-        <legend id="languages" data-i18n="languages">Languages</legend>
-        <div>
-          <input id="english" type="radio" name="language" value="en" checked>
-          <label for="english">English</label>
-        </div>
-        <div>
-          <input id="german" type="radio" name="language" value="de">
-          <label for="german">Deutsch</label>
-        </div>
-        <div>
-          <input id="french" type="radio" name="language" value="fr">
-          <label for="french">Français</label>
-        </div>
-        <div>
-          <input id="russian" type="radio" name="language" value="ru">
-          <label for="russian">Русский</label>
-        </div>
-      </fieldset>
+      <div>
+        <button class="preferenceButton" id="translateButton">
+          <img class="fixedIcons" src="images/translate.svg" alt="Translate">
+        </button>
+
+        <fieldset id="dropdownTranslate" class="hidden">
+          <legend id="languages" data-i18n="languages">Languages</legend>
+          <div>
+            <input id="english" type="radio" name="language" value="en" checked>
+            <label for="english">English</label>
+          </div>
+          <div>
+            <input id="german" type="radio" name="language" value="de">
+            <label for="german">Deutsch</label>
+          </div>
+          <div>
+            <input id="french" type="radio" name="language" value="fr">
+            <label for="french">Français</label>
+          </div>
+          <div>
+            <input id="russian" type="radio" name="language" value="ru">
+            <label for="russian">Русский</label>
+          </div>
+        </fieldset>
+      </div>
     </div>
 
     <div id="toast" class="toast">Message</div>
