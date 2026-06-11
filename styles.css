@@ -196,8 +196,8 @@ li span:hover {
   right: 15px;
   padding: 20px;
 
-  width: 70px;
-  height: 100px;
+  width: 66px;
+  height: 137px;
 
   background-color: #f2f2f2;
   border: #bdbdbd 1px solid;
@@ -263,6 +263,11 @@ li span:hover {
 #translateButton {
   right: 35px;
   top: 105px;
+}
+
+#characterCountButton {
+  right: 35px;
+  top: 145px
 }
 
 #languages {

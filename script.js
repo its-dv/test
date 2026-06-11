@@ -219,6 +219,14 @@ trashButton.addEventListener('click', () => {
   trashPanel.classList.toggle('hidden');
 });
 
+// Character counter toggle
+const characterCountButton = document.getElementById('characterCountButton');
+const characterCounter = document.getElementById('characterCounter');
+
+characterCountButton.addEventListener('click', () => {
+  characterCounter.classList.toggle('hidden');
+});
+
 // Settings panel
 const panel = document.getElementById('panel');
 const openSettingsButton = document.getElementById('openSettingsButton');
