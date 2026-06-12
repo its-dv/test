@@ -3,7 +3,7 @@ export const translations = {
   en: {
     languages: "Languages",
     noteTitle: "Enter note title...",
-    textarea: "Write your notes here...",
+    textArea: "Write your notes here...",
     noteSaved: "Note saved",
     nothingToSave: "Nothing to save",
     characterCounter: "Character count: ",
@@ -17,7 +17,7 @@ export const translations = {
   de: {
     languages: "Sprachen",
     noteTitle: "Notiztitel eingeben...",
-    textarea: "Schreiben Sie Ihre Notizen hier...",
+    textArea: "Schreiben Sie Ihre Notizen hier...",
     noteSaved: "Notiz gespeichert",
     nothingToSave: "Nichts zum Speichern",
     characterCounter: "Zeichenanzahl: ",
@@ -31,7 +31,7 @@ export const translations = {
   fr: {
     languages: "Langues",
     noteTitle: "Entrez le titre de la note...",
-    textarea: "Écrivez vos notes ici...",
+    textArea: "Écrivez vos notes ici...",
     noteSaved: "Note sauvegardée",
     nothingToSave: "Rien à enregistrer",
     characterCounter: "Nombre de caractères : ",
@@ -45,7 +45,7 @@ export const translations = {
   ru: {
     languages: "Языки",
     noteTitle: "Введите название заметки...",
-    textarea: "Введите текст заметки...",
+    textArea: "Введите текст заметки...",
     noteSaved: "Заметка сохранена",
     nothingToSave: "Нечего сохранять",
     characterCounter: "Количество символов: ",

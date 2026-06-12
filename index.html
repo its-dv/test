@@ -15,7 +15,7 @@
   </header>
 
   <main>
-    <div class="row">
+    <div class="noteTitleRow">
       <h2 id="noteTitle">Untitled</h2>
       <input id="titleInput" type="text" data-i18n-placeholder="noteTitle" maxLength="20" style="display:none;">
       <button id="titleRenameButton">
@@ -27,16 +27,16 @@
     <div class="mainContainer">
       <aside class="sidebar">
         <ul id="notesList"></ul>
+
+        <div id="trashPanel" class="trashPanel">
+          <p data-i18n="underDevelopment">Under Development</p>
+          <button id="trashButton" class="trashButton hidden"></button>
+        </div>
       </aside>
-      <textarea id="notepad" data-i18n-placeholder="textarea"></textarea>
+      <textarea id="textArea" data-i18n-placeholder="textArea"></textarea>
     </div>
 
     <p id="characterCounter" data-i18n="characterCounterError">Character count: Something went wrong...</p>
-
-    <div id="trashPanel" class="trashPanel">
-      <p data-i18n="underDevelopment">Under Development</p>
-      <button id="trashButton" class="trashButton hidden"></button>
-    </div>
 
     <button id="openSettingsButton" class="preferenceButton">
       <img class="fixedIcons" src="images/settings.svg" alt="Settings">

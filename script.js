@@ -10,7 +10,7 @@ let currentNoteId = null;
 // DOM elements
 const titleInput = document.getElementById('titleInput');
 const noteTitle = document.getElementById('noteTitle');
-const notepad = document.getElementById('notepad');
+const textArea = document.getElementById('textArea');
 const characterCounter = document.getElementById('characterCounter');
 
 // Render all notes
@@ -48,7 +48,7 @@ function openNote(id) {
     currentNoteId = id;
     noteTitle.textContent = note.title;
     titleInput.value = note.title;
-    notepad.value = note.content;
+    textArea.value = note.content;
     countCharacters();
   }
 }
@@ -58,7 +58,7 @@ const saveNoteButton = document.getElementById('saveNoteButton');
 saveNoteButton.addEventListener('click', saveNote);
 function saveNote() {
   const title = noteTitle.textContent;
-  const content = notepad.value;
+  const content = textArea.value;
 
   if (!title || !content) {
     showToast(translate('nothingToSave'));
@@ -84,7 +84,7 @@ function saveNote() {
   localStorage.setItem('notes', JSON.stringify(notes));
   noteTitle.textContent = "Untitled";
   titleInput.value = "Untitled";
-  notepad.value = "";
+  textArea.value = "";
 
   showToast(translate('noteSaved'));
   renderNotes();
@@ -104,7 +104,7 @@ function deleteNote(id) {
     currentNoteId = null;
     noteTitle.textContent = "Untitled";
     titleInput.value = "Untitled";
-    notepad.value = "";
+    textArea.value = "";
   }
 
   localStorage.setItem(
@@ -129,11 +129,6 @@ function popup() {
     icon.src = "images/pencil.svg";
     localStorage.setItem('noteTitle', titleInput.value);
   }
-}
-
-// Save notes to localStorage
-function saveToStorage() {
-  localStorage.setItem('notes', JSON.stringify(notes));
 }
 
 // Show a toast notification
@@ -206,9 +201,9 @@ trashButton.addEventListener('click', () => {
 });
 
 // Character counter
-notepad.addEventListener('input', countCharacters);
+textArea.addEventListener('input', countCharacters);
 function countCharacters() {
-  const count = notepad.value.length;
+  const count = textArea.value.length;
   characterCounter.textContent = translate('characterCounter') + count;
 }
 
@@ -256,19 +251,6 @@ updateTexts();
 
 // Load saved text, title, and theme on page load
 document.addEventListener('DOMContentLoaded', () => {
-  const savedTitle = localStorage.getItem('noteTitle') || '';
-  if (savedTitle == null || savedTitle == '') {
-    noteTitle.textContent = "Untitled";
-  } else {
-    noteTitle.textContent = savedTitle;
-    titleInput.value = savedTitle;
-  }
-
-  const savedText = localStorage.getItem('notepadContent');
-  if (savedText !== null) {
-    notepad.value = savedText;
-  }
-
   const theme = localStorage.getItem('theme');
   const icon = document.getElementById('themeIcon');
   if (theme === 'dark') {
@@ -278,15 +260,14 @@ document.addEventListener('DOMContentLoaded', () => {
     icon.src = "images/moon.svg";
   }
 
+  // Icons preloading
+  const preload = (src) => {
+    const img = new Image();
+    img.src = src;
+  };
+
   renderNotes();
   countCharacters();
+  preload("images/sun.svg");
+  preload("images/moon.svg");
 });
-
-// Icons preloading
-const preload = (src) => {
-  const img = new Image();
-  img.src = src;
-};
-
-preload("images/sun.svg");
-preload("images/moon.svg");
