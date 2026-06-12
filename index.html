@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script type="module" src="script.js"></script>
+  <script type="module" src="script.js" defer></script>
   <link rel="stylesheet" href="styles.css">
   <title>Simple Notepad</title>
 </head>
@@ -38,23 +38,23 @@
       <button id="trashButton" class="trashButton hidden"></button>
     </div>
 
-    <button class="preferenceButton" id="openSettingsButton">
+    <button id="openSettingsButton" class="preferenceButton">
       <img class="fixedIcons" src="images/settings.svg" alt="Settings">
     </button>
 
-    <div id="overlay" class="hidden">
+    <div id="settingsOverlay" class="settingsOverlay hidden">
       <div id="panel" class="panel">
-        <button class="preferenceButton" id="themeButton">
-          <img class="fixedIcons" id="themeIcon" src="images/moon.svg" alt="Switch Theme">
+        <button id="themeButton" class="preferenceButton">
+          <img id="themeIcon" class="fixedIcons" src="images/moon.svg" alt="Switch Theme">
         </button>
       </div>
 
       <div>
-        <button class="preferenceButton" id="translateButton">
+        <button id="translateButton" class="preferenceButton">
           <img class="fixedIcons" src="images/translate.svg" alt="Translate">
         </button>
 
-        <fieldset id="dropdownTranslate" class="hidden">
+        <fieldset id="translateDropdown" class="translateDropdown hidden">
           <legend id="languages" data-i18n="languages">Languages</legend>
           <div>
             <input id="english" type="radio" name="language" value="en" checked>
@@ -75,7 +75,7 @@
         </fieldset>
       </div>
 
-      <button class="preferenceButton" id="characterCountButton">
+      <button id="characterCountButton" class="preferenceButton">
         <img class="fixedIcons" src="images/hash.svg" alt="Character counter">
       </button>
     </div>

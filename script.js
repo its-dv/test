@@ -11,6 +11,7 @@ let currentNoteId = null;
 const titleInput = document.getElementById('titleInput');
 const noteTitle = document.getElementById('noteTitle');
 const notepad = document.getElementById('notepad');
+const characterCounter = document.getElementById('characterCounter');
 
 // Render all notes
 function renderNotes() {
@@ -135,22 +136,6 @@ function saveToStorage() {
   localStorage.setItem('notes', JSON.stringify(notes));
 }
 
-// Switch between light and dark themes
-const themeButton = document.getElementById('themeButton');
-themeButton.addEventListener('click', switchTheme);
-function switchTheme() {
-  document.body.classList.toggle('dark');
-  const icon = document.getElementById('themeIcon');
-
-  icon.src = document.body.classList.contains('dark')
-    ? "images/sun.svg"
-    : "images/moon.svg";
-
-  document.body.classList.contains('dark')
-    ? localStorage.setItem('theme', 'dark')
-    : localStorage.setItem('theme', 'light');
-}
-
 // Show a toast notification
 function showToast(text) {
   const el = document.getElementById('toast');  
@@ -172,6 +157,102 @@ document.addEventListener('paste', () => {
 document.addEventListener('cut', () => {
   showToast(translate('textCut'));
 });
+
+// Settings panel
+const openSettingsButton = document.getElementById('openSettingsButton');
+const settingsOverlay = document.getElementById('settingsOverlay');
+
+openSettingsButton.addEventListener('click', () => {
+  settingsOverlay.classList.toggle('hidden');
+});
+
+// Switch between light and dark themes
+const themeButton = document.getElementById('themeButton');
+themeButton.addEventListener('click', switchTheme);
+function switchTheme() {
+  document.body.classList.toggle('dark');
+  const icon = document.getElementById('themeIcon');
+
+  icon.src = document.body.classList.contains('dark')
+    ? "images/sun.svg"
+    : "images/moon.svg";
+
+  document.body.classList.contains('dark')
+    ? localStorage.setItem('theme', 'dark')
+    : localStorage.setItem('theme', 'light');
+}
+
+// Toggle translate dropdown visibility
+const translateButton = document.getElementById('translateButton');
+const translateDropdown = document.getElementById('translateDropdown');
+
+translateButton.addEventListener('click', () => {
+  translateDropdown.classList.toggle('hidden');
+});
+
+// Character counter toggle
+const characterCountButton = document.getElementById('characterCountButton');
+
+characterCountButton.addEventListener('click', () => {
+  characterCounter.classList.toggle('hidden');
+});
+
+// Togglle trash panel visibility
+const trashButton = document.getElementById('trashButton');
+const trashPanel = document.getElementById('trashPanel');
+
+trashButton.addEventListener('click', () => {
+  trashPanel.classList.toggle('hidden');
+});
+
+// Character counter
+notepad.addEventListener('input', countCharacters);
+function countCharacters() {
+  const count = notepad.value.length;
+  characterCounter.textContent = translate('characterCounter') + count;
+}
+
+// Default language
+let currentLang = localStorage.getItem('lang') || 'en';
+function translate(key) {
+  return translations[currentLang][key] || key;
+}
+
+// Language selection
+document.querySelectorAll('input[name="language"]').forEach(input => {
+  input.addEventListener('change', (e) => {
+    const lang = e.target.value;
+    changeLanguage(lang);
+  });
+});
+
+// Update text content for selected language
+function updateTexts() {
+  // Simple text content
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    el.textContent = translate(el.dataset.i18n);
+  });
+
+  // Placeholder text content
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    el.placeholder = translate(el.dataset.i18nPlaceholder);
+  });
+}
+
+// Change language and save the preference
+function changeLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+
+  updateTexts();
+  countCharacters();
+}
+
+// Set current language radio button as checked
+document.querySelector(`input[value="${currentLang}"]`).checked = true;
+
+// Initialize placeholder text on page load
+updateTexts();
 
 // Load saved text, title, and theme on page load
 document.addEventListener('DOMContentLoaded', () => {
@@ -201,90 +282,11 @@ document.addEventListener('DOMContentLoaded', () => {
   countCharacters();
 });
 
-const translateButton = document.getElementById('translateButton');
-const menu = document.getElementById('dropdownTranslate');
+// Icons preloading
+const preload = (src) => {
+  const img = new Image();
+  img.src = src;
+};
 
-translateButton.addEventListener('click', () => {
-  menu.classList.toggle('hidden');
-});
-
-// Trash panel
-const trashButton = document.getElementById('trashButton');
-const trashPanel = document.getElementById('trashPanel');
-
-trashButton.addEventListener('click', () => {
-  trashPanel.classList.toggle('hidden');
-});
-
-// Character counter toggle
-const characterCountButton = document.getElementById('characterCountButton');
-const characterCounter = document.getElementById('characterCounter');
-
-characterCountButton.addEventListener('click', () => {
-  characterCounter.classList.toggle('hidden');
-});
-
-// Settings panel
-const panel = document.getElementById('panel');
-const openSettingsButton = document.getElementById('openSettingsButton');
-const closeSettingsButton = document.getElementById('closeSettingsButton');
-
-openSettingsButton.addEventListener('click', () => {
-  overlay.classList.toggle('hidden');
-});
-
-panel.addEventListener('click', (e) => {
-  e.stopPropagation();
-});
-
-// Character counter
-notepad.addEventListener('input', () => {
-  countCharacters();
-});
-
-function countCharacters() {
-  const count = notepad.value.length;
-  document.getElementById('characterCounter').textContent = translate('characterCounter') + count;
-}
-
-// Default language
-let currentLang = localStorage.getItem('lang') || 'en';
-function translate(key) {
-  return translations[currentLang][key] || key;
-}
-
-// Language selection
-document.querySelectorAll('input[name="language"]').forEach(input => {
-  input.addEventListener('change', (e) => {
-    const lang = e.target.value;
-    changeLanguage(lang);
-  });
-});
-
-// Update all text content based on the selected language
-function updateTexts() {
-  // Simple text content
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    el.textContent = translate(el.dataset.i18n);
-  });
-
-  // Placeholder text content
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    el.placeholder = translate(el.dataset.i18nPlaceholder);
-  });
-}
-
-// Change language and save the preference
-function changeLanguage(lang) {
-  currentLang = lang;
-  localStorage.setItem('lang', lang);
-
-  updateTexts();
-  countCharacters();
-}
-
-// Set current language radio button as checked
-document.querySelector(`input[value="${currentLang}"]`).checked = true;
-
-// Initialize placeholder text on page load
-updateTexts();
+preload("images/sun.svg");
+preload("images/moon.svg");

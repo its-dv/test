@@ -186,11 +186,7 @@ li span:hover {
   color: #5f5f5f;
 }
 
-.overlay {
-  position: relative;
-}
-
-.panel {
+.settingsOverlay {
   position: absolute;
   top: 50px;
   right: 15px;
@@ -204,7 +200,7 @@ li span:hover {
   border-radius: 5px;
 }
 
-.dark .panel {
+.dark .settingsOverlay {
   background-color: #333;
   border-color: #444;
 }
@@ -276,7 +272,7 @@ li span:hover {
   text-align: center;
 }
 
-#dropdownTranslate {
+.translateDropdown {
   position: fixed;
   top: 41px;
   right: 90px;
@@ -287,7 +283,7 @@ li span:hover {
   border: 1px solid #bdbdbd;
 }
 
-.dark #dropdownTranslate {
+.dark .translateDropdown {
   background: #191919;
   border-color: #444;
 }
