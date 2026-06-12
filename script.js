@@ -12,7 +12,7 @@ const titleInput = document.getElementById('titleInput');
 const noteTitle = document.getElementById('noteTitle');
 const notepad = document.getElementById('notepad');
 
-// Render all the notes
+// Render all notes
 function renderNotes() {
   const list = document.getElementById('notesList');
   list.innerHTML = "";
@@ -27,15 +27,15 @@ function renderNotes() {
     titleSpan.textContent = note.title;
     titleSpan.onclick = () => openNote(note.id);
 
-    const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = "✕";
-    deleteBtn.onclick = (e) => {
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = "✕";
+    deleteButton.onclick = (e) => {
       e.stopPropagation();
       deleteNote(note.id);
     };
 
     li.appendChild(titleSpan);
-    li.appendChild(deleteBtn);
+    li.appendChild(deleteButton);
     list.appendChild(li);
   });
 }
@@ -52,7 +52,7 @@ function openNote(id) {
   }
 }
 
-// Save a note
+// Save note
 const saveNoteButton = document.getElementById('saveNoteButton');
 saveNoteButton.addEventListener('click', saveNote);
 function saveNote() {
@@ -85,12 +85,17 @@ function saveNote() {
   titleInput.value = "Untitled";
   notepad.value = "";
 
-  showToast(translate("noteSaved"));
+  showToast(translate('noteSaved'));
   renderNotes();
   countCharacters();
 }
 
-// Delete a note
+// Update note title
+titleInput.addEventListener('input', () => {
+  noteTitle.textContent = titleInput.value;
+});
+
+// Delete note
 function deleteNote(id) {
   notes = notes.filter(n => n.id !== id);
 
@@ -108,12 +113,7 @@ function deleteNote(id) {
   renderNotes();
 }
 
-// Rename the note title
-titleInput.addEventListener('input', () => {
-  noteTitle.textContent = titleInput.value;
-});
-
-// Show and hide the title input field
+// Toggle title input visibility
 const titleRenameButton = document.getElementById('titleRenameButton');
 titleRenameButton.addEventListener('click', popup);
 function popup() {
@@ -135,9 +135,6 @@ function saveToStorage() {
   localStorage.setItem('notes', JSON.stringify(notes));
 }
 
-// script.js - index.html
-const textarea = document.getElementById('notepad');
-
 // Switch between light and dark themes
 const themeButton = document.getElementById('themeButton');
 themeButton.addEventListener('click', switchTheme);
@@ -154,9 +151,9 @@ function switchTheme() {
     : localStorage.setItem('theme', 'light');
 }
 
-// Show a message about saving/loading/clearing
+// Show a toast notification
 function showToast(text) {
-  const el = document.getElementById('toast');
+  const el = document.getElementById('toast');  
   el.textContent = text;
   el.classList.add('show');
 
@@ -165,7 +162,7 @@ function showToast(text) {
   }, 2000);
 }
 
-// Show a message about copying/cutting/pasting
+// Show toast notifications for clipboard actions
 document.addEventListener('copy', () => {
   showToast(translate('textCopy'));
 });
@@ -188,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const savedText = localStorage.getItem('notepadContent');
   if (savedText !== null) {
-    textarea.value = savedText;
+    notepad.value = savedText;
   }
 
   const theme = localStorage.getItem('theme');
@@ -241,18 +238,20 @@ panel.addEventListener('click', (e) => {
 });
 
 // Character counter
+notepad.addEventListener('input', () => {
+  countCharacters();
+});
+
 function countCharacters() {
-  const characters = textarea.value;
-  let count = 0;
-  for (let i = 0; i < characters.length; i++) {
-    count++;
-  }
+  const count = notepad.value.length;
   document.getElementById('characterCounter').textContent = translate('characterCounter') + count;
 }
 
-textarea.addEventListener('input', () => {
-  countCharacters();
-});
+// Default language
+let currentLang = localStorage.getItem('lang') || 'en';
+function translate(key) {
+  return translations[currentLang][key] || key;
+}
 
 // Language selection
 document.querySelectorAll('input[name="language"]').forEach(input => {
@@ -261,12 +260,6 @@ document.querySelectorAll('input[name="language"]').forEach(input => {
     changeLanguage(lang);
   });
 });
-
-// Default language
-let currentLang = localStorage.getItem('lang') || 'en';
-function translate(key) {
-  return translations[currentLang][key] || key;
-}
 
 // Update all text content based on the selected language
 function updateTexts() {
