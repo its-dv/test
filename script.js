@@ -5,7 +5,7 @@ import { translations } from "./translations.js";
 
 // Notes data structure
 let notes = JSON.parse(localStorage.getItem('notes')) || [];
-let currentNoteId = null;
+let currentNoteId;
 
 // DOM elements
 const titleInput = document.getElementById('titleInput');
@@ -46,6 +46,8 @@ function openNote(id) {
   const note = notes.find(n => n.id === id);
   if (note) {
     currentNoteId = id;
+    localStorage.setItem('noteId', currentNoteId);
+
     noteTitle.textContent = note.title;
     titleInput.value = note.title;
     textArea.value = note.content;
@@ -94,6 +96,7 @@ function saveNote() {
 // Update note title
 titleInput.addEventListener('input', () => {
   noteTitle.textContent = titleInput.value;
+  localStorage.setItem('currentTitle', titleInput.value);
 });
 
 // Delete note
@@ -119,16 +122,14 @@ const titleRenameButton = document.getElementById('titleRenameButton');
 titleRenameButton.addEventListener('click', popup);
 function popup() {
   const icon = document.querySelector('#titleRenameButton img');
-  titleInput.value = localStorage.getItem('noteTitle') || "Untitled";
+  const hidden = titleInput.style.display === 'none';
 
-  if (titleInput.style.display === 'none') {
-    titleInput.style.display = 'block';
-    icon.src = "images/tick.svg";
-  } else {
-    titleInput.style.display = 'none';
-    icon.src = "images/pencil.svg";
-    localStorage.setItem('noteTitle', titleInput.value);
-  }
+  titleInput.style.display = hidden
+    ? 'block'
+    : 'none';
+  icon.src = hidden
+    ? 'images/tick.svg'
+    : 'images/pencil.svg';
 }
 
 // Show a toast notification
@@ -171,10 +172,6 @@ function switchTheme() {
   icon.src = document.body.classList.contains('dark')
     ? "images/sun.svg"
     : "images/moon.svg";
-
-  document.body.classList.contains('dark')
-    ? localStorage.setItem('theme', 'dark')
-    : localStorage.setItem('theme', 'light');
 }
 
 // Toggle translate dropdown visibility
@@ -246,9 +243,6 @@ function changeLanguage(lang) {
 // Set current language radio button as checked
 document.querySelector(`input[value="${currentLang}"]`).checked = true;
 
-// Initialize placeholder text on page load
-updateTexts();
-
 // Load saved text, title, and theme on page load
 document.addEventListener('DOMContentLoaded', () => {
   const theme = localStorage.getItem('theme');
@@ -266,8 +260,21 @@ document.addEventListener('DOMContentLoaded', () => {
     img.src = src;
   };
 
+  // Load current note ID
+  const savedId = localStorage.getItem('noteId');
+  currentNoteId = Number(savedId);
+
+  // Load saved title
+  const savedTitle = localStorage.getItem('currentTitle') || "Untitled";
+  noteTitle.textContent = savedTitle;
+  titleInput.value = savedTitle;
+
   renderNotes();
   countCharacters();
   preload("images/sun.svg");
   preload("images/moon.svg");
+  preload("images/tick.svg");
 });
+
+// Initialize placeholder text on page load
+updateTexts();

@@ -23,46 +23,6 @@ h2 {
   margin-bottom: 0.45em;
 }
 
-.sidebar {
-  display: flex;
-  flex-direction: column;
-
-  background: #f2f2f2;
-  border: #bdbdbd 1px solid;
-  border-radius: 5px;
-  width: 250px;
-}
-
-.dark .sidebar {
-  background: #333;
-  border-color: #444;
-}
-
-textarea {
-  width: 100%;
-  height: 100%;
-  font-size: 18px;
-  resize: none;
-  padding: 5px;
-
-  border: #bdbdbd 1px solid;
-  border-radius: 5px;
-}
-
-.dark textarea {
-  background-color: #191919;
-  border: #444 1px solid;
-  color: white;
-}
-
-textarea:focus {
-  outline: 1px solid #bdbdbd;
-}
-
-.dark textarea:focus {
-  outline: 1px solid #444;
-}
-
 button {
   margin-top: 0px;
   margin-left: 5px;
@@ -82,23 +42,34 @@ button {
   color: white;
 }
 
-.settingsOverlay {
-  position: absolute;
-  top: 50px;
-  right: 15px;
-  padding: 20px;
-
-  width: 66px;
-  height: 137px;
-
-  background-color: #f2f2f2;
-  border: #bdbdbd 1px solid;
-  border-radius: 5px;
+.noteTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 25px;
 }
 
-.dark .settingsOverlay {
-  background-color: #333;
-  border-color: #444;
+#titleInput {
+  position: relative;
+  top: 6px;
+
+  width: 185px;
+  letter-spacing: -0.25px;
+  border-radius: 3px;
+  border: #bdbdbd 1px solid;
+}
+
+#titleInput:focus {
+  outline: 1px solid #bdbdbd;
+}
+
+.dark #titleInput {
+  color: white;
+  background: #333;
+  border: #444 1px solid;
+}
+
+.dark #titleInput:focus {
+  outline: 1px solid #444;
 }
 
 #titleRenameButton {
@@ -144,6 +115,37 @@ button {
   height: 75vh;
 }
 
+.sidebar {
+  display: flex;
+  flex-direction: column;
+
+  background: #f2f2f2;
+  border: #bdbdbd 1px solid;
+  border-radius: 5px;
+  width: 250px;
+}
+
+.dark .sidebar {
+  background: #333;
+  border-color: #444;
+}
+
+ul {
+  margin-top: 10px;
+  padding-left: 15px;
+}
+
+li {
+  margin: 0px 0px;
+  line-height: 1.5em;
+  list-style-type: none;
+}
+
+li span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .trashPanel {
   margin-top: auto;
   margin-left: 3px;
@@ -163,55 +165,53 @@ button {
   color: white;
 }
 
-#characterCounter {
-  margin-top: 10px;
-  margin-bottom: 0px;
-}
+textarea {
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  resize: none;
+  padding: 5px;
 
-#titleInput {
-  position: relative;
-  top: 6px;
-
-  width: 185px;
-  letter-spacing: -0.25px;
-  border-radius: 3px;
   border: #bdbdbd 1px solid;
+  border-radius: 5px;
 }
 
-#titleInput:focus {
+.dark textarea {
+  background-color: #191919;
+  border: #444 1px solid;
+  color: white;
+}
+
+textarea:focus {
   outline: 1px solid #bdbdbd;
 }
 
-.dark #titleInput {
-  color: white;
-  background: #333;
-  border: #444 1px solid;
-}
-
-.dark #titleInput:focus {
+.dark textarea:focus {
   outline: 1px solid #444;
 }
 
-ul {
+.settingsOverlay {
+  position: absolute;
+  top: 50px;
+  right: 15px;
+  padding: 20px;
+
+  width: 66px;
+  height: 137px;
+
+  background-color: #f2f2f2;
+  border: #bdbdbd 1px solid;
+  border-radius: 5px;
+}
+
+.dark .settingsOverlay {
+  background-color: #333;
+  border-color: #444;
+}
+
+#characterCounter {
   margin-top: 10px;
-  padding-left: 15px;
-}
-
-li {
-  margin: 0px 0px;
-  line-height: 1.5em;
-  list-style-type: none;
-}
-
-li span:hover {
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.noteTitleRow {
-  display: flex;
-  align-items: center;
-  gap: 25px;
+  margin-bottom: 0px;
 }
 
 #rights {
@@ -260,17 +260,6 @@ li span:hover {
   top: 105px;
 }
 
-#characterCountButton {
-  right: 35px;
-  top: 145px
-}
-
-#languages {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-
 .translateDropdown {
   position: fixed;
   top: 41px;
@@ -285,6 +274,17 @@ li span:hover {
 .dark .translateDropdown {
   background: #191919;
   border-color: #444;
+}
+
+#languages {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+#characterCountButton {
+  right: 35px;
+  top: 145px
 }
 
 /* 3. Notifications */
