@@ -26,15 +26,7 @@ function renderNotes() {
     titleSpan.textContent = note.title;
     titleSpan.onclick = () => openNote(note.id);
 
-    const deleteButton = document.createElement('button');
-    deleteButton.textContent = "✕";
-    deleteButton.onclick = (e) => {
-      e.stopPropagation();
-      deleteNote(note.id);
-    };
-
     li.appendChild(titleSpan);
-    li.appendChild(deleteButton);
     list.appendChild(li);
   });
 }
@@ -98,9 +90,16 @@ titleInput.addEventListener('input', () => {
 });
 
 // Delete note
+const deleteButton = document.getElementById('deleteButton');
+deleteButton.addEventListener('click', () => deleteNote(currentNoteId));
 function deleteNote(id) {
-  notes = notes.filter(n => n.id !== id);
+  const exists = notes.some(n => n.id === id);
+  if (!exists) {
+    showToast(translate('nothingToDelete'));
+    return;
+  }
 
+  notes = notes.filter(n => n.id !== id);
   if (currentNoteId === id) {
     currentNoteId = null;
     noteTitle.textContent = "Untitled";
@@ -112,6 +111,9 @@ function deleteNote(id) {
     'notes',
     JSON.stringify(notes)
   );
+
+  showToast(translate('noteDeleted'));
+  countCharacters();
   renderNotes();
 }
 
