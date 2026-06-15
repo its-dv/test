@@ -130,6 +130,10 @@ button {
   border-color: #444;
 }
 
+.sidebar ul {
+    overflow-y: auto;
+}
+
 ul {
   margin-top: 10px;
   padding-left: 15px;
@@ -191,7 +195,7 @@ textarea:focus {
 }
 
 .settingsOverlay {
-  position: absolute;
+  position: fixed;
   top: 50px;
   right: 15px;
   padding: 20px;

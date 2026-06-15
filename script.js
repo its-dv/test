@@ -1,5 +1,3 @@
-"use strict";
-
 // Import translations
 import { translations } from "./translations.js";
 
@@ -273,6 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
   countCharacters();
   preload("images/sun.svg");
   preload("images/moon.svg");
+  preload("images/pencil.svg")
   preload("images/tick.svg");
 });
 
