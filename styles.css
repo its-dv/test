@@ -93,22 +93,6 @@ button {
   filter: invert(1);
 }
 
-#saveNoteButton {
-  display: flex;
-  margin-top: 0px;
-  padding: 6px 11px;
-
-  position: relative;
-  top: 6px;
-  right: 30px;
-
-  color: white;
-  background: #4CAF50;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
 .mainContainer {
   display: flex;
 
@@ -124,6 +108,10 @@ button {
   border: #bdbdbd 1px solid;
   border-radius: 5px;
   width: 250px;
+}
+
+#notesList {
+  flex: 1;
 }
 
 .dark .sidebar {
@@ -151,7 +139,12 @@ li span:hover {
   text-decoration: underline;
 }
 
-.trashPanel {
+.trashWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.trashButton {
   margin-top: auto;
   margin-left: 3px;
   margin-bottom: 3px;
@@ -164,10 +157,31 @@ li span:hover {
   border-radius: 5px;
 
   text-align: center;
+  letter-spacing: 1px;
+}
+
+.dark .trashButton {
+  color: white;
+  background: #191919;
+
+}
+
+.trashPanel {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 3px;
+
+  color: black;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
 }
 
 .dark .trashPanel {
-  color: white;
+  color: #fff;
   background: #191919;
 }
 
