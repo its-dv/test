@@ -12,6 +12,7 @@ export const translations = {
     textCopy: "Text copied",
     textPaste: "Text pasted",
     textCut: "Text cut",
+    saveButton: "Save",
     deleteButton: "Delete",
     rights: "© 2026 Simple Notepad. All rights not reserved.",
     underDevelopment: "Under development"
@@ -28,6 +29,7 @@ export const translations = {
     textCopy: "Text kopiert",
     textPaste: "Text eingefügt",
     textCut: "Text ausgeschnitten",
+    saveButton: "Speichern",
     deleteButton: "Löschen",
     rights: "© 2026 Simple Notepad. Alle Rechte nicht reserviert.",
     underDevelopment: "In Entwicklung"
@@ -44,6 +46,7 @@ export const translations = {
     textCopy: "Texte copié",
     textPaste: "Texte collé",
     textCut: "Texte coupé",
+    saveButton: "Enregistrer",
     deleteButton: "Supprimer",
     rights: "© 2026 Simple Notepad. Tous droits non réservés.",
     underDevelopment: "En développement"
@@ -60,6 +63,7 @@ export const translations = {
     textCopy: "Текст скопирован",
     textPaste: "Текст вставлен",
     textCut: "Текст вырезан",
+    saveButton: "Сохранить",
     deleteButton: "Удалить",
     rights: "© 2026 Simple Notepad. Все права не защищены.",
     underDevelopment: "В разработке"

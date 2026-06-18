@@ -46,8 +46,8 @@ function openNote(id) {
 }
 
 // Save note
-const saveNoteButton = document.getElementById('saveNoteButton');
-saveNoteButton.addEventListener('click', saveNote);
+const saveButton = document.getElementById('saveButton');
+saveButton.addEventListener('click', saveNote);
 function saveNote() {
   const title = noteTitle.textContent;
   const content = textArea.value;
