@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script type="module" src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <link rel="stylesheet" href="styles.css">
   <title>Simple Notepad</title>
 </head>
@@ -35,7 +36,7 @@
       </aside>
 
       <div class="composer">
-        <textarea id="textArea" data-i18n-placeholder="textArea"></textarea>
+        <textarea id="textArea" data-i18n-placeholder="textArea" contenteditable="true"></textarea>
         <button id="saveButton" data-i18n="saveButton">Create</button>
         <button id="deleteButton" data-i18n="deleteButton">Delete</button>
       </div>
@@ -47,7 +48,7 @@
       <img class="fixedIcons" src="images/settings.svg" alt="Settings">
     </button>
 
-    <div id="settingsOverlay" class="settingsOverlay hidden">
+    <div id="settingsOverlay" class="settingsOverlay">
       <div id="panel" class="panel">
         <button id="themeButton" class="preferenceButton">
           <img id="themeIcon" class="fixedIcons" src="images/moon.svg" alt="Switch Theme">
@@ -59,7 +60,7 @@
           <img class="fixedIcons" src="images/translate.svg" alt="Translate">
         </button>
 
-        <fieldset id="translateDropdown" class="translateDropdown hidden">
+        <fieldset id="translateDropdown" class="translateDropdown">
           <legend id="languages" data-i18n="languages">Languages</legend>
           <div>
             <input id="english" type="radio" name="language" value="en" checked>

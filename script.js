@@ -117,6 +117,29 @@ function deleteNote(id) {
   renderNotes();
 }
 
+// Show search menu (under development)
+document.addEventListener('keydown', (e) => {
+  if (e.ctrlKey && e.code === 'KeyF') {
+    showToast(translate('textFind'));
+    e.preventDefault();
+  }
+});
+
+// Highlight search matches in text (under development)
+function highlight(query) {
+  let text = textArea.innerText;
+  const regex = new RexExp(query, "gi");
+
+  if (!query) {
+    editor.innerHTML = text;
+    return;
+  }
+
+  textArea.innerHTML = text.replace(regex, match => {
+    return `<mark>${match}</mark>`;
+  });
+}
+
 // Toggle title input visibility
 const titleRenameButton = document.getElementById('titleRenameButton');
 titleRenameButton.addEventListener('click', popup);
@@ -159,7 +182,7 @@ const openSettingsButton = document.getElementById('openSettingsButton');
 const settingsOverlay = document.getElementById('settingsOverlay');
 
 openSettingsButton.addEventListener('click', () => {
-  settingsOverlay.classList.toggle('hidden');
+  settingsOverlay.classList.toggle("active");
 });
 
 // Switch between light and dark themes
@@ -179,7 +202,7 @@ const translateButton = document.getElementById('translateButton');
 const translateDropdown = document.getElementById('translateDropdown');
 
 translateButton.addEventListener('click', () => {
-  translateDropdown.classList.toggle('hidden');
+  translateDropdown.classList.toggle('active');
 });
 
 // Character counter toggle
