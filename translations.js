@@ -2,6 +2,7 @@
 export const translations = {
   en: {
     languages: "Languages",
+    untitledNote: "Untitled",
     noteTitle: "Enter note title...",
     textArea: "Write your notes here...",
     noteSaved: "Note saved",
@@ -20,6 +21,7 @@ export const translations = {
   },
   de: {
     languages: "Sprachen",
+    untitledNote: "Unbenannt",
     noteTitle: "Notiztitel eingeben...",
     textArea: "Schreiben Sie Ihre Notizen hier...",
     noteSaved: "Notiz gespeichert",
@@ -38,6 +40,7 @@ export const translations = {
   },
   fr: {
     languages: "Langues",
+    untitledNote: "Sans titre",
     noteTitle: "Entrez le titre de la note...",
     textArea: "Écrivez vos notes ici...",
     noteSaved: "Note sauvegardée",
@@ -56,6 +59,7 @@ export const translations = {
   },
   ru: {
     languages: "Языки",
+    untitledNote: "Без названия",
     noteTitle: "Введите название заметки...",
     textArea: "Введите текст заметки...",
     noteSaved: "Заметка сохранена",

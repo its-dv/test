@@ -4,9 +4,9 @@ import { translations } from "./translations.js";
 // Notes data structure
 let notes = JSON.parse(localStorage.getItem('notes')) || [];
 let currentNoteId;
+let currentNoteTitle;
 
 // DOM elements
-const titleInput = document.getElementById('titleInput');
 const noteTitle = document.getElementById('noteTitle');
 const textArea = document.getElementById('textArea');
 const characterCounter = document.getElementById('characterCounter');
@@ -37,9 +37,9 @@ function openNote(id) {
   if (note) {
     currentNoteId = id;
     localStorage.setItem('noteId', currentNoteId);
+    localStorage.setItem('noteTitle', currentNoteTitle);
 
     noteTitle.textContent = note.title;
-    titleInput.value = note.title;
     textArea.value = note.content;
     countCharacters();
   }
@@ -74,20 +74,13 @@ function saveNote() {
   }
 
   localStorage.setItem('notes', JSON.stringify(notes));
-  noteTitle.textContent = "Untitled";
-  titleInput.value = "Untitled";
+  noteTitle.textContent = translations[currentLang]["untitledNote"];
   textArea.value = "";
 
   showToast(translate('noteSaved'));
   renderNotes();
   countCharacters();
 }
-
-// Update note title
-titleInput.addEventListener('input', () => {
-  noteTitle.textContent = titleInput.value;
-  localStorage.setItem('currentTitle', titleInput.value);
-});
 
 // Delete note
 const deleteButton = document.getElementById('deleteButton');
@@ -102,8 +95,7 @@ function deleteNote(id) {
   notes = notes.filter(n => n.id !== id);
   if (currentNoteId === id) {
     currentNoteId = null;
-    noteTitle.textContent = "Untitled";
-    titleInput.value = "Untitled";
+    noteTitle.textContent = translations[currentLang]["untitledNote"];
     textArea.value = "";
   }
 
@@ -140,21 +132,6 @@ function highlight(query) {
   });
 }
 
-// Toggle title input visibility
-const titleRenameButton = document.getElementById('titleRenameButton');
-titleRenameButton.addEventListener('click', popup);
-function popup() {
-  const icon = document.querySelector('#titleRenameButton img');
-  const hidden = titleInput.style.display === 'none';
-
-  titleInput.style.display = hidden
-    ? 'block'
-    : 'none';
-  icon.src = hidden
-    ? 'images/tick.svg'
-    : 'images/pencil.svg';
-}
-
 // Show a toast notification
 function showToast(text) {
   const el = document.getElementById('toast');  
@@ -182,7 +159,8 @@ const openSettingsButton = document.getElementById('openSettingsButton');
 const settingsOverlay = document.getElementById('settingsOverlay');
 
 openSettingsButton.addEventListener('click', () => {
-  settingsOverlay.classList.toggle("active");
+  settingsOverlay.classList.toggle('active');
+  translateDropdown.classList.remove('active');
 });
 
 // Switch between light and dark themes
@@ -217,7 +195,7 @@ const trashButton = document.getElementById('trashButton');
 const trashPanel = document.getElementById('trashPanel');
 
 trashButton.addEventListener('click', () => {
-  trashPanel.classList.toggle('hidden');
+  trashPanel.classList.toggle('active');
 });
 
 // Character counter
@@ -283,15 +261,14 @@ document.addEventListener('DOMContentLoaded', () => {
     img.src = src;
   };
 
-  // Load current note ID
+  // Load current note ID and note title
   const savedId = localStorage.getItem('noteId');
   currentNoteId = Number(savedId);
 
-  // Load saved title
-  const savedTitle = localStorage.getItem('currentTitle') || "Untitled";
-  noteTitle.textContent = savedTitle;
-  titleInput.value = savedTitle;
+  const savedTitle = localStorage.getItem('noteTitle');
+  currentNoteTitle = String(savedTitle);
 
+  updateTexts();
   renderNotes();
   countCharacters();
   preload("images/sun.svg");
