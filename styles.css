@@ -1,13 +1,17 @@
 /* 1. Base */
 * {
   box-sizing: border-box;
-  transition: 0.25s ease;
 }
 
 body {
   font-family: Arial, sans-serif;
   padding: 20px;
   margin: 0;
+}
+
+html, body, button, textarea,
+.sidebar, .trashPanel, .settingsOverlay, .translateDropdown {
+  transition: 0.25s ease;
 }
 
 .dark {
@@ -49,66 +53,35 @@ button {
   gap: 25px;
 }
 
-#titleInput {
-  position: relative;
-  top: 6px;
-
-  width: 185px;
-  letter-spacing: -0.25px;
-
-  border: #bdbdbd 1px solid;
-  border-radius: 3px;
+#noteTitle {
+  border-color: #444;
 }
 
-#titleInput:focus {
-  outline: #bdbdbd 1px solid;
+#noteTitle:focus {
+  outline: #bdbdbd 2px solid;
+  outline-offset: 1px;
+  border-radius: 1px;
 }
 
-.dark #titleInput {
-  color: white;
-  background: #333;
-  border: #444 1px solid;
-}
-
-.dark #titleInput:focus {
+.dark #noteTitle:focus {
   outline-color: #444;
-}
-
-#titleRenameButton {
-  display: flex;
-  margin-top: 0px;
-  margin-left: 0px;
-
-  position: relative;
-  top: 6px;
-  right: 10px;
-
-  color: white;
-  background: none;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.dark #titleRenameButton {
-  filter: invert(1);
 }
 
 .mainContainer {
   display: flex;
-
-  gap: 10px;
-  height: 75vh;
+  gap: clamp(5px, 0.5vw, 0.6vw);
 }
 
 .sidebar {
   display: flex;
   flex-direction: column;
+  height: 75vh;
+
+  width: clamp(200px, 20vw, 250px);
+  border-radius: 5px;
 
   background: #f2f2f2;
   border: #bdbdbd 1px solid;
-  border-radius: 5px;
-  width: 250px;
 }
 
 #notesList {
@@ -142,7 +115,6 @@ li span:hover {
 
 .trashWrapper {
   position: relative;
-  display: inline-block;
 }
 
 .trashButton {
@@ -152,10 +124,10 @@ li span:hover {
 
   width: calc(100% - 6px);
   height: 35px;
+  border-radius: 5px;
 
   color: black;
   background: white;
-  border-radius: 5px;
 
   text-align: center;
   letter-spacing: 1px;
@@ -164,26 +136,39 @@ li span:hover {
 .dark .trashButton {
   color: white;
   background: #191919;
-
 }
 
 .trashPanel {
   position: absolute;
+  display: flex;
   bottom: 100%;
   left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 3px;
+
+  margin-bottom: 5px;
+  padding: 8px 12px;
+  border: #bdbdbd 1px solid;
+  border-radius: 3px;
 
   color: black;
   background: white;
-  padding: 8px 12px;
-  border-radius: 6px;
   white-space: nowrap;
+
+  pointer-events: none;
+  translate: -50%;
+  transform: translateY(-7px);
+  opacity: 0;
+}
+
+.trashPanel.active {
+  pointer-events: auto;
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .dark .trashPanel {
   color: #fff;
   background: #191919;
+  border-color: #444;
 }
 
 textarea {
@@ -217,19 +202,18 @@ textarea:focus {
 
 #saveButton,
 #deleteButton {
-  margin-top: 1px;
+  margin-top: 3px;
   margin-left: 0px;
 
-  width: 135px;
-  height: 35px;
+  width: clamp(85px, 15vw, 200px);
+  height: 37px;
 }
 
 .settingsOverlay {
   position: fixed;
+  display: grid;
   top: 50px;
   right: 15px;
-
-  display: grid;
 
   width: fit-content;
   padding: 15px;
@@ -239,12 +223,13 @@ textarea:focus {
   border: 1px solid #bdbdbd;
   border-radius: 6px;
 
+  pointer-events: none;
   opacity: 0;
-  transform: translateY(10px);
-  transition: 0.25s ease;
+  transform: translateY(-7px);
 }
 
 .settingsOverlay.active {
+  pointer-events: auto;
   opacity: 1;
   transform: translateY(0);
 }
@@ -255,8 +240,7 @@ textarea:focus {
 }
 
 #characterCounter {
-  margin-top: 10px;
-  margin-bottom: 0px;
+  margin-top: 5px;
 }
 
 #rights {
@@ -279,8 +263,6 @@ textarea:focus {
 
 .dark .preferenceButton {
   background: none;
-  border: none;
-
   filter: invert(1);
 }
 
@@ -306,12 +288,13 @@ textarea:focus {
   border: #bdbdbd 1px solid;
   border-radius: 5px;
 
+  pointer-events: none;
   opacity: 0;
-  transform: translateY(10px);
-  transition: 0.25s ease;
+  transform: translateY(-7px);
 }
 
 .translateDropdown.active {
+  pointer-events: auto;
   opacity: 1;
   transform: translateY(0);
 }

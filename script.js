@@ -4,9 +4,9 @@ import { translations } from "./translations.js";
 // Notes data structure
 let notes = JSON.parse(localStorage.getItem('notes')) || [];
 let currentNoteId;
+let currentNoteTitle;
 
 // DOM elements
-const titleInput = document.getElementById('titleInput');
 const noteTitle = document.getElementById('noteTitle');
 const textArea = document.getElementById('textArea');
 const characterCounter = document.getElementById('characterCounter');
@@ -39,7 +39,6 @@ function openNote(id) {
     localStorage.setItem('noteId', currentNoteId);
 
     noteTitle.textContent = note.title;
-    titleInput.value = note.title;
     textArea.value = note.content;
     countCharacters();
   }
@@ -74,20 +73,13 @@ function saveNote() {
   }
 
   localStorage.setItem('notes', JSON.stringify(notes));
-  noteTitle.textContent = "Untitled";
-  titleInput.value = "Untitled";
+  noteTitle.textContent = translations[currentLang]["untitledNote"];
   textArea.value = "";
 
   showToast(translate('noteSaved'));
   renderNotes();
   countCharacters();
 }
-
-// Update note title
-titleInput.addEventListener('input', () => {
-  noteTitle.textContent = titleInput.value;
-  localStorage.setItem('currentTitle', titleInput.value);
-});
 
 // Delete note
 const deleteButton = document.getElementById('deleteButton');
@@ -102,8 +94,7 @@ function deleteNote(id) {
   notes = notes.filter(n => n.id !== id);
   if (currentNoteId === id) {
     currentNoteId = null;
-    noteTitle.textContent = "Untitled";
-    titleInput.value = "Untitled";
+    noteTitle.textContent = translations[currentLang]["untitledNote"];
     textArea.value = "";
   }
 
@@ -140,21 +131,6 @@ function highlight(query) {
   });
 }
 
-// Toggle title input visibility
-const titleRenameButton = document.getElementById('titleRenameButton');
-titleRenameButton.addEventListener('click', popup);
-function popup() {
-  const icon = document.querySelector('#titleRenameButton img');
-  const hidden = titleInput.style.display === 'none';
-
-  titleInput.style.display = hidden
-    ? 'block'
-    : 'none';
-  icon.src = hidden
-    ? 'images/tick.svg'
-    : 'images/pencil.svg';
-}
-
 // Show a toast notification
 function showToast(text) {
   const el = document.getElementById('toast');  
@@ -182,17 +158,19 @@ const openSettingsButton = document.getElementById('openSettingsButton');
 const settingsOverlay = document.getElementById('settingsOverlay');
 
 openSettingsButton.addEventListener('click', () => {
-  settingsOverlay.classList.toggle("active");
+  settingsOverlay.classList.toggle('active');
+  translateDropdown.classList.remove('active');
 });
 
 // Switch between light and dark themes
 const themeButton = document.getElementById('themeButton');
 themeButton.addEventListener('click', switchTheme);
 function switchTheme() {
-  document.body.classList.toggle('dark');
-  const icon = document.getElementById('themeIcon');
+  document.documentElement.classList.toggle('dark');
+  localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
 
-  icon.src = document.body.classList.contains('dark')
+  const icon = document.getElementById('themeIcon');
+  icon.src = document.documentElement.classList.contains('dark')
     ? "images/sun.svg"
     : "images/moon.svg";
 }
@@ -217,7 +195,7 @@ const trashButton = document.getElementById('trashButton');
 const trashPanel = document.getElementById('trashPanel');
 
 trashButton.addEventListener('click', () => {
-  trashPanel.classList.toggle('hidden');
+  trashPanel.classList.toggle('active');
 });
 
 // Character counter
@@ -270,12 +248,9 @@ document.querySelector(`input[value="${currentLang}"]`).checked = true;
 document.addEventListener('DOMContentLoaded', () => {
   const theme = localStorage.getItem('theme');
   const icon = document.getElementById('themeIcon');
-  if (theme === 'dark') {
-    document.body.classList.add('dark');
-    icon.src = "images/sun.svg";
-  } else {
-    icon.src = "images/moon.svg";
-  }
+  icon.src = theme === 'dark'
+    ? "images/sun.svg"
+    : "images/moon.svg"
 
   // Icons preloading
   const preload = (src) => {
@@ -283,14 +258,17 @@ document.addEventListener('DOMContentLoaded', () => {
     img.src = src;
   };
 
-  // Load current note ID
+  // Load current note
   const savedId = localStorage.getItem('noteId');
-  currentNoteId = Number(savedId);
-
-  // Load saved title
-  const savedTitle = localStorage.getItem('currentTitle') || "Untitled";
-  noteTitle.textContent = savedTitle;
-  titleInput.value = savedTitle;
+  notes = JSON.parse(localStorage.getItem('notes')) || [];
+  if (savedId) {
+    const note = notes.find(n => n.id === Number(savedId));
+    if (note) {
+      currentNoteId = note.id;
+      noteTitle.textContent = note.title;
+      textArea.value = note.content;
+    }
+  }
 
   renderNotes();
   countCharacters();
