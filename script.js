@@ -37,7 +37,6 @@ function openNote(id) {
   if (note) {
     currentNoteId = id;
     localStorage.setItem('noteId', currentNoteId);
-    localStorage.setItem('noteTitle', currentNoteTitle);
 
     noteTitle.textContent = note.title;
     textArea.value = note.content;
@@ -259,14 +258,18 @@ document.addEventListener('DOMContentLoaded', () => {
     img.src = src;
   };
 
-  // Load current note ID and note title
+  // Load current note
   const savedId = localStorage.getItem('noteId');
-  currentNoteId = Number(savedId);
+  notes = JSON.parse(localStorage.getItem('notes')) || [];
+  if (savedId) {
+    const note = notes.find(n => n.id === Number(savedId));
+    if (note) {
+      currentNoteId = note.id;
+      noteTitle.textContent = note.title;
+      textArea.value = note.content;
+    }
+  }
 
-  const savedTitle = localStorage.getItem('noteTitle');
-  currentNoteTitle = String(savedTitle);
-
-  updateTexts();
   renderNotes();
   countCharacters();
   preload("images/sun.svg");
