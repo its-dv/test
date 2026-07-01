@@ -167,10 +167,11 @@ openSettingsButton.addEventListener('click', () => {
 const themeButton = document.getElementById('themeButton');
 themeButton.addEventListener('click', switchTheme);
 function switchTheme() {
-  document.body.classList.toggle('dark');
-  const icon = document.getElementById('themeIcon');
+  document.documentElement.classList.toggle('dark');
+  localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
 
-  icon.src = document.body.classList.contains('dark')
+  const icon = document.getElementById('themeIcon');
+  icon.src = document.documentElement.classList.contains('dark')
     ? "images/sun.svg"
     : "images/moon.svg";
 }
@@ -248,12 +249,9 @@ document.querySelector(`input[value="${currentLang}"]`).checked = true;
 document.addEventListener('DOMContentLoaded', () => {
   const theme = localStorage.getItem('theme');
   const icon = document.getElementById('themeIcon');
-  if (theme === 'dark') {
-    document.body.classList.add('dark');
-    icon.src = "images/sun.svg";
-  } else {
-    icon.src = "images/moon.svg";
-  }
+  icon.src = theme === 'dark'
+    ? "images/sun.svg"
+    : "images/moon.svg"
 
   // Icons preloading
   const preload = (src) => {

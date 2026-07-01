@@ -9,7 +9,7 @@ body {
   margin: 0;
 }
 
-body, button, textarea,
+html, body, button, textarea,
 .sidebar, .trashPanel, .settingsOverlay, .translateDropdown {
   transition: 0.25s ease;
 }
