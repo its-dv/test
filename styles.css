@@ -9,7 +9,7 @@ body {
   margin: 0;
 }
 
-html, body, button, textarea,
+html, body, button,
 .sidebar, .trashPanel, .settingsOverlay, .translateDropdown {
   transition: 0.25s ease;
 }
@@ -69,7 +69,7 @@ button {
 
 .mainContainer {
   display: flex;
-  gap: clamp(5px, 0.5vw, 0.6vw);
+  gap: clamp(5px, 0.35vw, 0.35vw);
 }
 
 .sidebar {
@@ -180,6 +180,12 @@ textarea {
 
   border: #bdbdbd 1px solid;
   border-radius: 5px;
+
+  transition:
+    background-color 0.25s,
+    color 0.25s,
+    border-color 0.25s,
+    box-shadow 0.25s;
 }
 
 .dark textarea {
@@ -189,11 +195,12 @@ textarea {
 }
 
 textarea:focus {
-  outline: 1px solid #bdbdbd;
+  outline: none;
+  box-shadow: 0 0 0 1px #bdbdbd;
 }
 
 .dark textarea:focus {
-  outline: 1px solid #444;
+  box-shadow: 0 0 0 1px #444;
 }
 
 .composer {

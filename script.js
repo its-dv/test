@@ -4,7 +4,6 @@ import { translations } from "./translations.js";
 // Notes data structure
 let notes = JSON.parse(localStorage.getItem('notes')) || [];
 let currentNoteId;
-let currentNoteTitle;
 
 // DOM elements
 const noteTitle = document.getElementById('noteTitle');
@@ -64,9 +63,11 @@ function saveNote() {
       };
     }
     currentNoteId = null;
+    localStorage.removeItem('noteId');
   } else {
+    const id = Date.now();
     notes.push({
-      id:Date.now(),
+      id,
       title,
       content
     });
@@ -156,7 +157,6 @@ document.addEventListener('cut', () => {
 // Settings panel
 const openSettingsButton = document.getElementById('openSettingsButton');
 const settingsOverlay = document.getElementById('settingsOverlay');
-
 openSettingsButton.addEventListener('click', () => {
   settingsOverlay.classList.toggle('active');
   translateDropdown.classList.remove('active');
@@ -178,22 +178,19 @@ function switchTheme() {
 // Toggle translate dropdown visibility
 const translateButton = document.getElementById('translateButton');
 const translateDropdown = document.getElementById('translateDropdown');
-
 translateButton.addEventListener('click', () => {
   translateDropdown.classList.toggle('active');
 });
 
 // Character counter toggle
 const characterCountButton = document.getElementById('characterCountButton');
-
 characterCountButton.addEventListener('click', () => {
   characterCounter.classList.toggle('hidden');
 });
 
-// Togglle trash panel visibility
+// Toggle trash panel visibility
 const trashButton = document.getElementById('trashButton');
 const trashPanel = document.getElementById('trashPanel');
-
 trashButton.addEventListener('click', () => {
   trashPanel.classList.toggle('active');
 });
@@ -244,7 +241,7 @@ function changeLanguage(lang) {
 // Set current language radio button as checked
 document.querySelector(`input[value="${currentLang}"]`).checked = true;
 
-// Load saved text, title, and theme on page load
+// Load saved data on page load
 document.addEventListener('DOMContentLoaded', () => {
   const theme = localStorage.getItem('theme');
   const icon = document.getElementById('themeIcon');
@@ -278,5 +275,5 @@ document.addEventListener('DOMContentLoaded', () => {
   preload("images/tick.svg");
 });
 
-// Initialize placeholder text on page load
+// Initialize UI translations
 updateTexts();
