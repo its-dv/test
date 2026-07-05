@@ -37,7 +37,7 @@ function openNote(id) {
     currentNoteId = id;
     localStorage.setItem('noteId', currentNoteId);
 
-    noteTitle.textContent = note.title;
+    noteTitle.value = note.title;
     textArea.value = note.content;
     countCharacters();
   }
@@ -47,11 +47,17 @@ function openNote(id) {
 const saveButton = document.getElementById('saveButton');
 saveButton.addEventListener('click', saveNote);
 function saveNote() {
-  const title = noteTitle.textContent;
+  const title = noteTitle.value;
   const content = textArea.value;
 
-  if (!title || !content) {
+  if (!title && !content) {
     showToast(translate('nothingToSave'));
+    return;
+  } else if (!title) {
+    showToast(translate('noTitleToSave'));
+    return;
+  } else if (!content) {
+    showToast(translate('noContentToSave'));
     return;
   }
   
@@ -74,7 +80,7 @@ function saveNote() {
   }
 
   localStorage.setItem('notes', JSON.stringify(notes));
-  noteTitle.textContent = translations[currentLang]["untitledNote"];
+  noteTitle.value = translations[currentLang]["untitledNote"];
   textArea.value = "";
 
   showToast(translate('noteSaved'));
@@ -95,7 +101,7 @@ function deleteNote(id) {
   notes = notes.filter(n => n.id !== id);
   if (currentNoteId === id) {
     currentNoteId = null;
-    noteTitle.textContent = translations[currentLang]["untitledNote"];
+    noteTitle.value = translations[currentLang]["untitledNote"];
     textArea.value = "";
   }
 
@@ -262,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const note = notes.find(n => n.id === Number(savedId));
     if (note) {
       currentNoteId = note.id;
-      noteTitle.textContent = note.title;
+      noteTitle.value = note.title;
       textArea.value = note.content;
     }
   }

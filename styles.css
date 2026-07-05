@@ -54,7 +54,17 @@ button {
 }
 
 #noteTitle {
-  border-color: #444;
+  padding: 0;
+  margin-top: 0.3em;
+  margin-bottom: 0.45em;
+
+  border: none;
+  background: transparent;
+
+  color: inherit;
+  font-size: 1.5em;
+  font-weight: bold;
+  font-family: inherit;
 }
 
 #noteTitle:focus {
@@ -334,7 +344,7 @@ textarea:focus {
 }
 
 .dark .toast {
-  background: #333;
+  background: #2b2b2b;
 }
 
 .toast.show {
