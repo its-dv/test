@@ -5,8 +5,8 @@
 
 body {
   font-family: Arial, sans-serif;
-  padding: 20px;
   margin: 0;
+  padding: 20px;
 }
 
 html, body, button,
@@ -22,10 +22,6 @@ html, body, button,
 h1 {
   margin: 0.15em 0;
   margin-bottom: 0px;
-}
-
-h2 {
-  margin-bottom: 0.45em;
 }
 
 button {
@@ -47,16 +43,10 @@ button {
   border-color: #555;
 }
 
-.noteTitleRow {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
 #noteTitle {
-  padding: 0;
   margin-top: 0.3em;
   margin-bottom: 0.45em;
+  padding: 0;
 
   border: none;
   background: transparent;
@@ -104,12 +94,12 @@ button {
 }
 
 .sidebar ul {
-    overflow-y: auto;
+  overflow-y: auto;
 }
 
 ul {
-  margin-top: 10px;
-  padding-left: 15px;
+  margin-top: 5px;
+  padding-left: 10px;
 }
 
 li {
@@ -128,7 +118,6 @@ li span:hover {
 }
 
 .trashButton {
-  margin-top: auto;
   margin-left: 3px;
   margin-bottom: 3px;
 
@@ -169,12 +158,6 @@ li span:hover {
   opacity: 0;
 }
 
-.trashPanel.active {
-  pointer-events: auto;
-  transform: translateY(0);
-  opacity: 1;
-}
-
 .dark .trashPanel {
   color: #fff;
   background: #191919;
@@ -191,11 +174,7 @@ textarea {
   border: #bdbdbd 1px solid;
   border-radius: 5px;
 
-  transition:
-    background-color 0.25s,
-    color 0.25s,
-    border-color 0.25s,
-    box-shadow 0.25s;
+  transition: 0.25s ease;
 }
 
 .dark textarea {
@@ -232,7 +211,6 @@ textarea:focus {
   top: 50px;
   right: 15px;
 
-  width: fit-content;
   padding: 15px;
   gap: 7px;
 
@@ -243,12 +221,6 @@ textarea:focus {
   pointer-events: none;
   opacity: 0;
   transform: translateY(-7px);
-}
-
-.settingsOverlay.active {
-  pointer-events: auto;
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .dark .settingsOverlay {
@@ -310,12 +282,6 @@ textarea:focus {
   transform: translateY(-7px);
 }
 
-.translateDropdown.active {
-  pointer-events: auto;
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .dark .translateDropdown {
   background: #191919;
   border-color: #444;
@@ -349,10 +315,15 @@ textarea:focus {
 
 .toast.show {
   opacity: 1;
-  pointer-events: none;
 }
 
 /* 4. Utilities */
 .hidden {
   display: none;
+}
+
+.active {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
 }

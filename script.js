@@ -164,8 +164,8 @@ document.addEventListener('cut', () => {
 const openSettingsButton = document.getElementById('openSettingsButton');
 const settingsOverlay = document.getElementById('settingsOverlay');
 openSettingsButton.addEventListener('click', () => {
-  settingsOverlay.classList.toggle('active');
   translateDropdown.classList.remove('active');
+  settingsOverlay.classList.toggle('active');
 });
 
 // Switch between light and dark themes
