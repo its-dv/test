@@ -45,44 +45,44 @@
     <p id="characterCounter"></p>
 
     <button id="openSettingsButton" class="preferenceButton">
-      <img class="fixedIcons" src="images/settings.svg" alt="Settings">
+      <img src="images/settings.svg" alt="Settings">
     </button>
 
     <div id="settingsOverlay" class="settingsOverlay">
-      <div id="panel" class="panel">
-        <button id="themeButton" class="preferenceButton">
-          <img id="themeIcon" class="fixedIcons" src="images/moon.svg" alt="Switch Theme">
-        </button>
-      </div>
+      <button id="themeButton" class="preferenceButton">
+        <img id="themeIcon" src="images/moon.svg" alt="Switch Theme">
+      </button>
 
-      <div>
-        <button id="translateButton" class="preferenceButton">
-          <img class="fixedIcons" src="images/translate.svg" alt="Translate">
-        </button>
+      <button id="translateButton" class="preferenceButton">
+        <img src="images/translate.svg" alt="Translate">
+      </button>
 
-        <fieldset id="translateDropdown" class="translateDropdown">
-          <legend id="languages" data-i18n="languages"></legend>
-          <div>
-            <input id="english" type="radio" name="language" value="en" checked>
-            <label for="english">English</label>
-          </div>
-          <div>
-            <input id="german" type="radio" name="language" value="de">
-            <label for="german">Deutsch</label>
-          </div>
-          <div>
-            <input id="french" type="radio" name="language" value="fr">
-            <label for="french">Français</label>
-          </div>
-          <div>
-            <input id="russian" type="radio" name="language" value="ru">
-            <label for="russian">Русский</label>
-          </div>
-        </fieldset>
-      </div>
+      <fieldset id="translateDropdown" class="translateDropdown">
+        <legend id="languages" data-i18n="languages"></legend>
+        <div>
+          <input id="english" type="radio" name="language" value="en" checked>
+          <label for="english">English</label>
+        </div>
+        <div>
+          <input id="german" type="radio" name="language" value="de">
+          <label for="german">Deutsch</label>
+        </div>
+        <div>
+          <input id="french" type="radio" name="language" value="fr">
+          <label for="french">Français</label>
+        </div>
+        <div>
+          <input id="russian" type="radio" name="language" value="ru">
+          <label for="russian">Русский</label>
+        </div>
+      </fieldset>
 
       <button id="characterCountButton" class="preferenceButton">
-        <img class="fixedIcons" src="images/hash.svg" alt="Character counter">
+        <img src="images/hash.svg" alt="Character counter">
+      </button>
+
+      <button id="changeLogsButton" class="preferenceButton">
+        <img src="images/logs.svg" alt="Change logs">
       </button>
     </div>
 

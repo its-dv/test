@@ -255,11 +255,6 @@ textarea:focus {
   filter: invert(1);
 }
 
-.fixedIcons {
-  width: 24px;
-  height: 24px;
-}
-
 #openSettingsButton {
   position: fixed;
   top: 15px;
