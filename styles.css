@@ -10,7 +10,7 @@ body {
 }
 
 html, body, button,
-.sidebar, .trashPanel, .settingsOverlay, .translateDropdown {
+.sidebar, .trashPanel, .settingsOverlay, .translateDropdown, .changelogPanel {
   transition: 0.25s ease;
 }
 
@@ -69,7 +69,7 @@ button {
 
 .mainContainer {
   display: flex;
-  gap: clamp(5px, 0.35vw, 0.35vw);
+  gap: clamp(3px, 0.25vw, 0.3vw);
 }
 
 .sidebar {
@@ -165,8 +165,8 @@ li span:hover {
 }
 
 textarea {
-  width: 100%;
-  height: calc(75vh - 40px);
+  flex: 1;
+  height: auto;
   font-size: 18px;
   resize: none;
   padding: 5px;
@@ -193,7 +193,15 @@ textarea:focus {
 }
 
 .composer {
-  width: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex;
+  gap: clamp(3px, 0.25vw, 0.3vw);
 }
 
 #saveButton,
@@ -263,7 +271,7 @@ textarea:focus {
 
 .translateDropdown {
   position: fixed;
-  top: 10px;
+  top: -9px;
   right: 65px;
   padding: 10px;
   width: 125px;
@@ -282,10 +290,53 @@ textarea:focus {
   border-color: #444;
 }
 
-#languages {
-  display: flex;
-  justify-content: center;
-  text-align: center;
+.changelogPanel {
+  position: fixed;
+  top: 100px;
+  right: 65px;
+  padding: 0px 10px;
+  width: 285px;
+
+  background: #f2f2f2;
+  border: #bdbdbd 1px solid;
+  border-radius: 5px;
+
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-7px);
+}
+
+.dark .changelogPanel {
+  background: #191919;
+  border-color: #444;
+}
+
+.changelogVersion {
+  font-weight: bold;
+  color: gray;
+  margin-top: 10px;
+  margin-bottom: 3px;
+}
+
+.changelogDate {
+  font-weight: bold;
+  margin: 0px;
+}
+
+.changelog {
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.changelog li {
+  line-height: 1.2;
+  margin-bottom: 3px;
+}
+
+.changelog li::before {
+  content: "•";
+  font-size: 16px;
+  margin-right: 3px;
 }
 
 /* 3. Notifications */

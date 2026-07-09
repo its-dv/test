@@ -19,7 +19,12 @@ export const translations = {
     deleteButton: "Delete",
     trashButton: "Trash",
     rights: "© 2026 Simple Notepad. All rights not reserved.",
-    underDevelopment: "Under development"
+    inDevelopment: "Under development",
+    changelogVersion: "Version",
+    changelogEntry1: "Performance improvements and optimizations.",
+    changelogEntry2: "Bug fixes and minor improvements.",
+    changelogEntry3: "Added a changelog panel.",
+    changelogEntry4: "Improved the user interface."
   },
   de: {
     languages: "Sprachen",
@@ -40,7 +45,12 @@ export const translations = {
     deleteButton: "Löschen",
     trashButton: "Papierkorb",
     rights: "© 2026 Simple Notepad. Alle Rechte nicht reserviert.",
-    underDevelopment: "In Entwicklung"
+    inDevelopment: "In Entwicklung",
+    changelogVersion: "Version",
+    changelogEntry1: "Leistungsverbesserungen und Optimierungen.",
+    changelogEntry2: "Fehlerbehebungen und kleinere Verbesserungen.",
+    changelogEntry3: "Changelog-Panel hinzugefügt.",
+    changelogEntry4: "Benutzeroberfläche verbessert."
   },
   fr: {
     languages: "Langues",
@@ -61,7 +71,12 @@ export const translations = {
     deleteButton: "Supprimer",
     trashButton: "Corbeille",
     rights: "© 2026 Simple Notepad. Tous droits non réservés.",
-    underDevelopment: "En développement"
+    inDevelopment: "En développement",
+    changelogVersion: "Version",
+    changelogEntry1: "Améliorations des performances et optimisations.",
+    changelogEntry2: "Corrections de bugs et améliorations mineures.",
+    changelogEntry3: "Ajout d'un panneau de journal des modifications.",
+    changelogEntry4: "Benutzeroberfläche verbessert."
   },
   ru: {
     languages: "Языки",
@@ -82,6 +97,11 @@ export const translations = {
     deleteButton: "Удалить",
     trashButton: "Корзина",
     rights: "© 2026 Simple Notepad. Все права не защищены.",
-    underDevelopment: "В разработке"
+    inDevelopment: "В разработке",
+    changelogVersion: "Версия",
+    changelogEntry1: "Повышена производительность и улучшена стабильность.",
+    changelogEntry2: "Исправлены ошибки и внесены небольшие улучшения.",
+    changelogEntry3: "Добавлена панель списка изменений.",
+    changelogEntry4: "Улучшен пользовательский интерфейс."
   }
 };
