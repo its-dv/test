@@ -30,60 +30,68 @@
         <div class="trashWrapper">
           <button id="trashButton" class="trashButton" data-i18n="trashButton"></button>
           <div id="trashPanel" class="trashPanel">
-            <p data-i18n="underDevelopment"></p>
+            <p data-i18n="inDevelopment"></p>
           </div>
         </div>
       </aside>
 
       <div class="composer">
         <textarea id="textArea" data-i18n-placeholder="textArea" contenteditable="true"></textarea>
-        <button id="saveButton" data-i18n="saveButton"></button>
-        <button id="deleteButton" data-i18n="deleteButton"></button>
+        <div class="buttonContainer">
+          <button id="saveButton" data-i18n="saveButton"></button>
+          <button id="deleteButton" data-i18n="deleteButton"></button>
+        </div>
       </div>
     </div>
 
     <p id="characterCounter"></p>
 
     <button id="openSettingsButton" class="preferenceButton">
-      <img class="fixedIcons" src="images/settings.svg" alt="Settings">
+      <img src="images/settings.svg" alt="Settings">
     </button>
 
     <div id="settingsOverlay" class="settingsOverlay">
-      <div id="panel" class="panel">
-        <button id="themeButton" class="preferenceButton">
-          <img id="themeIcon" class="fixedIcons" src="images/moon.svg" alt="Switch Theme">
-        </button>
-      </div>
+      <button id="themeButton" class="preferenceButton">
+        <img id="themeIcon" src="images/moon.svg" alt="Switch Theme">
+      </button>
 
-      <div>
-        <button id="translateButton" class="preferenceButton">
-          <img class="fixedIcons" src="images/translate.svg" alt="Translate">
-        </button>
+      <button id="translateButton" class="preferenceButton">
+        <img src="images/translate.svg" alt="Translate">
+      </button>
 
-        <fieldset id="translateDropdown" class="translateDropdown">
-          <legend id="languages" data-i18n="languages"></legend>
-          <div>
-            <input id="english" type="radio" name="language" value="en" checked>
-            <label for="english">English</label>
-          </div>
-          <div>
-            <input id="german" type="radio" name="language" value="de">
-            <label for="german">Deutsch</label>
-          </div>
-          <div>
-            <input id="french" type="radio" name="language" value="fr">
-            <label for="french">Français</label>
-          </div>
-          <div>
-            <input id="russian" type="radio" name="language" value="ru">
-            <label for="russian">Русский</label>
-          </div>
-        </fieldset>
-      </div>
+      <fieldset id="translateDropdown" class="translateDropdown">
+        <legend data-i18n="languages"></legend>
+
+        <input id="english" type="radio" name="language" value="en" checked>
+        <label for="english">English</label>
+
+        <input id="german" type="radio" name="language" value="de">
+        <label for="german">Deutsch</label>
+
+        <input id="french" type="radio" name="language" value="fr">
+        <label for="french">Français</label>
+
+        <input id="russian" type="radio" name="language" value="ru">
+        <label for="russian">Русский</label>
+      </fieldset>
 
       <button id="characterCountButton" class="preferenceButton">
-        <img class="fixedIcons" src="images/hash.svg" alt="Character counter">
+        <img src="images/hash.svg" alt="Character counter">
       </button>
+
+      <button id="changelogButton" class="preferenceButton">
+        <img src="images/logs.svg" alt="Change logs">
+      </button>
+      <div id="changelogPanel" class="changelogPanel">
+        <p class="changelogVersion" data-version="0.2026.68"></p>
+        <p class="changelogDate">09.07.2026</p>
+        <ul class="changelog">
+          <li data-i18n="changelogEntry1"></li>
+          <li data-i18n="changelogEntry3"></li>
+          <li data-i18n="changelogEntry4"></li>
+        </ul>
+      </div>
+      
     </div>
 
     <div id="toast" class="toast"></div>

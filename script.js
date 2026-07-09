@@ -164,6 +164,7 @@ document.addEventListener('cut', () => {
 const openSettingsButton = document.getElementById('openSettingsButton');
 const settingsOverlay = document.getElementById('settingsOverlay');
 openSettingsButton.addEventListener('click', () => {
+  changelogPanel.classList.remove('active');
   translateDropdown.classList.remove('active');
   settingsOverlay.classList.toggle('active');
 });
@@ -186,6 +187,7 @@ const translateButton = document.getElementById('translateButton');
 const translateDropdown = document.getElementById('translateDropdown');
 translateButton.addEventListener('click', () => {
   translateDropdown.classList.toggle('active');
+  changelogPanel.classList.remove('active');
 });
 
 // Character counter toggle
@@ -193,6 +195,20 @@ const characterCountButton = document.getElementById('characterCountButton');
 characterCountButton.addEventListener('click', () => {
   characterCounter.classList.toggle('hidden');
 });
+
+// Toggle changelog panel visibility
+const changelogButton = document.getElementById('changelogButton');
+const changelogPanel = document.getElementById('changelogPanel');
+changelogButton.addEventListener('click', () => {
+  changelogPanel.classList.toggle('active');
+  translateDropdown.classList.remove('active');
+});
+
+// Show version in changelog panel
+function updateChangelogVersion() {
+    const el = document.querySelector('.changelogVersion');
+    el.textContent = `${translate('changelogVersion')} ${el.dataset.version}`;
+}
 
 // Toggle trash panel visibility
 const trashButton = document.getElementById('trashButton');
@@ -242,6 +258,7 @@ function changeLanguage(lang) {
 
   updateTexts();
   countCharacters();
+  updateChangelogVersion()
 }
 
 // Set current language radio button as checked
