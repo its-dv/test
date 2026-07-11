@@ -10,7 +10,7 @@ body {
 }
 
 html, body, button,
-.sidebar, .trashPanel, .settingsOverlay, .translateDropdown, .changelogPanel {
+.sidebar, .trashPanel, .settingsOverlay, .translatePanel, .changelogPanel {
   transition: 0.25s ease;
 }
 
@@ -82,10 +82,6 @@ button {
 
   background: #f2f2f2;
   border: #bdbdbd 1px solid;
-}
-
-#notesList {
-  flex: 1;
 }
 
 .dark .sidebar {
@@ -198,7 +194,7 @@ textarea:focus {
   flex-direction: column;
 }
 
-.buttonContainer {
+.actionButtons {
   display: flex;
   justify-content: flex;
   gap: clamp(3px, 0.25vw, 0.3vw);
@@ -210,7 +206,7 @@ textarea:focus {
   margin-left: 0px;
 
   width: clamp(85px, 15vw, 200px);
-  height: 37px;
+  height: 40px;
 }
 
 .settingsOverlay {
@@ -269,7 +265,7 @@ textarea:focus {
   right: 15px;
 }
 
-.translateDropdown {
+.translatePanel {
   position: fixed;
   top: -9px;
   right: 65px;
@@ -285,7 +281,7 @@ textarea:focus {
   transform: translateY(-7px);
 }
 
-.dark .translateDropdown {
+.dark .translatePanel {
   background: #191919;
   border-color: #444;
 }
@@ -296,6 +292,9 @@ textarea:focus {
   right: 65px;
   padding: 0px 10px;
   width: 285px;
+  max-height: 200px;
+
+  overflow-y: auto;
 
   background: #f2f2f2;
   border: #bdbdbd 1px solid;
@@ -312,10 +311,15 @@ textarea:focus {
 }
 
 .changelogVersion {
+  font-size: 9.5px;
   font-weight: bold;
-  color: gray;
-  margin-top: 10px;
+  color: #999;
+  margin-top: 8px;
   margin-bottom: 3px;
+}
+
+.dark .changelogVersion {
+    color: #555;
 }
 
 .changelogDate {

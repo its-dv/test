@@ -99,7 +99,7 @@ export const translations = {
     rights: "© 2026 Simple Notepad. Все права не защищены.",
     inDevelopment: "В разработке",
     changelogVersion: "Версия",
-    changelogEntry1: "Повышена производительность и улучшена стабильность.",
+    changelogEntry1: "Улучшена производительность и стабильность.",
     changelogEntry2: "Исправлены ошибки и внесены небольшие улучшения.",
     changelogEntry3: "Добавлена панель списка изменений.",
     changelogEntry4: "Улучшен пользовательский интерфейс."

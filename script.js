@@ -80,7 +80,7 @@ function saveNote() {
   }
 
   localStorage.setItem('notes', JSON.stringify(notes));
-  noteTitle.value = translations[currentLang]["untitledNote"];
+  noteTitle.value = "";
   textArea.value = "";
 
   showToast(translate('noteSaved'));
@@ -101,7 +101,7 @@ function deleteNote(id) {
   notes = notes.filter(n => n.id !== id);
   if (currentNoteId === id) {
     currentNoteId = null;
-    noteTitle.value = translations[currentLang]["untitledNote"];
+    noteTitle.value = "";
     textArea.value = "";
   }
 
@@ -165,7 +165,7 @@ const openSettingsButton = document.getElementById('openSettingsButton');
 const settingsOverlay = document.getElementById('settingsOverlay');
 openSettingsButton.addEventListener('click', () => {
   changelogPanel.classList.remove('active');
-  translateDropdown.classList.remove('active');
+  translatePanel.classList.remove('active');
   settingsOverlay.classList.toggle('active');
 });
 
@@ -184,9 +184,9 @@ function switchTheme() {
 
 // Toggle translate dropdown visibility
 const translateButton = document.getElementById('translateButton');
-const translateDropdown = document.getElementById('translateDropdown');
+const translatePanel = document.getElementById('translatePanel');
 translateButton.addEventListener('click', () => {
-  translateDropdown.classList.toggle('active');
+  translatePanel.classList.toggle('active');
   changelogPanel.classList.remove('active');
 });
 
@@ -201,13 +201,14 @@ const changelogButton = document.getElementById('changelogButton');
 const changelogPanel = document.getElementById('changelogPanel');
 changelogButton.addEventListener('click', () => {
   changelogPanel.classList.toggle('active');
-  translateDropdown.classList.remove('active');
+  translatePanel.classList.remove('active');
 });
 
 // Show version in changelog panel
 function updateChangelogVersion() {
-    const el = document.querySelector('.changelogVersion');
-    el.textContent = `${translate('changelogVersion')} ${el.dataset.version}`;
+    document.querySelectorAll('.changelogVersion').forEach(el => {
+        el.textContent = `${translate('changelogVersion')} ${el.dataset.version}`;
+    });
 }
 
 // Toggle trash panel visibility
@@ -300,3 +301,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Initialize UI translations
 updateTexts();
+updateChangelogVersion();
