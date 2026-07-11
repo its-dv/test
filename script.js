@@ -88,31 +88,60 @@ function saveNote() {
   countCharacters();
 }
 
-// Delete note
+const TRASH_KEY = "trash";
+const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
+
+// Delete note (move to trash)
 const deleteButton = document.getElementById('deleteButton');
 deleteButton.addEventListener('click', () => deleteNote(currentNoteId));
 function deleteNote(id) {
-  const exists = notes.some(n => n.id === id);
-  if (!exists) {
+  let trash = JSON.parse(localStorage.getItem(TRASH_KEY)) || [];
+  const noteToDelete = notes.find(n => n.id === id);
+  if (!noteToDelete) {
     showToast(translate('nothingToDelete'));
     return;
   }
 
   notes = notes.filter(n => n.id !== id);
-  if (currentNoteId === id) {
-    currentNoteId = null;
-    noteTitle.value = "";
-    textArea.value = "";
-  }
 
   localStorage.setItem(
     'notes',
     JSON.stringify(notes)
   );
 
+  trash.push({
+    ...noteToDelete,
+    deleteAt: Date.now(),
+    expiresAt: Date.now() + THIRTY_DAYS
+  });
+
+  localStorage.setItem(
+    TRASH_KEY,
+    JSON.stringify(trash)
+  );
+
+  if (currentNoteId === id) {
+    currentNoteId = null;
+    noteTitle.value = "";
+    textArea.value = "";
+  }
+
   showToast(translate('noteDeleted'));
   countCharacters();
   renderNotes();
+}
+
+function cleanTrash() {
+  let trash = JSON.parse(localStorage.getItem(TRASH_KEY)) || [];
+
+  trash = trash.filter(note => {
+    return Date.now() < note.expiresAt;
+  });
+
+  localStorage.setItem(
+    TRASH_KEY,
+    JSON.stringify(trash)
+  );
 }
 
 // Show search menu (under development)
@@ -292,6 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   renderNotes();
+  cleanTrash();
   countCharacters();
   preload("images/sun.svg");
   preload("images/moon.svg");

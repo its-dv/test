@@ -21,13 +21,13 @@ html, body, button,
 
 h1 {
   margin: 0.15em 0;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 button {
-  margin-top: 0px;
+  margin-top: 0;
   margin-left: 5px;
-  padding: 0px 4px;
+  padding: 0 4px;
   font-size: 14px;
 
   color: black;
@@ -99,7 +99,7 @@ ul {
 }
 
 li {
-  margin: 0px 0px;
+  margin: 0;
   line-height: 1.5em;
   list-style-type: none;
 }
@@ -203,7 +203,7 @@ textarea:focus {
 #saveButton,
 #deleteButton {
   margin-top: 3px;
-  margin-left: 0px;
+  margin-left: 0;
 
   width: clamp(85px, 15vw, 200px);
   height: 40px;
@@ -290,7 +290,7 @@ textarea:focus {
   position: fixed;
   top: 100px;
   right: 65px;
-  padding: 0px 10px;
+  padding: 0 10px;
   width: 285px;
   max-height: 200px;
 
@@ -314,7 +314,6 @@ textarea:focus {
   font-size: 9.5px;
   font-weight: bold;
   color: #999;
-  margin-top: 8px;
   margin-bottom: 3px;
 }
 
@@ -324,7 +323,7 @@ textarea:focus {
 
 .changelogDate {
   font-weight: bold;
-  margin: 0px;
+  margin: 0;
 }
 
 .changelog {
