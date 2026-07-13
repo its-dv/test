@@ -30,7 +30,7 @@
         <div class="trashWrapper">
           <button id="trashButton" class="trashButton" data-i18n="trashButton"></button>
           <div id="trashPanel" class="trashPanel">
-            <p data-i18n="inDevelopment"></p>
+            <ul id="deletedNotesList"></ul>
           </div>
         </div>
       </aside>
@@ -39,7 +39,7 @@
         <textarea id="textArea" data-i18n-placeholder="textArea" contenteditable="true"></textarea>
         <div class="actionButtons">
           <button id="saveButton" data-i18n="saveButton"></button>
-          <button id="deleteButton" data-i18n="deleteButton"></button>
+          <button id="moveToTrashButton" data-i18n="moveToTrashButton"></button>
         </div>
       </div>
     </div>
@@ -83,6 +83,12 @@
         <img src="images/logs.svg" alt="Change logs">
       </button>
       <div id="changelogPanel" class="changelogPanel">
+        <p class="changelogVersion" data-version="2026.07.10"></p>
+        <p class="changelogDate">14.07.2026</p>
+        <ul class="changelog">
+          <li data-i18n="changelogEntry5"></li>
+          <li data-i18n="changelogEntry4"></li>
+        </ul>
         <p class="changelogVersion" data-version="2026.07.9"></p>
         <p class="changelogDate">11.07.2026</p>
         <ul class="changelog">

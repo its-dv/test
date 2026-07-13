@@ -111,6 +111,7 @@ li span:hover {
 
 .trashWrapper {
   position: relative;
+  margin-top: auto;
 }
 
 .trashButton {
@@ -140,7 +141,7 @@ li span:hover {
   left: 50%;
 
   margin-bottom: 5px;
-  padding: 8px 12px;
+  padding: 5px 10px;
   border: #bdbdbd 1px solid;
   border-radius: 3px;
 
@@ -201,7 +202,7 @@ textarea:focus {
 }
 
 #saveButton,
-#deleteButton {
+#moveToTrashButton {
   margin-top: 3px;
   margin-left: 0;
 
@@ -292,8 +293,8 @@ textarea:focus {
   right: 65px;
   padding: 0 10px;
   width: 285px;
-  max-height: 200px;
 
+  max-height: 200px;
   overflow-y: auto;
 
   background: #f2f2f2;
@@ -311,7 +312,7 @@ textarea:focus {
 }
 
 .changelogVersion {
-  font-size: 9.5px;
+  font-size: 9px;
   font-weight: bold;
   color: #999;
   margin-bottom: 3px;

@@ -9,6 +9,7 @@ export const translations = {
     noTitleToSave: "No title to save",
     noContentToSave: "No content to save",
     nothingToSave: "Nothing to save",
+    noteMovedToTrash: "Moved to Trash",
     noteDeleted: "Note deleted",
     nothingToDelete: "Nothing to delete",
     characterCounter: "Character count: ",
@@ -16,7 +17,7 @@ export const translations = {
     textPaste: "Text pasted",
     textCut: "Text cut",
     saveButton: "Save",
-    deleteButton: "Delete",
+    moveToTrashButton: "Delete",
     trashButton: "Trash",
     rights: "© 2026 Simple Notepad. All rights not reserved.",
     inDevelopment: "Under development",
@@ -24,7 +25,8 @@ export const translations = {
     changelogEntry1: "Performance improvements and optimizations.",
     changelogEntry2: "Bug fixes and minor improvements.",
     changelogEntry3: "Added a changelog panel.",
-    changelogEntry4: "Improved the user interface."
+    changelogEntry4: "Improved the user interface.",
+    changelogEntry5: "Added notes trash."
   },
   de: {
     languages: "Sprachen",
@@ -35,6 +37,7 @@ export const translations = {
     noTitleToSave: "Kein Titel zum Speichern",
     noContentToSave: "Kein Inhalt zum Speichern",
     nothingToSave: "Nichts zum Speichern",
+    noteMovedToTrash: "In den Papierkorb verschoben",
     noteDeleted: "Notiz gelöscht",
     nothingToDelete: "Nichts zum Löschen",
     characterCounter: "Zeichenanzahl: ",
@@ -42,7 +45,7 @@ export const translations = {
     textPaste: "Text eingefügt",
     textCut: "Text ausgeschnitten",
     saveButton: "Speichern",
-    deleteButton: "Löschen",
+    moveToTrashButton: "Löschen",
     trashButton: "Papierkorb",
     rights: "© 2026 Simple Notepad. Alle Rechte nicht reserviert.",
     inDevelopment: "In Entwicklung",
@@ -50,7 +53,8 @@ export const translations = {
     changelogEntry1: "Leistungsverbesserungen und Optimierungen.",
     changelogEntry2: "Fehlerbehebungen und kleinere Verbesserungen.",
     changelogEntry3: "Changelog-Panel hinzugefügt.",
-    changelogEntry4: "Benutzeroberfläche verbessert."
+    changelogEntry4: "Benutzeroberfläche verbessert.",
+    changelogEntry5: "Papierkorb für Notizen hinzugefügt."
   },
   fr: {
     languages: "Langues",
@@ -61,6 +65,7 @@ export const translations = {
     noTitleToSave: "Aucun titre à enregistrer",
     noContentToSave: "Aucun contenu à enregistrer",
     nothingToSave: "Rien à enregistrer",
+    noteMovedToTrash: "Déplacé dans la corbeille",
     noteDeleted: "Note supprimée",
     nothingToDelete: "Rien à supprimer",
     characterCounter: "Nombre de caractères : ",
@@ -68,7 +73,7 @@ export const translations = {
     textPaste: "Texte collé",
     textCut: "Texte coupé",
     saveButton: "Enregistrer",
-    deleteButton: "Supprimer",
+    moveToTrashButton: "Supprimer",
     trashButton: "Corbeille",
     rights: "© 2026 Simple Notepad. Tous droits non réservés.",
     inDevelopment: "En développement",
@@ -76,7 +81,8 @@ export const translations = {
     changelogEntry1: "Améliorations des performances et optimisations.",
     changelogEntry2: "Corrections de bugs et améliorations mineures.",
     changelogEntry3: "Ajout d'un panneau de journal des modifications.",
-    changelogEntry4: "Benutzeroberfläche verbessert."
+    changelogEntry4: "Benutzeroberfläche verbessert.",
+    changelogEntry5: "Ajout de la corbeille des notes."
   },
   ru: {
     languages: "Языки",
@@ -87,6 +93,7 @@ export const translations = {
     noTitleToSave: "Нет названия для сохранения",
     noContentToSave: "Нет содержимого для сохранения",
     nothingToSave: "Нечего сохранять",
+    noteMovedToTrash: "Перемещено в корзину",
     noteDeleted: "Заметка удалена",
     nothingToDelete: "Нечего удалять",
     characterCounter: "Количество символов: ",
@@ -94,7 +101,7 @@ export const translations = {
     textPaste: "Текст вставлен",
     textCut: "Текст вырезан",
     saveButton: "Сохранить",
-    deleteButton: "Удалить",
+    moveToTrashButton: "Удалить",
     trashButton: "Корзина",
     rights: "© 2026 Simple Notepad. Все права не защищены.",
     inDevelopment: "В разработке",
@@ -102,6 +109,7 @@ export const translations = {
     changelogEntry1: "Улучшена производительность и стабильность.",
     changelogEntry2: "Исправлены ошибки и внесены небольшие улучшения.",
     changelogEntry3: "Добавлена панель списка изменений.",
-    changelogEntry4: "Улучшен пользовательский интерфейс."
+    changelogEntry4: "Улучшен пользовательский интерфейс.",
+    changelogEntry5: "Добавлена корзина для заметок."
   }
 };

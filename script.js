@@ -4,6 +4,8 @@ import { translations } from "./translations.js";
 // Notes data structure
 let notes = JSON.parse(localStorage.getItem('notes')) || [];
 let currentNoteId;
+let trash = JSON.parse(localStorage.getItem('trash')) || [];
+const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
 
 // DOM elements
 const noteTitle = document.getElementById('noteTitle');
@@ -28,11 +30,37 @@ function renderNotes() {
     li.appendChild(titleSpan);
     list.appendChild(li);
   });
+
+  const delList = document.getElementById('deletedNotesList');
+  delList.innerHTML = "";
+
+  trash.forEach(note => {
+    const li = document.createElement('li');
+    if (note.id === currentNoteId) {
+      li.classList.add('active');
+    }
+
+    const titleSpan = document.createElement('span');
+    titleSpan.textContent = note.title;
+    titleSpan.onclick = () => openNote(note.id, true);
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = "×";
+    deleteButton.onclick = () => deleteNote(note.id);
+    const restoreButton = document.createElement('button');
+    restoreButton.textContent = "←";
+    restoreButton.onclick = () => restoreNote(note.id);
+
+    li.appendChild(titleSpan);
+    li.appendChild(deleteButton);
+    li.appendChild(restoreButton);
+    delList.appendChild(li);
+  });
 }
 
 // Open a note
-function openNote(id) {
-  const note = notes.find(n => n.id === id);
+function openNote(id, fromTrash = false) {
+  const source = fromTrash ? trash : notes;
+  const note = source.find(n => n.id === id);
   if (note) {
     currentNoteId = id;
     localStorage.setItem('noteId', currentNoteId);
@@ -88,14 +116,10 @@ function saveNote() {
   countCharacters();
 }
 
-const TRASH_KEY = "trash";
-const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
-
-// Delete note (move to trash)
-const deleteButton = document.getElementById('deleteButton');
-deleteButton.addEventListener('click', () => deleteNote(currentNoteId));
-function deleteNote(id) {
-  let trash = JSON.parse(localStorage.getItem(TRASH_KEY)) || [];
+// Move to trash
+const moveToTrashButton = document.getElementById('moveToTrashButton');
+moveToTrashButton.addEventListener('click', () => moveToTrash(currentNoteId));
+function moveToTrash(id) {
   const noteToDelete = notes.find(n => n.id === id);
   if (!noteToDelete) {
     showToast(translate('nothingToDelete'));
@@ -103,45 +127,70 @@ function deleteNote(id) {
   }
 
   notes = notes.filter(n => n.id !== id);
+  localStorage.setItem('notes', JSON.stringify(notes));
 
-  localStorage.setItem(
-    'notes',
-    JSON.stringify(notes)
-  );
-
+  const now = Date.now();
   trash.push({
     ...noteToDelete,
-    deleteAt: Date.now(),
-    expiresAt: Date.now() + THIRTY_DAYS
+    deleteAt: now,
+    expiresAt: now + THIRTY_DAYS
   });
-
-  localStorage.setItem(
-    TRASH_KEY,
-    JSON.stringify(trash)
-  );
+  localStorage.setItem('trash', JSON.stringify(trash));
 
   if (currentNoteId === id) {
     currentNoteId = null;
     noteTitle.value = "";
     textArea.value = "";
+    countCharacters();
   }
 
+  showToast(translate('noteMovedToTrash'));
+  renderNotes();
+}
+
+// Restore note
+function restoreNote(id) {
+  const noteToRestore = trash.find(n => n.id === id);
+  if (!noteToRestore) {
+    showToast(translate('nothingToRestore'));
+    return;
+  }
+
+  notes.push({
+    id: noteToRestore.id,
+    title: noteToRestore.title,
+    content: noteToRestore.content
+  })
+
+  trash = trash.filter(n => n.id !== id);
+  localStorage.setItem('notes', JSON.stringify(notes));
+  localStorage.setItem('trash', JSON.stringify(trash));
+
+  showToast(translate('noteRestored'));
+  renderNotes();
+}
+
+// Delete note
+function deleteNote(id) {
+  const noteToDelete = trash.find(n => n.id === id);
+  if (!noteToDelete) {
+    showToast(translate('nothingToDelete'));
+    return;
+  }
+
+  trash = trash.filter(n => n.id !== id);
+  localStorage.setItem('trash', JSON.stringify(trash));
+
   showToast(translate('noteDeleted'));
-  countCharacters();
   renderNotes();
 }
 
 function cleanTrash() {
-  let trash = JSON.parse(localStorage.getItem(TRASH_KEY)) || [];
-
   trash = trash.filter(note => {
     return Date.now() < note.expiresAt;
   });
 
-  localStorage.setItem(
-    TRASH_KEY,
-    JSON.stringify(trash)
-  );
+  localStorage.setItem('trash', JSON.stringify(trash));
 }
 
 // Show search menu (under development)
@@ -320,13 +369,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  renderNotes();
   cleanTrash();
+  renderNotes();
   countCharacters();
   preload("images/sun.svg");
   preload("images/moon.svg");
-  preload("images/pencil.svg")
-  preload("images/tick.svg");
 });
 
 // Initialize UI translations
