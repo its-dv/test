@@ -239,9 +239,9 @@ document.addEventListener('cut', () => {
 });
 
 // Settings panel
-const openSettingsButton = document.getElementById('openSettingsButton');
+const settingsButton = document.getElementById('settingsButton');
 const settingsOverlay = document.getElementById('settingsOverlay');
-openSettingsButton.addEventListener('click', () => {
+settingsButton.addEventListener('click', () => {
   changelogPanel.classList.remove('active');
   translatePanel.classList.remove('active');
   settingsOverlay.classList.toggle('active');

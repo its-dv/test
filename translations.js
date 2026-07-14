@@ -26,7 +26,8 @@ export const translations = {
     changelogEntry2: "Bug fixes and minor improvements.",
     changelogEntry3: "Added a changelog panel.",
     changelogEntry4: "Improved the user interface.",
-    changelogEntry5: "Added notes trash."
+    changelogEntry5: "Added notes trash.",
+    changelogEntry6: "Fixed language panel display issue."
   },
   de: {
     languages: "Sprachen",
@@ -54,7 +55,8 @@ export const translations = {
     changelogEntry2: "Fehlerbehebungen und kleinere Verbesserungen.",
     changelogEntry3: "Changelog-Panel hinzugefügt.",
     changelogEntry4: "Benutzeroberfläche verbessert.",
-    changelogEntry5: "Papierkorb für Notizen hinzugefügt."
+    changelogEntry5: "Papierkorb für Notizen hinzugefügt.",
+    changelogEntry6: "Anzeigeproblem des Sprachpanels behoben."
   },
   fr: {
     languages: "Langues",
@@ -82,7 +84,8 @@ export const translations = {
     changelogEntry2: "Corrections de bugs et améliorations mineures.",
     changelogEntry3: "Ajout d'un panneau de journal des modifications.",
     changelogEntry4: "Benutzeroberfläche verbessert.",
-    changelogEntry5: "Ajout de la corbeille des notes."
+    changelogEntry5: "Ajout de la corbeille des notes.",
+    changelogEntry6: "Problème d'affichage du panneau des langues corrigé."
   },
   ru: {
     languages: "Языки",
@@ -110,6 +113,7 @@ export const translations = {
     changelogEntry2: "Исправлены ошибки и внесены небольшие улучшения.",
     changelogEntry3: "Добавлена панель списка изменений.",
     changelogEntry4: "Улучшен пользовательский интерфейс.",
-    changelogEntry5: "Добавлена корзина для заметок."
+    changelogEntry5: "Добавлена корзина для заметок.",
+    changelogEntry6: "Исправлена ошибка с отображением панели языков."
   }
 };

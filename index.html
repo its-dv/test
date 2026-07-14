@@ -38,15 +38,15 @@
       <div class="composer">
         <textarea id="textArea" data-i18n-placeholder="textArea" contenteditable="true"></textarea>
         <div class="actionButtons">
-          <button id="saveButton" data-i18n="saveButton"></button>
-          <button id="moveToTrashButton" data-i18n="moveToTrashButton"></button>
+          <button id="saveButton" class="actionButton" data-i18n="saveButton"></button>
+          <button id="moveToTrashButton" class="actionButton" data-i18n="moveToTrashButton"></button>
         </div>
       </div>
     </div>
 
     <p id="characterCounter"></p>
 
-    <button id="openSettingsButton" class="preferenceButton">
+    <button id="settingsButton" class="preferenceButton">
       <img src="images/settings.svg" alt="Settings">
     </button>
 
@@ -62,17 +62,25 @@
       <fieldset id="translatePanel" class="translatePanel">
         <legend data-i18n="languages"></legend>
 
-        <input id="english" type="radio" name="language" value="en" checked>
-        <label for="english">English</label>
+        <label class="languageOption">
+          <input id="english" type="radio" name="language" value="en" checked>
+          English
+        </label>
 
-        <input id="german" type="radio" name="language" value="de">
-        <label for="german">Deutsch</label>
+        <label class="languageOption">
+          <input id="german" type="radio" name="language" value="de">
+          Deutsch
+        </label>
 
-        <input id="french" type="radio" name="language" value="fr">
-        <label for="french">Français</label>
+        <label class="languageOption">
+          <input id="french" type="radio" name="language" value="fr">
+          Français
+        </label>
 
-        <input id="russian" type="radio" name="language" value="ru">
-        <label for="russian">Русский</label>
+        <label class="languageOption">
+          <input id="russian" type="radio" name="language" value="ru">
+          Русский
+        </label>
       </fieldset>
 
       <button id="characterCountButton" class="preferenceButton">
@@ -83,11 +91,12 @@
         <img src="images/logs.svg" alt="Change logs">
       </button>
       <div id="changelogPanel" class="changelogPanel">
-        <p class="changelogVersion" data-version="2026.07.10"></p>
+        <p class="changelogVersion" data-version="2026.07.11"></p>
         <p class="changelogDate">14.07.2026</p>
         <ul class="changelog">
           <li data-i18n="changelogEntry5"></li>
           <li data-i18n="changelogEntry4"></li>
+          <li data-i18n="changelogEntry6"></li>
         </ul>
         <p class="changelogVersion" data-version="2026.07.9"></p>
         <p class="changelogDate">11.07.2026</p>
