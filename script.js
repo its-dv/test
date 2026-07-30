@@ -10,7 +10,7 @@ const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
 // DOM elements
 const noteTitle = document.getElementById('noteTitle');
 const textArea = document.getElementById('textArea');
-const characterCounter = document.getElementById('characterCounter');
+const charCounter = document.getElementById('charCounter');
 
 // Render all notes
 function renderNotes() {
@@ -67,7 +67,7 @@ function openNote(id, fromTrash = false) {
 
     noteTitle.value = note.title;
     textArea.value = note.content;
-    countCharacters();
+    charCount();
   }
 }
 
@@ -113,7 +113,7 @@ function saveNote() {
 
   showToast(translate('noteSaved'));
   renderNotes();
-  countCharacters();
+  charCount();
 }
 
 // Move to trash
@@ -141,7 +141,7 @@ function moveToTrash(id) {
     currentNoteId = null;
     noteTitle.value = "";
     textArea.value = "";
-    countCharacters();
+    charCount();
   }
 
   showToast(translate('noteMovedToTrash'));
@@ -185,6 +185,7 @@ function deleteNote(id) {
   renderNotes();
 }
 
+// Auto-delete trashed notes after expriration time
 function cleanTrash() {
   trash = trash.filter(note => {
     return Date.now() < note.expiresAt;
@@ -238,12 +239,12 @@ document.addEventListener('cut', () => {
   showToast(translate('textCut'));
 });
 
-// Settings panel
+// Settings overlay
 const settingsButton = document.getElementById('settingsButton');
 const settingsOverlay = document.getElementById('settingsOverlay');
 settingsButton.addEventListener('click', () => {
-  changelogPanel.classList.remove('active');
-  translatePanel.classList.remove('active');
+  changelogOverlay.classList.remove('active');
+  translateOverlay.classList.remove('active');
   settingsOverlay.classList.toggle('active');
 });
 
@@ -262,46 +263,54 @@ function switchTheme() {
 
 // Toggle translate dropdown visibility
 const translateButton = document.getElementById('translateButton');
-const translatePanel = document.getElementById('translatePanel');
+const translateOverlay = document.getElementById('translateOverlay');
 translateButton.addEventListener('click', () => {
-  translatePanel.classList.toggle('active');
-  changelogPanel.classList.remove('active');
-});
-
-// Character counter toggle
-const characterCountButton = document.getElementById('characterCountButton');
-characterCountButton.addEventListener('click', () => {
-  characterCounter.classList.toggle('hidden');
-});
-
-// Toggle changelog panel visibility
-const changelogButton = document.getElementById('changelogButton');
-const changelogPanel = document.getElementById('changelogPanel');
-changelogButton.addEventListener('click', () => {
-  changelogPanel.classList.toggle('active');
-  translatePanel.classList.remove('active');
-});
-
-// Show version in changelog panel
-function updateChangelogVersion() {
-    document.querySelectorAll('.changelogVersion').forEach(el => {
-        el.textContent = `${translate('changelogVersion')} ${el.dataset.version}`;
-    });
-}
-
-// Toggle trash panel visibility
-const trashButton = document.getElementById('trashButton');
-const trashPanel = document.getElementById('trashPanel');
-trashButton.addEventListener('click', () => {
-  trashPanel.classList.toggle('active');
+  translateOverlay.classList.toggle('active');
+  changelogOverlay.classList.remove('active');
 });
 
 // Character counter
-textArea.addEventListener('input', countCharacters);
-function countCharacters() {
+textArea.addEventListener('input', charCount);
+function charCount() {
   const count = textArea.value.length;
-  characterCounter.textContent = translate('characterCounter') + count;
+  charCounter.textContent = translate('charCounter') + count;
 }
+
+// Toggle character counter visibility
+const charCountButton = document.getElementById('charCountButton');
+charCountButton.addEventListener('click', () => {
+  charCounter.style.display = charCounter.style.display === 'none' ? 'block' : 'none';
+});
+
+// Toggle changelog overlay visibility
+const changelogButton = document.getElementById('changelogButton');
+const changelogOverlay = document.getElementById('changelogOverlay');
+changelogButton.addEventListener('click', () => {
+  changelogOverlay.classList.toggle('active');
+  translateOverlay.classList.remove('active');
+});
+
+// Show version in changelog overlay
+function updateChangelogVersion() {
+  document.querySelectorAll('.changelogVersion').forEach(el => {
+    el.textContent = `${translate('changelogVersion')} ${el.dataset.version}`;
+  });
+}
+
+// Toggle trash overlay visibility
+const trashButton = document.getElementById('trashButton');
+const trashOverlay = document.getElementById('trashOverlay');
+trashButton.addEventListener('click', () => {
+  trashOverlay.classList.toggle('active');
+});
+
+// Hide overlays on textarea focus
+textArea.addEventListener('focus', () => {
+  trashOverlay.classList.remove('active');
+  changelogOverlay.classList.remove('active');
+  translateOverlay.classList.remove('active');
+  settingsOverlay.classList.remove('active');
+});
 
 // Default language
 let currentLang = localStorage.getItem('lang') || 'en';
@@ -336,7 +345,7 @@ function changeLanguage(lang) {
   localStorage.setItem('lang', lang);
 
   updateTexts();
-  countCharacters();
+  charCount();
   updateChangelogVersion()
 }
 
@@ -371,7 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   cleanTrash();
   renderNotes();
-  countCharacters();
+  charCount();
   preload("images/sun.svg");
   preload("images/moon.svg");
 });

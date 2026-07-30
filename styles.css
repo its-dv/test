@@ -10,8 +10,8 @@ body {
 }
 
 html, body, button,
-.sidebar, .trashPanel, .settingsOverlay,
-.translatePanel, .changelogPanel, .changelogVersion {
+.sidebar, .trashOverlay, .settingsOverlay,
+.translateOverlay, .changelogOverlay, .changelogVersion {
   transition: 0.25s ease;
 }
 
@@ -135,7 +135,7 @@ li span:hover {
   background: #191919;
 }
 
-.trashPanel {
+.trashOverlay {
   position: absolute;
   display: flex;
   bottom: 100%;
@@ -156,7 +156,7 @@ li span:hover {
   opacity: 0;
 }
 
-.dark .trashPanel {
+.dark .trashOverlay {
   color: #fff;
   background: #191919;
   border-color: #444;
@@ -232,7 +232,7 @@ textarea:focus {
   border-color: #444;
 }
 
-#characterCounter {
+#charCounter {
   margin-top: 5px;
 }
 
@@ -264,13 +264,13 @@ textarea:focus {
   right: 15px;
 }
 
-.translatePanel {
+.translateOverlay {
   display: flex;
   flex-direction: column;
   position: fixed;
   top: 100px;
   right: 65px;
-  padding: 10px;
+  padding: 10px 15px 15px 10px;
 
   background: #f2f2f2;
   border: #bdbdbd 1px solid;
@@ -281,7 +281,7 @@ textarea:focus {
   transform: translateY(-7px);
 }
 
-.dark .translatePanel {
+.dark .translateOverlay {
   background: #191919;
   border-color: #444;
 }
@@ -291,7 +291,7 @@ textarea:focus {
   align-items: center;
 }
 
-.changelogPanel {
+.changelogOverlay {
   position: fixed;
   top: 100px;
   right: 65px;
@@ -310,7 +310,7 @@ textarea:focus {
   transform: translateY(-7px);
 }
 
-.dark .changelogPanel {
+.dark .changelogOverlay {
   background: #191919;
   border-color: #444;
 }
@@ -372,10 +372,6 @@ textarea:focus {
 }
 
 /* 4. Utilities */
-.hidden {
-  display: none;
-}
-
 .active {
   pointer-events: auto;
   opacity: 1;

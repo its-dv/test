@@ -2,125 +2,135 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script type="module" src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <!-- Initialize theme on page load -->
-  <script>
-    if (localStorage.getItem('theme') === 'dark') {
-      document.documentElement.classList.add('dark');
-    }
-  </script>
-  <link rel="stylesheet" href="styles.css">
-  <title>Simple Notepad</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="module" src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<!-- Initialize theme on page load -->
+<script>
+  if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.classList.add('dark');
+  }
+</script>
+<link rel="stylesheet" href="styles.css">
+<title>Simple Notepad</title>
+
 </head>
 
 <body>
-  <header>
-    <h1>Simple Notepad</h1>
-  </header>
 
-  <main>
-    <input id="noteTitle" data-i18n="untitledNote" data-i18n-placeholder="untitledNote" contenteditable="true">
+<header>
+  <h1>Simple Notepad</h1>
+</header>
 
-    <div class="mainContainer">
-      <aside class="sidebar">
-        <ul id="notesList"></ul>
-        <div class="trashWrapper">
-          <button id="trashButton" class="trashButton" data-i18n="trashButton"></button>
-          <div id="trashPanel" class="trashPanel">
-            <ul id="deletedNotesList"></ul>
-          </div>
-        </div>
-      </aside>
+<main>
+  <input id="noteTitle" data-i18n="untitledNote" data-i18n-placeholder="untitledNote" contenteditable="true">
 
-      <div class="composer">
-        <textarea id="textArea" data-i18n-placeholder="textArea" contenteditable="true"></textarea>
-        <div class="actionButtons">
-          <button id="saveButton" class="actionButton" data-i18n="saveButton"></button>
-          <button id="moveToTrashButton" class="actionButton" data-i18n="moveToTrashButton"></button>
+  <div class="mainContainer">
+    <aside class="sidebar">
+      <ul id="notesList"></ul>
+      <div class="trashWrapper">
+        <button id="trashButton" class="trashButton" data-i18n="trashButton"></button>
+        <div id="trashOverlay" class="trashOverlay">
+          <ul id="deletedNotesList"></ul>
         </div>
       </div>
+    </aside>
+
+    <div class="composer">
+      <textarea id="textArea" data-i18n-placeholder="textArea" contenteditable="true"></textarea>
+      <div class="actionButtons">
+        <button id="saveButton" class="actionButton" data-i18n="saveButton"></button>
+        <button id="moveToTrashButton" class="actionButton" data-i18n="moveToTrashButton"></button>
+        <button id="infoButton" class="actionButton" data-i18n="infoButton"></button>
+      </div>
     </div>
+  </div>
 
-    <p id="characterCounter"></p>
+  <p id="charCounter"></p>
 
-    <button id="settingsButton" class="preferenceButton">
-      <img src="images/settings.svg" alt="Settings">
+  <button id="settingsButton" class="preferenceButton">
+    <img src="images/settings.svg" alt="Settings">
+  </button>
+
+  <div id="settingsOverlay" class="settingsOverlay">
+    <button id="themeButton" class="preferenceButton">
+      <img id="themeIcon" src="images/moon.svg" alt="Switch Theme">
     </button>
 
-    <div id="settingsOverlay" class="settingsOverlay">
-      <button id="themeButton" class="preferenceButton">
-        <img id="themeIcon" src="images/moon.svg" alt="Switch Theme">
-      </button>
+    <button id="translateButton" class="preferenceButton">
+      <img src="images/translate.svg" alt="Translate">
+    </button>
 
-      <button id="translateButton" class="preferenceButton">
-        <img src="images/translate.svg" alt="Translate">
-      </button>
+    <fieldset id="translateOverlay" class="translateOverlay">
+      <legend data-i18n="languages"></legend>
 
-      <fieldset id="translatePanel" class="translatePanel">
-        <legend data-i18n="languages"></legend>
+      <label class="languageOption">
+        <input id="english" type="radio" name="language" value="en" checked>
+        English
+      </label>
 
-        <label class="languageOption">
-          <input id="english" type="radio" name="language" value="en" checked>
-          English
-        </label>
+      <label class="languageOption">
+        <input id="german" type="radio" name="language" value="de">
+        Deutsch
+      </label>
 
-        <label class="languageOption">
-          <input id="german" type="radio" name="language" value="de">
-          Deutsch
-        </label>
+      <label class="languageOption">
+        <input id="french" type="radio" name="language" value="fr">
+        Français
+      </label>
 
-        <label class="languageOption">
-          <input id="french" type="radio" name="language" value="fr">
-          Français
-        </label>
+      <label class="languageOption">
+        <input id="russian" type="radio" name="language" value="ru">
+        Русский
+      </label>
+    </fieldset>
 
-        <label class="languageOption">
-          <input id="russian" type="radio" name="language" value="ru">
-          Русский
-        </label>
-      </fieldset>
+    <button id="charCountButton" class="preferenceButton">
+      <img src="images/hash.svg" alt="Character counter">
+    </button>
 
-      <button id="characterCountButton" class="preferenceButton">
-        <img src="images/hash.svg" alt="Character counter">
-      </button>
-
-      <button id="changelogButton" class="preferenceButton">
-        <img src="images/logs.svg" alt="Change logs">
-      </button>
-      <div id="changelogPanel" class="changelogPanel">
-        <p class="changelogVersion" data-version="2026.07.11"></p>
-        <p class="changelogDate">14.07.2026</p>
-        <ul class="changelog">
-          <li data-i18n="changelogEntry5"></li>
-          <li data-i18n="changelogEntry4"></li>
-          <li data-i18n="changelogEntry6"></li>
-        </ul>
-        <p class="changelogVersion" data-version="2026.07.9"></p>
-        <p class="changelogDate">11.07.2026</p>
-        <ul class="changelog">
-          <li data-i18n="changelogEntry2"></li>
-        </ul>
-        <p class="changelogVersion" data-version="2026.07.8"></p>
-        <p class="changelogDate">09.07.2026</p>
-        <ul class="changelog">
-          <li data-i18n="changelogEntry1"></li>
-          <li data-i18n="changelogEntry3"></li>
-          <li data-i18n="changelogEntry4"></li>
-        </ul>
-      </div>
-      
+    <button id="changelogButton" class="preferenceButton">
+      <img src="images/logs.svg" alt="Change logs">
+    </button>
+    <div id="changelogOverlay" class="changelogOverlay">
+      <p class="changelogVersion" data-version="2026.07.13"></p>
+      <p class="changelogDate">30.07.2026</p>
+      <ul class="changelog">
+        <li data-i18n="changelogEntry7"></li>
+      </ul>
+      <p class="changelogVersion" data-version="2026.07.11"></p>
+      <p class="changelogDate">14.07.2026</p>
+      <ul class="changelog">
+        <li data-i18n="changelogEntry5"></li>
+        <li data-i18n="changelogEntry4"></li>
+        <li data-i18n="changelogEntry6"></li>
+      </ul>
+      <p class="changelogVersion" data-version="2026.07.9"></p>
+      <p class="changelogDate">11.07.2026</p>
+      <ul class="changelog">
+        <li data-i18n="changelogEntry2"></li>
+      </ul>
+      <p class="changelogVersion" data-version="2026.07.7"></p>
+      <p class="changelogDate">09.07.2026</p>
+      <ul class="changelog">
+        <li data-i18n="changelogEntry1"></li>
+        <li data-i18n="changelogEntry3"></li>
+        <li data-i18n="changelogEntry4"></li>
+      </ul>
     </div>
+      
+  </div>
 
-    <div id="toast" class="toast"></div>
+  <div id="toast" class="toast"></div>
 
-  </main>
+</main>
 
-  <footer>
-    <p id="rights" data-i18n="rights"></p>
-  </footer>
+<footer>
+  <p id="rights" data-i18n="rights"></p>
+</footer>
+
 </body>
 
 </html>
