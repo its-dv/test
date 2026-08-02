@@ -6,11 +6,13 @@
 body {
   font-family: Arial, sans-serif;
   margin: 13px clamp(1px, 1.5vw, 15px) 0;
+  overflow: hidden;
 }
 
 @media (max-width: 400px) {
   body {
     margin-left: 3px;
+    margin-right: 3px;
   }
 }
 
@@ -47,6 +49,7 @@ button {
 #noteTitle {
   margin-left: 3px;
   margin-bottom: 0.40em;
+  padding: 0;
 
   border: none;
   background: transparent;

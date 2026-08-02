@@ -1,5 +1,6 @@
 // Import translations
-import { translations } from "./translations.js";
+import { uiTranslations } from "./translations/uiTranslations.js";
+import { changelogTranslations } from "./translations/changelog.js";
 
 // Notes data structure
 let notes = JSON.parse(localStorage.getItem('notes')) || [];
@@ -315,7 +316,10 @@ textArea.addEventListener('focus', () => {
 // Default language
 let currentLang = localStorage.getItem('lang') || 'en';
 function translate(key) {
-  return translations[currentLang][key] || key;
+  return uiTranslations[currentLang][key] || key;
+}
+function translateChangelog(key) {
+  return changelogTranslations[currentLang][key] || key;
 }
 
 // Language selection
@@ -336,6 +340,12 @@ function updateTexts() {
   // Placeholder text content
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
     el.placeholder = translate(el.dataset.i18nPlaceholder);
+  });
+
+  // Changelog entries
+  document.querySelectorAll('.changelog li').forEach(el => {
+    const key = el.dataset.i18n;
+    el.textContent = translateChangelog(key);
   });
 }
 

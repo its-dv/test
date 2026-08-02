@@ -1,5 +1,5 @@
-// Translations
-export const translations = {
+// UI Translations
+export const uiTranslations = {
   en: {
     languages: "Languages",
     untitledNote: "Untitled",
@@ -22,15 +22,7 @@ export const translations = {
     trashButton: "Trash",
     rights: "© 2026 Simple Notepad. All rights not reserved.",
     inDevelopment: "Under development",
-    changelogVersion: "Version",
-    changelogEntry1: "Performance improvements and optimizations",
-    changelogEntry2: "Bug fixes and minor improvements",
-    changelogEntry3: "Added a changelog panel",
-    changelogEntry4: "Improved the user interface",
-    changelogEntry5: "Added notes trash",
-    changelogEntry6: "Fixed language panel display issue",
-    changelogEntry7: "Added auto-close for open panels",
-    changelogEntry8: "Minor improvements"
+    changelogVersion: "Version"
   },
   de: {
     languages: "Sprachen",
@@ -54,15 +46,7 @@ export const translations = {
     trashButton: "Papierkorb",
     rights: "© 2026 Simple Notepad. Alle Rechte nicht reserviert.",
     inDevelopment: "In Entwicklung",
-    changelogVersion: "Version",
-    changelogEntry1: "Leistungsverbesserungen und Optimierungen",
-    changelogEntry2: "Fehlerbehebungen und kleinere Verbesserungen",
-    changelogEntry3: "Changelog-Panel hinzugefügt",
-    changelogEntry4: "Benutzeroberfläche verbessert",
-    changelogEntry5: "Papierkorb für Notizen hinzugefügt",
-    changelogEntry6: "Anzeigeproblem des Sprachpanels behoben",
-    changelogEntry7: "Automatisches Schließen geöffneter Fenster hinzugefügt",
-    changelogEntry8: "Kleine Verbesserungen"
+    changelogVersion: "Version"
   },
   fr: {
     languages: "Langues",
@@ -86,15 +70,7 @@ export const translations = {
     trashButton: "Corbeille",
     rights: "© 2026 Simple Notepad. Tous droits non réservés.",
     inDevelopment: "En développement",
-    changelogVersion: "Version",
-    changelogEntry1: "Améliorations des performances et optimisations",
-    changelogEntry2: "Corrections de bugs et améliorations mineures",
-    changelogEntry3: "Ajout d'un panneau de journal des modifications",
-    changelogEntry4: "Benutzeroberfläche verbessert",
-    changelogEntry5: "Ajout de la corbeille des notes",
-    changelogEntry6: "Problème d'affichage du panneau des langues corrigé",
-    changelogEntry7: "Ajout de la fermeture automatique des panneaux ouverts",
-    changelogEntry8: "Petites améliorations"
+    changelogVersion: "Version"
   },
   ru: {
     languages: "Языки",
@@ -118,14 +94,6 @@ export const translations = {
     trashButton: "Корзина",
     rights: "© 2026 Simple Notepad. Все права не защищены.",
     inDevelopment: "В разработке",
-    changelogVersion: "Версия",
-    changelogEntry1: "Улучшена производительность и стабильность",
-    changelogEntry2: "Исправлены ошибки и внесены небольшие улучшения",
-    changelogEntry3: "Добавлена панель списка изменений",
-    changelogEntry4: "Улучшен пользовательский интерфейс",
-    changelogEntry5: "Добавлена корзина для заметок",
-    changelogEntry6: "Исправлена ошибка с отображением панели языков",
-    changelogEntry7: "Добавлено автозакрытие открытых панелей",
-    changelogEntry8: "Мелкие улучшения"
+    changelogVersion: "Версия"
   }
 };
