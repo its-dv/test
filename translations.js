@@ -29,7 +29,8 @@ export const translations = {
     changelogEntry4: "Improved the user interface",
     changelogEntry5: "Added notes trash",
     changelogEntry6: "Fixed language panel display issue",
-    changelogEntry7: "Added auto-close for open panels"
+    changelogEntry7: "Added auto-close for open panels",
+    changelogEntry8: "Minor improvements"
   },
   de: {
     languages: "Sprachen",
@@ -60,7 +61,8 @@ export const translations = {
     changelogEntry4: "Benutzeroberfläche verbessert",
     changelogEntry5: "Papierkorb für Notizen hinzugefügt",
     changelogEntry6: "Anzeigeproblem des Sprachpanels behoben",
-    changelogEntry7: "Automatisches Schließen geöffneter Fenster hinzugefügt"
+    changelogEntry7: "Automatisches Schließen geöffneter Fenster hinzugefügt",
+    changelogEntry8: "Kleine Verbesserungen"
   },
   fr: {
     languages: "Langues",
@@ -91,7 +93,8 @@ export const translations = {
     changelogEntry4: "Benutzeroberfläche verbessert",
     changelogEntry5: "Ajout de la corbeille des notes",
     changelogEntry6: "Problème d'affichage du panneau des langues corrigé",
-    changelogEntry7: "Ajout de la fermeture automatique des panneaux ouverts"
+    changelogEntry7: "Ajout de la fermeture automatique des panneaux ouverts",
+    changelogEntry8: "Petites améliorations"
   },
   ru: {
     languages: "Языки",
@@ -122,6 +125,7 @@ export const translations = {
     changelogEntry4: "Улучшен пользовательский интерфейс",
     changelogEntry5: "Добавлена корзина для заметок",
     changelogEntry6: "Исправлена ошибка с отображением панели языков",
-    changelogEntry7: "Добавлено автозакрытие открытых панелей"
+    changelogEntry7: "Добавлено автозакрытие открытых панелей",
+    changelogEntry8: "Мелкие улучшения"
   }
 };

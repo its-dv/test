@@ -5,11 +5,16 @@
 
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 20px;
+  margin: 13px clamp(1px, 1.5vw, 15px) 0;
 }
 
-html, body, button,
+@media (max-width: 400px) {
+  body {
+    margin-left: 3px;
+  }
+}
+
+html, button,
 .sidebar, .trashOverlay, .settingsOverlay,
 .translateOverlay, .changelogOverlay, .changelogVersion {
   transition: 0.25s ease;
@@ -18,11 +23,6 @@ html, body, button,
 .dark {
   color: white;
   background: #202020;
-}
-
-h1 {
-  margin: 0.15em 0;
-  margin-bottom: 0;
 }
 
 button {
@@ -45,9 +45,8 @@ button {
 }
 
 #noteTitle {
-  margin-top: 0.3em;
-  margin-bottom: 0.45em;
-  padding: 0;
+  margin-left: 3px;
+  margin-bottom: 0.40em;
 
   border: none;
   background: transparent;
@@ -70,13 +69,13 @@ button {
 
 .mainContainer {
   display: flex;
-  gap: clamp(3px, 0.25vw, 0.3vw);
+  gap: clamp(3px, 0.25vw, 5px);
 }
 
 .sidebar {
   display: flex;
   flex-direction: column;
-  height: 75vh;
+  height: 80vh;
 
   width: clamp(200px, 20vw, 250px);
   border-radius: 5px;
@@ -142,7 +141,7 @@ li span:hover {
   left: 50%;
 
   margin-bottom: 5px;
-  padding: 5px 10px;
+  padding: 10px;
   border: #bdbdbd 1px solid;
   border-radius: 3px;
 
@@ -154,6 +153,8 @@ li span:hover {
   translate: -50%;
   transform: translateY(-7px);
   opacity: 0;
+
+  box-sizing: border-box;
 }
 
 .dark .trashOverlay {
@@ -162,9 +163,12 @@ li span:hover {
   border-color: #444;
 }
 
+.trashOverlay ul {
+  margin: 0;
+}
+
 textarea {
   flex: 1;
-  height: auto;
   font-size: 18px;
   resize: none;
   padding: 5px;
@@ -198,14 +202,14 @@ textarea:focus {
 
 .actionButtons {
   display: flex;
-  gap: clamp(3px, 0.25vw, 0.3vw);
+  gap: clamp(3px, 0.25vw, 5px);
 }
 
 .actionButton {
   margin-top: 3px;
   margin-left: 0;
 
-  width: clamp(100px, 20vw, 200px);
+  width: clamp(75px, 20vw, 200px);
   height: 40px;
 }
 
