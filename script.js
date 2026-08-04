@@ -35,27 +35,35 @@ function renderNotes() {
   const delList = document.getElementById('deletedNotesList');
   delList.innerHTML = "";
 
-  trash.forEach(note => {
-    const li = document.createElement('li');
-    if (note.id === currentNoteId) {
-      li.classList.add('active');
-    }
+  if (trash.length === 0) {
+    const emptyMessage = document.createElement('p');
+    emptyMessage.dataset.i18n = 'trashEmpty';
+    emptyMessage.textContent = translate('trashEmpty');
 
-    const titleSpan = document.createElement('span');
-    titleSpan.textContent = note.title;
-    titleSpan.onclick = () => openNote(note.id, true);
-    const deleteButton = document.createElement('button');
-    deleteButton.textContent = "×";
-    deleteButton.onclick = () => deleteNote(note.id);
-    const restoreButton = document.createElement('button');
-    restoreButton.textContent = "←";
-    restoreButton.onclick = () => restoreNote(note.id);
+    delList.appendChild(emptyMessage);
+  } else {
+    trash.forEach(note => {
+      const li = document.createElement('li');
+      if (note.id === currentNoteId) {
+        li.classList.add('active');
+      }
 
-    li.appendChild(titleSpan);
-    li.appendChild(deleteButton);
-    li.appendChild(restoreButton);
-    delList.appendChild(li);
-  });
+      const titleSpan = document.createElement('span');
+      titleSpan.textContent = note.title;
+      titleSpan.onclick = () => openNote(note.id, true);
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = "×";
+      deleteButton.onclick = () => deleteNote(note.id);
+      const restoreButton = document.createElement('button');
+      restoreButton.textContent = "←";
+      restoreButton.onclick = () => restoreNote(note.id);
+
+      li.appendChild(titleSpan);
+      li.appendChild(deleteButton);
+      li.appendChild(restoreButton);
+      delList.appendChild(li);
+    });
+  }
 }
 
 // Open a note
