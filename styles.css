@@ -16,9 +16,10 @@ body {
   }
 }
 
-html, button,
+html, button, 
 .sidebar, .trashOverlay, .settingsOverlay,
-.translateOverlay, .changelogOverlay, .changelogVersion {
+.translateOverlay, .changelogOverlay, .changelogVersion,
+.infoOverlay {
   transition: 0.25s ease;
 }
 
@@ -58,16 +59,18 @@ button {
   font-size: 1.5em;
   font-weight: bold;
   font-family: inherit;
+
+  transition: 0.25s ease;
 }
 
 #noteTitle:focus {
-  outline: #bdbdbd 2px solid;
-  outline-offset: 1px;
-  border-radius: 1px;
+  outline: none;
+  box-shadow: 0 0 0 2px #bdbdbd;
+  border-radius: 0.25px;
 }
 
 .dark #noteTitle:focus {
-  outline-color: #444;
+  box-shadow: 0 0 0 2px #444;
 }
 
 .mainContainer {
@@ -117,7 +120,7 @@ li span:hover {
   margin-top: auto;
 }
 
-.trashButton {
+.trashPanelButton {
   margin-left: 3px;
   margin-bottom: 3px;
 
@@ -132,7 +135,7 @@ li span:hover {
   letter-spacing: 1px;
 }
 
-.dark .trashButton {
+.dark .trashPanelButton {
   color: white;
   background: #191919;
 }
@@ -170,6 +173,33 @@ li span:hover {
   margin: 0;
 }
 
+.infoOverlay {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+
+  margin-bottom: 5px;
+  padding: 10px;
+  border: #bdbdbd 1px solid;
+  border-radius: 3px;
+
+  color: black;
+  background: white;
+
+  pointer-events: none;
+  translate: -50%;
+  transform: translateY(-7px);
+  opacity: 0;
+
+  box-sizing: border-box;
+}
+
+.dark .infoOverlay {
+  color: #fff;
+  background: #191919;
+  border-color: #444;
+}
+
 textarea {
   flex: 1;
   font-size: 18px;
@@ -204,6 +234,7 @@ textarea:focus {
 }
 
 .actionButtons {
+  position: relative;
   display: flex;
   gap: clamp(3px, 0.25vw, 5px);
 }

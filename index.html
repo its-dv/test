@@ -27,7 +27,7 @@
     <aside class="sidebar">
       <ul id="notesList"></ul>
       <div class="trashWrapper">
-        <button id="trashButton" class="trashButton" data-i18n="trashButton"></button>
+        <button id="trashPanelButton" class="trashPanelButton" data-i18n="trashPanelButton"></button>
         <div id="trashOverlay" class="trashOverlay">
           <ul id="deletedNotesList"></ul>
         </div>
@@ -38,8 +38,11 @@
       <textarea id="textArea" data-i18n-placeholder="textArea" contenteditable="true"></textarea>
       <div class="actionButtons">
         <button id="saveButton" class="actionButton" data-i18n="saveButton"></button>
-        <button id="moveToTrashButton" class="actionButton" data-i18n="moveToTrashButton"></button>
+        <button id="trashButton" class="actionButton" data-i18n="trashButton"></button>
         <button id="infoButton" class="actionButton" data-i18n="infoButton"></button>
+        <div id="infoOverlay" class="infoOverlay">
+          <p data-i18n="inDevelopment">Info</p>
+        </div>
       </div>
     </div>
   </div>
@@ -91,10 +94,10 @@
       <img src="images/logs.svg" alt="Change logs">
     </button>
     <div id="changelogOverlay" class="changelogOverlay">
-      <p class="changelogVersion" data-version="2026.08.15"></p>
-      <p class="changelogDate">02.08.2026</p>
+      <p class="changelogVersion" data-version="2026.08.3"></p>
+      <p class="changelogDate">04.08.2026</p>
       <ul class="changelog">
-        <li data-i18n="changelogEntry8"></li>
+        <li data-i18n="changelogEntry2"></li>
       </ul>
       <p class="changelogVersion" data-version="2026.08.13"></p>
       <p class="changelogDate">30.07.2026</p>
@@ -121,7 +124,7 @@
         <li data-i18n="changelogEntry4"></li>
       </ul>
     </div>
-      
+
   </div>
 
   <div id="toast" class="toast"></div>

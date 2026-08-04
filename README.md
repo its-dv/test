@@ -8,9 +8,9 @@ A simple note-taking web application built with HTML, CSS and JavaScript.
 
 ## Features
 - Create, edit and delete notes
+- Local storage support
 - Notes trash (restore support)
 - Auto-delete trashed notes after 30 days
-- Local storage support
 - Responsive interface
 - Multi-language support
 - Simple and clean design

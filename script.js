@@ -89,7 +89,7 @@ function saveNote() {
     showToast(translate('noContentToSave'));
     return;
   }
-  
+
   if (currentNoteId) {
     for (let i = 0; i < notes.length; i++) {
       if (notes[i].id === currentNoteId) {
@@ -118,8 +118,8 @@ function saveNote() {
 }
 
 // Move to trash
-const moveToTrashButton = document.getElementById('moveToTrashButton');
-moveToTrashButton.addEventListener('click', () => moveToTrash(currentNoteId));
+const trashButton = document.getElementById('trashButton');
+trashButton.addEventListener('click', () => moveToTrash(currentNoteId));
 function moveToTrash(id) {
   const noteToDelete = notes.find(n => n.id === id);
   if (!noteToDelete) {
@@ -299,10 +299,17 @@ function updateChangelogVersion() {
 }
 
 // Toggle trash overlay visibility
-const trashButton = document.getElementById('trashButton');
+const trashPanelButton = document.getElementById('trashPanelButton');
 const trashOverlay = document.getElementById('trashOverlay');
-trashButton.addEventListener('click', () => {
+trashPanelButton.addEventListener('click', () => {
   trashOverlay.classList.toggle('active');
+});
+
+// Toggle info overlay visibility
+const infoButton = document.getElementById('infoButton');
+const infoOverlay = document.getElementById('infoOverlay');
+infoButton.addEventListener('click', () => {
+  infoOverlay.classList.toggle('active');
 });
 
 // Hide overlays on textarea focus
@@ -311,6 +318,15 @@ textArea.addEventListener('focus', () => {
   changelogOverlay.classList.remove('active');
   translateOverlay.classList.remove('active');
   settingsOverlay.classList.remove('active');
+  infoOverlay.classList.remove('active');
+});
+
+noteTitle.addEventListener('focus', () => {
+  trashOverlay.classList.remove('active');
+  changelogOverlay.classList.remove('active');
+  translateOverlay.classList.remove('active');
+  settingsOverlay.classList.remove('active');
+  infoOverlay.classList.remove('active');
 });
 
 // Default language
