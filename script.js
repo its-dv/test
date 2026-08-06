@@ -285,12 +285,6 @@ function charCount() {
   charCounter.textContent = translate('charCounter') + count;
 }
 
-// Toggle character counter visibility
-const charCountButton = document.getElementById('charCountButton');
-charCountButton.addEventListener('click', () => {
-  charCounter.style.display = charCounter.style.display === 'none' ? 'block' : 'none';
-});
-
 // Toggle changelog overlay visibility
 const changelogButton = document.getElementById('changelogButton');
 const changelogOverlay = document.getElementById('changelogOverlay');

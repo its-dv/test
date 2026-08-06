@@ -9,7 +9,9 @@ export const changelogTranslations = {
     changelogEntry6: "Fixed language panel display issue",
     changelogEntry7: "Added auto-close for open panels",
     changelogEntry8: "Minor improvements",
-    changelogEntry9: "Added info button for notes"
+    changelogEntry9: "Added info button for notes",
+    changelogEntry10: "Added empty trash message",
+    changelogEntry11: "Redesigned settings menu"
   },
   de: {
     changelogEntry1: "Leistungsverbesserungen und Optimierungen",
@@ -20,18 +22,22 @@ export const changelogTranslations = {
     changelogEntry6: "Anzeigeproblem des Sprachpanels behoben",
     changelogEntry7: "Automatisches Schließen geöffneter Fenster hinzugefügt",
     changelogEntry8: "Kleine Verbesserungen",
-    changelogEntry9: "Info-Schaltfläche für Notizen hinzugefügt"
+    changelogEntry9: "Info-Schaltfläche für Notizen hinzugefügt",
+    changelogEntry10: "Hinweis bei leerem Papierkorb hinzugefügt",
+    changelogEntry11: "Einstellungsmenü neu gestaltet"
   },
   fr: {
     changelogEntry1: "Améliorations des performances et optimisations",
     changelogEntry2: "Corrections de bugs et améliorations mineures",
     changelogEntry3: "Ajout d'un panneau de journal des modifications",
-    changelogEntry4: "Benutzeroberfläche verbessert",
+    changelogEntry4: "Amélioration de l'interface utilisateur",
     changelogEntry5: "Ajout de la corbeille des notes",
     changelogEntry6: "Problème d'affichage du panneau des langues corrigé",
     changelogEntry7: "Ajout de la fermeture automatique des panneaux ouverts",
     changelogEntry8: "Petites améliorations",
-    changelogEntry9: "Ajout d'un bouton d'informations sur les notes"
+    changelogEntry9: "Ajout d'un bouton d'informations sur les notes",
+    changelogEntry10: "Ajout d'un message lorsque la corbeille est vide",
+    changelogEntry11: "Refonte du menu des paramètres"
   },
   ru: {
     changelogEntry1: "Улучшена производительность и стабильность",
@@ -42,6 +48,8 @@ export const changelogTranslations = {
     changelogEntry6: "Исправлена ошибка с отображением панели языков",
     changelogEntry7: "Добавлено автозакрытие открытых панелей",
     changelogEntry8: "Мелкие улучшения",
-    changelogEntry9: "Добавлена кнопка информации для заметок"
+    changelogEntry9: "Добавлена кнопка информации для заметок",
+    changelogEntry10: "Добавлено сообщение о пустой корзине",
+    changelogEntry11: "Переработано меню настроек"
   }
 };

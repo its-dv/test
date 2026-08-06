@@ -39,27 +39,29 @@
       <div class="actionButtons">
         <button id="saveButton" class="actionButton" data-i18n="saveButton"></button>
         <button id="trashButton" class="actionButton" data-i18n="trashButton"></button>
-        <button id="infoButton" class="actionButton" data-i18n="infoButton"></button>
-        <div id="infoOverlay" class="infoOverlay">
-          <p data-i18n="inDevelopment">Info</p>
+        <div class="infoWrapper">
+          <button id="infoButton" class="actionButton" data-i18n="infoButton"></button>
+          <div id="infoOverlay" class="infoOverlay">
+            <p data-i18n="inDevelopment">Info</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-  <p id="charCounter"></p>
 
   <button id="settingsButton" class="preferenceButton">
     <img src="images/settings.svg" alt="Settings">
   </button>
 
   <div id="settingsOverlay" class="settingsOverlay">
-    <button id="themeButton" class="preferenceButton">
+    <button id="themeButton" class="optionItem">
       <img id="themeIcon" src="images/moon.svg" alt="Switch Theme">
+      <span data-i18n="themeButton"></span>
     </button>
 
-    <button id="translateButton" class="preferenceButton">
+    <button id="translateButton" class="optionItem">
       <img src="images/translate.svg" alt="Translate">
+      <span data-i18n="translateButton"></span>
     </button>
 
     <fieldset id="translateOverlay" class="translateOverlay">
@@ -86,17 +88,17 @@
       </label>
     </fieldset>
 
-    <button id="charCountButton" class="preferenceButton">
-      <img src="images/hash.svg" alt="Character counter">
-    </button>
-
-    <button id="changelogButton" class="preferenceButton">
+    <button id="changelogButton" class="optionItem">
       <img src="images/logs.svg" alt="Change logs">
+      <span data-i18n="changelogButton"></span>
     </button>
+    
     <div id="changelogOverlay" class="changelogOverlay">
-      <p class="changelogVersion" data-version="2026.08.3"></p>
-      <p class="changelogDate">04.08.2026</p>
+      <p class="changelogVersion" data-version="2026.08.5"></p>
+      <p class="changelogDate">06.08.2026</p>
       <ul class="changelog">
+        <li data-i18n="changelogEntry11"></li>
+        <li data-i18n="changelogEntry10"></li>
         <li data-i18n="changelogEntry2"></li>
       </ul>
       <p class="changelogVersion" data-version="2026.08.13"></p>
@@ -125,6 +127,7 @@
       </ul>
     </div>
 
+    <p id="charCounter"></p>
   </div>
 
   <div id="toast" class="toast"></div>

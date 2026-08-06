@@ -29,7 +29,6 @@ html, button,
 }
 
 button {
-  margin-top: 0;
   margin-left: 5px;
   padding: 0 4px;
   font-size: 14px;
@@ -66,7 +65,7 @@ button {
 #noteTitle:focus {
   outline: none;
   box-shadow: 0 0 0 2px #bdbdbd;
-  border-radius: 0.25px;
+  border-radius: 0.35px;
 }
 
 .dark #noteTitle:focus {
@@ -159,8 +158,6 @@ li span:hover {
   translate: -50%;
   transform: translateY(-7px);
   opacity: 0;
-
-  box-sizing: border-box;
 }
 
 .dark .trashOverlay {
@@ -172,6 +169,13 @@ li span:hover {
 .trashOverlay ul {
   margin: 0;
   padding: 0;
+}
+
+.infoWrapper {
+  position: relative;
+  margin-top: auto;
+
+  white-space: nowrap;
 }
 
 .infoOverlay {
@@ -191,8 +195,6 @@ li span:hover {
   translate: -50%;
   transform: translateY(-7px);
   opacity: 0;
-
-  box-sizing: border-box;
 }
 
 .dark .infoOverlay {
@@ -250,12 +252,11 @@ textarea:focus {
 
 .settingsOverlay {
   position: fixed;
-  display: grid;
-  top: 50px;
+  top: 51px;
   right: 15px;
+  width: 200px;
 
-  padding: 15px;
-  gap: 7px;
+  padding: 4px;
 
   background: #f2f2f2;
   border: 1px solid #bdbdbd;
@@ -272,7 +273,9 @@ textarea:focus {
 }
 
 #charCounter {
-  margin-top: 5px;
+  margin: 5px 0 2px 5px;
+  padding: 0;
+  font-size: 12px;
 }
 
 #rights {
@@ -294,7 +297,12 @@ textarea:focus {
 
 .dark .preferenceButton {
   background: none;
+}
+
+.dark .preferenceButton img,
+.dark .optionItem img {
   filter: invert(1);
+  transition: 0.25s ease;
 }
 
 #settingsButton {
@@ -303,12 +311,63 @@ textarea:focus {
   right: 15px;
 }
 
+.settingsOverlay .optionItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  width: 100%;
+  margin: 0;
+  padding: 6px 7px;
+
+  color: inherit;
+  background: transparent;
+  border: none;
+  border-radius: 5px;
+
+  font-family: inherit;
+  text-align: left;
+
+  cursor: pointer;
+  user-select: none;
+
+  transition: background-color 0.15s ease;
+}
+
+.settingsOverlay .optionItem:hover {
+  background-color: #0000000f;
+}
+
+.dark .settingsOverlay .optionItem:hover {
+  background-color: #ffffff15;
+}
+
+.settingsOverlay .optionItem > img {
+  width: 16px;
+  height: 16px;
+
+  opacity: 0.75;
+  transition: .25s ease;
+}
+
+.settingsOverlay .optionItem:hover > img {
+  opacity: 1;
+}
+
+.settingsOverlay .optionItem:active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark .settingsOverlay .optionItem:active {
+  background-color: #ffffff25;
+}
+
 .translateOverlay {
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 100px;
-  right: 65px;
+  top: 0px;
+  right: 200px;
   padding: 10px 15px 15px 10px;
 
   background: #f2f2f2;
@@ -327,13 +386,12 @@ textarea:focus {
 
 .languageOption {
   display: flex;
-  align-items: center;
 }
 
 .changelogOverlay {
   position: fixed;
-  top: 100px;
-  right: 65px;
+  top: 10px;
+  right: 202px;
   padding: 0 10px;
   width: 285px;
 
