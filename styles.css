@@ -3,6 +3,10 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow: hidden;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 13px clamp(1px, 1.5vw, 15px) 0;
@@ -253,7 +257,7 @@ textarea:focus {
 .settingsOverlay {
   position: fixed;
   top: 51px;
-  right: 15px;
+  right: clamp(1px, 1.5vw, 15px);
   width: 200px;
 
   padding: 4px;
@@ -390,8 +394,8 @@ textarea:focus {
 
 .changelogOverlay {
   position: fixed;
-  top: 10px;
-  right: 202px;
+  top: 0px;
+  right: 200px;
   padding: 0 10px;
   width: 285px;
 
@@ -407,9 +411,25 @@ textarea:focus {
   transform: translateY(-7px);
 }
 
+@media (max-width: 503px) {
+  .changelogOverlay {
+    top: 115px;
+    right: -3px;
+  }
+}
+
+.changelogLegend,
+.translateLegend {
+  font-size: 15px;
+}
+
 .dark .changelogOverlay {
   background: #191919;
   border-color: #444;
+}
+
+.changelogOverlay .changelogVersion:first-of-type {
+  margin-top: 5px;
 }
 
 .changelogVersion {
@@ -435,7 +455,7 @@ textarea:focus {
 
 .changelog li {
   line-height: 1.15;
-  margin-bottom: 3px;
+  margin-bottom: 3.5px;
 }
 
 .changelog li::before {

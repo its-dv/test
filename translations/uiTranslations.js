@@ -1,7 +1,8 @@
 // UI Translations
 export const uiTranslations = {
   en: {
-    languages: "Languages",
+    language: "Language",
+    changelog: "Version history",
     untitledNote: "Untitled",
     noteTitle: "Enter note title...",
     textArea: "Write your notes here...",
@@ -30,7 +31,8 @@ export const uiTranslations = {
     changelogVersion: "Version"
   },
   de: {
-    languages: "Sprachen",
+    language: "Sprache",
+    changelog: "Versionsverlauf",
     untitledNote: "Unbenannt",
     noteTitle: "Notiztitel eingeben...",
     textArea: "Schreiben Sie Ihre Notizen hier...",
@@ -59,7 +61,8 @@ export const uiTranslations = {
     changelogVersion: "Version"
   },
   fr: {
-    languages: "Langues",
+    language: "Langue",
+    changelog: "Hist. versions",
     untitledNote: "Sans titre",
     noteTitle: "Entrez le titre de la note...",
     textArea: "Écrivez vos notes ici...",
@@ -88,7 +91,8 @@ export const uiTranslations = {
     changelogVersion: "Version"
   },
   ru: {
-    languages: "Языки",
+    language: "Язык",
+    changelog: "История версий",
     untitledNote: "Без названия",
     noteTitle: "Введите название заметки...",
     textArea: "Введите текст заметки...",

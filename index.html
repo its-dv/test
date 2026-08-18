@@ -42,7 +42,7 @@
         <div class="infoWrapper">
           <button id="infoButton" class="actionButton" data-i18n="infoButton"></button>
           <div id="infoOverlay" class="infoOverlay">
-            <p data-i18n="inDevelopment">Info</p>
+            <p data-i18n="inDevelopment"></p>
           </div>
         </div>
       </div>
@@ -65,7 +65,7 @@
     </button>
 
     <fieldset id="translateOverlay" class="translateOverlay">
-      <legend data-i18n="languages"></legend>
+      <legend class="translateLegend" data-i18n="language"></legend>
 
       <label class="languageOption">
         <input id="english" type="radio" name="language" value="en" checked>
@@ -92,8 +92,14 @@
       <img src="images/logs.svg" alt="Change logs">
       <span data-i18n="changelogButton"></span>
     </button>
-    
-    <div id="changelogOverlay" class="changelogOverlay">
+
+    <fieldset id="changelogOverlay" class="changelogOverlay">
+    <legend class="changelogLegend" data-i18n="changelog"></legend>
+      <p class="changelogVersion" data-version="2026.08.6"></p>
+      <p class="changelogDate">19.08.2026</p>
+      <ul class="changelog">
+        <li data-i18n="changelogEntry4"></li>
+      </ul>
       <p class="changelogVersion" data-version="2026.08.5"></p>
       <p class="changelogDate">06.08.2026</p>
       <ul class="changelog">
@@ -125,7 +131,7 @@
         <li data-i18n="changelogEntry3"></li>
         <li data-i18n="changelogEntry4"></li>
       </ul>
-    </div>
+    </fieldset>
 
     <p id="charCounter"></p>
   </div>
