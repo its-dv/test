@@ -51,8 +51,9 @@ button {
 }
 
 #noteTitle {
-  margin-left: 3px;
+  margin-top: 1.5px;
   margin-bottom: 0.40em;
+  margin-left: 3px;
   padding: 0;
 
   border: none;
@@ -359,7 +360,7 @@ textarea:focus {
 }
 
 .settingsOverlay .optionItem:active {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #0000001a;
 }
 
 .dark .settingsOverlay .optionItem:active {
@@ -474,14 +475,17 @@ textarea:focus {
   opacity: 0;
   transition: 0.5s;
   pointer-events: none;
+  border-radius: 6.5px;
 
-  color: white;
-  background: #191919;
-  border-radius: 8px;
+  color: black;
+  background: #0000001a;
+  border: 1px solid #0000001a;
 }
 
 .dark .toast {
-  background: #2b2b2b;
+  color: white;
+  background: #ffffff25;
+  border: 1px solid #ffffff25;
 }
 
 .toast.show {

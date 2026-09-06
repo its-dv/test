@@ -11,7 +11,8 @@ export const changelogTranslations = {
     changelogEntry8: "Minor improvements",
     changelogEntry9: "Added info button for notes",
     changelogEntry10: "Added empty trash message",
-    changelogEntry11: "Redesigned settings menu"
+    changelogEntry11: "Redesigned settings menu",
+    changelogEntry12: "Redesigned language menu"
   },
   de: {
     changelogEntry1: "Leistungsverbesserungen und Optimierungen",
@@ -24,7 +25,8 @@ export const changelogTranslations = {
     changelogEntry8: "Kleine Verbesserungen",
     changelogEntry9: "Info-Schaltfläche für Notizen hinzugefügt",
     changelogEntry10: "Hinweis bei leerem Papierkorb hinzugefügt",
-    changelogEntry11: "Einstellungsmenü neu gestaltet"
+    changelogEntry11: "Einstellungsmenü neu gestaltet",
+    changelogEntry12: "Sprachmenü neu gestaltet"
   },
   fr: {
     changelogEntry1: "Améliorations des performances et optimisations",
@@ -37,7 +39,8 @@ export const changelogTranslations = {
     changelogEntry8: "Petites améliorations",
     changelogEntry9: "Ajout d'un bouton d'informations sur les notes",
     changelogEntry10: "Ajout d'un message lorsque la corbeille est vide",
-    changelogEntry11: "Refonte du menu des paramètres"
+    changelogEntry11: "Refonte du menu des paramètres",
+    changelogEntry12: "Menu des langues repensé"
   },
   ru: {
     changelogEntry1: "Улучшена производительность и стабильность",
@@ -50,6 +53,7 @@ export const changelogTranslations = {
     changelogEntry8: "Мелкие улучшения",
     changelogEntry9: "Добавлена кнопка информации для заметок",
     changelogEntry10: "Добавлено сообщение о пустой корзине",
-    changelogEntry11: "Переработано меню настроек"
+    changelogEntry11: "Переработано меню настроек",
+    changelogEntry12: "Переработано меню языков"
   }
 };
